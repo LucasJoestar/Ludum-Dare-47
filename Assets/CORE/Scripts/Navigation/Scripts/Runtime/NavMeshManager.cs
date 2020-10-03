@@ -69,7 +69,7 @@ namespace LudumDare47.Navigation
                 for (_j = 0; _j < Triangles.Count; _j++)
                 {
                     if (_i == _j) continue;
-                    if (GeometryHelper3D.VerticesInCommon(Triangles[_i], Triangles[_j]) == 2)
+                    if (GeometryHelper2D.VerticesInCommon(Triangles[_i], Triangles[_j]) == 2)
                     {
                         Triangles[_i].LinkedTriangles.Add(_j);
                     }
@@ -91,24 +91,6 @@ namespace LudumDare47.Navigation
                                                        NavigationDatas.Vertices[_triangle.Vertices[2]],
                                                        _position);
             return _barycentric.IsInside;
-        }
-
-        /// <summary>
-        /// Check if any triangle contains the position
-        /// </summary>
-        /// <param name="_position">Position to check</param>
-        /// <param name="_triangles">List of the triangles</param>
-        /// <returns></returns>
-        public bool IsInAnyTriangle(Vector3 _position)
-        {
-            for (int i = 0; i < Triangles.Count; i++)
-            {
-                if (IsInTriangle(_position, Triangles[i]))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         /// <summary>

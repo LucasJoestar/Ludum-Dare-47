@@ -13,8 +13,9 @@ namespace LudumDare47
 	public class MoveState : BaseState, ILateUpdate
     {
 		#region Fields / Properties
-		//[HorizontalLine(1, order = 0), Section("MoveToState", order = 1)]
-		private int patrolIndex = 0; 
+		//[HorizontalLine(1, order = 0), Section("Move Settings", order = 1)]
+		private int patrolIndex = 0;
+		private bool isInPatrol = false; 
 		#endregion
 
 		#region Constructor
@@ -24,13 +25,38 @@ namespace LudumDare47
 		#endregion
 
 		#region Methods
+
+		private void ReachNextPatrolPoint()
+		{
+			controller.NavAgent.SetDestination(controller.PatrolPath[patrolIndex]);
+			patrolIndex++;
+			patrolIndex = patrolIndex >= controller.PatrolPath.Length ? 0 : patrolIndex;
+		}
+
+		// ------------------------------ // 
+
 		public override void OnEnterState(FiniteStateMachine _stateMachine)
 		{
 			base.OnEnterState(_stateMachine);
-			patrolIndex = 0; 
+			patrolIndex = 0;
+			isInPatrol = false; 
 			// if target!=null --> Chase the target (set the chase speed)
 			// else if destination != Vector2.zero --> Go to the destination (set the chase speed)
-			// else if patrolPath.length > 0 --> go through the patrol path
+			if(controller.Destination != Vector2.zero)
+			{
+				controller.NavAgent.SetDestination(controller.Destination); 
+			}
+			else if(controller.PatrolPath.Length > 0)
+			{
+				isInPatrol = true;
+				ReachNextPatrolPoint();
+			}
+			else
+			{
+				stateMachine.GoToState(this, StateType.Process);
+				return; 
+			}
+			controller.NavAgent.SetSpeedValue(isInPatrol);
 			UpdateManager.Instance.Register(this);
 		}
 
@@ -48,6 +74,18 @@ namespace LudumDare47
 				// stop the agent here
 				stateMachine.GoToState(this, StateType.Process);
 				return; 
+			}
+			if(controller.NavAgent.IsMoving)
+			{
+				return; 
+			}
+			if(isInPatrol)
+			{
+				ReachNextPatrolPoint(); 
+			}
+			else
+			{
+				stateMachine.GoToState(this, StateType.Process);
 			}
 			// make the agent move here
 		}

@@ -1,0 +1,17 @@
+{
+    "name": "AgentAssembly",
+    "references": [
+        "GUID:6e66a97add43a024bbe776d0b1309e8f",
+        "GUID:75799b8099ce2e54f8f796e3acc8e06f",
+        "GUID:a3a14059c63f9fb4d8298f1ab4c9727b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

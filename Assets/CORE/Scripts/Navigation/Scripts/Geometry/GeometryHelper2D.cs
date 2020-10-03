@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace LudumDare47.Geometry
 {
-    public static class GeometryHelper3D
+    public static class GeometryHelper2D
     {
         #region Methods
 
@@ -55,69 +55,18 @@ namespace LudumDare47.Geometry
         }
 
         /// <summary>
-        /// Check if two segement intersect
-        /// </summary>
-        /// <param name="L1_start">start of the first segment</param>
-        /// <param name="L1_end">end of the first segment</param>
-        /// <param name="L2_start">start of the second segment</param>
-        /// <param name="L2_end">end of the second segment</param>
-        /// <param name="_intersection">the intersection point between the two ssegments</param>
-        /// <returns>return true if segements intersect</returns>
-        public static bool IsIntersecting(Vector3 _a, Vector3 _b, Vector3 _c, Vector3 _d, out Vector3 _intersection)
-        {
-            Vector3 _ab = _b - _a; // I
-            float _anglesign = AngleSign(_a, _b, _c);
-            Vector3 _cd = _anglesign > 0 ? _d - _c : _c - _d; // J
-
-            Vector3 _pointLeft = _anglesign > 0 ? _c : _d;
-
-            // P -> Intersection point 
-            // P = _a + k * _ab = _c + m * _cd
-            // A.x + k*_ab.x = _c.x + m *_cd.x
-            // A.y + k*_ab.y = _c.y + m *_cd.y
-            // A.z + k*_ab.z = _c.z + m *_cd.z
-
-            float _denominator = Vector3.Cross(_ab, _cd).magnitude;
-
-            if (_denominator != 0)
-            {
-                //  m =    (     -Ix*A.y      +      Ix*Cy     +      Iy*Ax     -      Iy*Cx )
-                float _m = ((-_ab.x * _a.y) + (_ab.x * _pointLeft.y) + (_ab.y * _a.x) - (_ab.y * _pointLeft.x)) / _denominator;
-
-                //  k =    (     Jy*Ax     -      Jy*Cx     -      Jx*Ay     +      Jx*Cy )
-                float _k = ((_cd.y * _a.x) - (_cd.y * _pointLeft.x) - (_cd.x * _a.y) + (_cd.x * _pointLeft.y)) / _denominator;
-
-                //Debug.Log(_m + " " + _k); 
-
-                if ((_m >= 0 && _m <= 1 && _k >= 0 && _k <= 1))
-                {
-
-                    if (Vector3.Distance((_a + _k * _ab), (_pointLeft + _m * _cd)) > .1f)
-                    {
-                        _intersection = _a;
-                        return false;
-                    }
-
-                    _intersection = _a + _k * _ab;
-                    return true;
-                }
-            }
-            _intersection = _a;
-            return false;
-        }
-
-        /// <summary>
         /// Check if a point is between two endpoints of a segment
         /// </summary>
         /// <param name="_firstSegmentPoint">First endpoint of the segment</param>
         /// <param name="_secondSegmentPoint">Second endpoint of the segment</param>
         /// <param name="_comparedPoint">Compared point</param>
         /// <returns></returns>
-        public static bool PointContainedInSegment(Vector3 _firstSegmentPoint, Vector3 _secondSegmentPoint, Vector3 _comparedPoint)
+        public static bool PointContainedInSegment(Vector2 _firstSegmentPoint, Vector2 _secondSegmentPoint, Vector2 _comparedPoint)
         {
-            float _segmentLength = FlatDistance(_firstSegmentPoint, _secondSegmentPoint);
-            float _a = FlatDistance(_firstSegmentPoint, _comparedPoint);
-            float _b = FlatDistance(_secondSegmentPoint, _comparedPoint);
+            float _segmentLength = Vector2.Distance(_firstSegmentPoint, _secondSegmentPoint);
+           
+            float _a = Vector2.Distance(_firstSegmentPoint, _comparedPoint);
+            float _b = Vector2.Distance(_secondSegmentPoint, _comparedPoint);
             return _segmentLength > _a && _segmentLength > _b;
         }
         #endregion
@@ -135,11 +84,7 @@ namespace LudumDare47.Geometry
         {
             Vector2 _ref = _end - _start;
             Vector2 _angle = _point - _start;
-            //Debug.DrawRay(_start, _ref, Color.green, 10);
-            //Debug.DrawRay(_start, _angle, Color.red, 10); 
-            float _alpha = Vector2.SignedAngle(_ref, _angle);
-            //Debug.Log(_start + " -> " + _point + " = " + _alpha); 
-            
+            float _alpha = Vector2.SignedAngle(_ref, _angle);           
             if (_alpha == 0 || _alpha == 180 || _alpha == -180) return 0;
             if (_alpha > 0) return 1;
             return -1;
@@ -167,13 +112,6 @@ namespace LudumDare47.Geometry
         }
         #endregion
 
-        #region float
-        public static float FlatDistance(Vector3 _pos1, Vector3 _pos2)
-        {
-            return Mathf.Sqrt(Mathf.Pow((_pos2.x - _pos1.x), 2) + Mathf.Pow((_pos2.y - _pos1.y), 2)); 
-        }
-        #endregion
-
         #region Vector3
         /// <summary>
         /// Get the transposed point of the predicted position on a segement between the previous and the next position
@@ -184,14 +122,14 @@ namespace LudumDare47.Geometry
         /// <param name="_previousPosition">Previous Position</param>
         /// <param name="_nextPosition">Next Position</param>
         /// <returns></returns>
-        public static Vector3 GetNormalPoint(Vector3 _predictedPosition, Vector3 _previousPosition, Vector3 _nextPosition)
+        public static Vector2 GetNormalPoint(Vector2 _predictedPosition, Vector2 _previousPosition, Vector2 _nextPosition)
         {
-            Vector3 _ap = _predictedPosition - _previousPosition;
-            Vector3 _ab = (_nextPosition - _previousPosition).normalized;
-            Vector3 _ah = _ab * (Vector3.Dot(_ap, _ab));
-            Vector3 _normal = (_previousPosition + _ah);
-            Vector3 _min = Vector3.Min(_previousPosition, _nextPosition);
-            Vector3 _max = Vector3.Max(_previousPosition, _nextPosition);
+            Vector2 _ap = _predictedPosition - _previousPosition;
+            Vector2 _ab = (_nextPosition - _previousPosition).normalized;
+            Vector2 _ah = _ab * (Vector2.Dot(_ap, _ab));
+            Vector2 _normal = (_previousPosition + _ah);
+            Vector2 _min = Vector2.Min(_previousPosition, _nextPosition);
+            Vector2 _max = Vector2.Max(_previousPosition, _nextPosition);
             if (_normal.x < _min.x || _normal.y < _min.y || _normal.x > _max.x || _normal.y > _max.y)
             {
                 return _nextPosition;
