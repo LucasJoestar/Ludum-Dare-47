@@ -16,11 +16,16 @@ namespace LudumDare47
         [HorizontalLine(1, order = 0), Section("PLAYER ATTRIBUTES", order = 1), Space(order = 2)]
 
         public AnimationCurve SpeedCurve = null;
+        public PlayerGhost ghostPrefab = null;
 
         [HorizontalLine(1)]
 
         [Min(0)] public float MovementDecel = 75f;
         [Min(0)] public float AboutTurnAccel = 6f;
+
+        [HorizontalLine(1)]
+
+        public LayerMask InteractMask = new LayerMask();
         #endregion
     }
 }

@@ -11,7 +11,7 @@ using UnityEngine;
 namespace LudumDare47
 {
     [RequireComponent(typeof(Rigidbody2D))]
-	public abstract class Movable : LudumBehaviour, IMovableUpdate
+	public abstract class Movable : MonoBehaviour, IMovableUpdate
     {
         #region Fields / Properties
         protected const float CAST_MAX_DISTANCE_DETECTION = .001f;
@@ -72,6 +72,16 @@ namespace LudumDare47
         #region Core Movements
         protected bool shouldBeRefreshed = false;
 
+        /// <summary>
+        /// Set this object position.
+        /// Use this instead of setting <see cref="Transform.position"/>.
+        /// </summary>
+        public void SetPosition(Vector2 _position)
+        {
+            rigidbody.position = _position;
+            shouldBeRefreshed = true;
+        }
+
         // -----------------------
 
         void IMovableUpdate.Update() => MovableUpdate();
@@ -112,9 +122,9 @@ namespace LudumDare47
 
         // -----------------------
 
-        private static readonly Collider2D[] overlapColliders = new Collider2D[4];
-        private static readonly Trigger[] overlapTriggers = new Trigger[4];
-        private List<Trigger> remainingTriggers = new List<Trigger>();
+        protected static readonly Collider2D[] overlapColliders = new Collider2D[4];
+        protected static readonly Trigger[] overlapTriggers = new Trigger[4];
+        protected List<Trigger> remainingTriggers = new List<Trigger>();
 
         private void RefreshPosition()
         {
@@ -139,7 +149,7 @@ namespace LudumDare47
 
                             if (DoEnterTrigger(_trigger))
                             {
-                                _trigger.OnEnter(this);
+                                _trigger.OnEnter(gameObject);
                                 remainingTriggers.Add(_trigger);
                             }
                         }
@@ -159,7 +169,7 @@ namespace LudumDare47
                 {
                     if (HasExitedTrigger(remainingTriggers[_i], _triggerAmount))
                     {
-                        remainingTriggers[_i].OnExit(this);
+                        remainingTriggers[_i].OnExit(gameObject);
                         remainingTriggers.RemoveAt(_i);
                         _i--;
                     }

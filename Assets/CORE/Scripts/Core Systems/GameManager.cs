@@ -22,6 +22,8 @@ namespace LudumDare47
         [SerializeField] private UpdateManager updateManager = null;
         public UpdateManager UpdateManager => updateManager;
 
+        public LevelManager LevelManager = null;
+
         // -----------------------
 
         [SerializeField, ReadOnly] private float timeCoef = 1;
