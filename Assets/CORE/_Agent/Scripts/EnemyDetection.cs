@@ -13,6 +13,7 @@ namespace LudumDare47
     {
 		#region Fields / Properties
 		//[HorizontalLine(1, order = 0), Section("EnemyDetection", order = 1)]
+		// IPlayerBehaviour
         #endregion
 		
 		#region Methods

@@ -13,6 +13,7 @@ namespace LudumDare47.Navigation
     public static class PathCalculator
     {
         #region Methods
+
         #region bool
         /// <summary>
         /// Calculate path from an origin to a destination 
@@ -192,10 +193,10 @@ namespace LudumDare47.Navigation
                     _vertex1 = NavMeshManager.Instance.NavigationDatas.Vertices[_currentTriangle.Vertices[j]];
                     _vertex2 = NavMeshManager.Instance.NavigationDatas.Vertices[_currentTriangle.Vertices[k]];
 
-                    if (GeometryHelper3D.IsIntersecting(_startLinePoint, _endLinePoint, _vertex1, _vertex2))
+                    if (GeometryHelper2D.IsIntersecting(_startLinePoint, _endLinePoint, _vertex1, _vertex2))
                     {
                         //Debug.Log(_startLinePoint + "///" + _endLinePoint + " intersect with " + _vertex1 + "///" + _vertex2); 
-                        if (GeometryHelper3D.AngleSign(_startLinePoint, _endLinePoint, _vertex1) > 0)
+                        if (GeometryHelper2D.AngleSign(_startLinePoint, _endLinePoint, _vertex1) > 0)
                         {
                             _leftVertices[i] = _vertex2;
                             _rightVertices[i] = _vertex1;
@@ -221,9 +222,9 @@ namespace LudumDare47.Navigation
                 int k = j + 1 >= _currentTriangle.Vertices.Length ? 0 : j + 1;
                 _vertex1 = NavMeshManager.Instance.NavigationDatas.Vertices[_currentTriangle.Vertices[j]];
                 _vertex2 = NavMeshManager.Instance.NavigationDatas.Vertices[_currentTriangle.Vertices[k]];
-                if (GeometryHelper3D.IsIntersecting(_startLinePoint, _endLinePoint, _vertex1, _vertex2))
+                if (GeometryHelper2D.IsIntersecting(_startLinePoint, _endLinePoint, _vertex1, _vertex2))
                 {
-                    if (GeometryHelper3D.AngleSign(_startLinePoint, _endLinePoint, _vertex1) > 0)
+                    if (GeometryHelper2D.AngleSign(_startLinePoint, _endLinePoint, _vertex1) > 0)
                     {
                         _leftVertices[0] = _vertex2;
                         _rightVertices[0] = _vertex1;
@@ -266,10 +267,10 @@ namespace LudumDare47.Navigation
                 if (_nextLeftVertex != _currentLeftVertex && i > _leftIndex)
                 {
                     //If the next point does not widden funnel, update 
-                    if (GeometryHelper3D.AngleSign(_apex, _currentLeftVertex, _nextLeftVertex) >= 0)
+                    if (GeometryHelper2D.AngleSign(_apex, _currentLeftVertex, _nextLeftVertex) >= 0)
                     {
                         //if next side cross the other side, place new apex
-                        if (GeometryHelper3D.AngleSign(_apex, _currentRightVertex, _nextLeftVertex) > 0)
+                        if (GeometryHelper2D.AngleSign(_apex, _currentRightVertex, _nextLeftVertex) > 0)
                         {
                             // Set the new Apex
                             _apex = _currentRightVertex;
@@ -306,10 +307,10 @@ namespace LudumDare47.Navigation
                 if (_nextRightVertex != _currentRightVertex && i > _rightIndex)
                 {
                     //If the next point does not widden funnel, update 
-                    if (GeometryHelper3D.AngleSign(_apex, _currentRightVertex, _nextRightVertex) <= 0)
+                    if (GeometryHelper2D.AngleSign(_apex, _currentRightVertex, _nextRightVertex) <= 0)
                     {
                         //if next side cross the other side, place new apex
-                        if (GeometryHelper3D.AngleSign(_apex, _currentLeftVertex, _nextRightVertex) < 0)
+                        if (GeometryHelper2D.AngleSign(_apex, _currentLeftVertex, _nextRightVertex) < 0)
                         {
                             //Set the new Apex
                             _apex = _currentLeftVertex;
