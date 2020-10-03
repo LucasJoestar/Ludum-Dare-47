@@ -21,6 +21,11 @@ namespace LudumDare47
 
         [SerializeField] private UpdateManager updateManager = null;
         public UpdateManager UpdateManager => updateManager;
+
+        // -----------------------
+
+        [SerializeField, ReadOnly] private float timeCoef = 1;
+        public static float DeltaTime => Time.deltaTime * Instance.timeCoef;
         #endregion
 
         #region Methods
