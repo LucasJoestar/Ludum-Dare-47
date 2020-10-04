@@ -32,7 +32,7 @@ namespace LudumDare47
 		{
 			get
 			{
-				return destination != Vector2.zero || patrolPath.Length > 0; 
+				return detection.Target != null || destination != Vector2.zero || patrolPath.Length > 0; 
 			}
 		}
         #endregion

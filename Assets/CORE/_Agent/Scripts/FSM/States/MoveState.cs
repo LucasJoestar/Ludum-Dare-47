@@ -41,8 +41,13 @@ namespace LudumDare47
 			patrolIndex = 0;
 			isInPatrol = false; 
 			// if target!=null --> Chase the target (set the chase speed)
+			if(controller.Detection.Target != null)
+			{
+				//controller.NavAgent.SetDestination(controller.Detection.Target);
+				Debug.Log("Implement Method to get Interface position");
+			}
 			// else if destination != Vector2.zero --> Go to the destination (set the chase speed)
-			if(controller.Destination != Vector2.zero)
+			else if(controller.Destination != Vector2.zero)
 			{
 				controller.NavAgent.SetDestination(controller.Destination); 
 			}
