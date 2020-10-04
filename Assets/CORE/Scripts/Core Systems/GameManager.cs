@@ -19,7 +19,10 @@ namespace LudumDare47
 
         // -----------------------
 
-        [SerializeField] private UpdateManager updateManager = null;
+        [SerializeField, Required] private UIManager uiManager = null;
+        [SerializeField, Required] private UpdateManager updateManager = null;
+
+        public UIManager UIManager => uiManager;
         public UpdateManager UpdateManager => updateManager;
 
         public LevelManager LevelManager = null;

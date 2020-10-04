@@ -23,6 +23,10 @@ namespace LudumDare47
         [Min(0)] public float MovementDecel = 75f;
         [Min(0)] public float AboutTurnAccel = 6f;
 
+        [Space]
+
+        [Range(0, 1)] public float ghostMovementRegistration = .25f;
+
         [HorizontalLine(1)]
 
         public LayerMask InteractMask = new LayerMask();
