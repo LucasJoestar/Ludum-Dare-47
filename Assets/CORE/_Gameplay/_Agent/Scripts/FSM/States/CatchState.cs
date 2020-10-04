@@ -25,6 +25,7 @@ namespace LudumDare47
 		public override void OnEnterState(FiniteStateMachine _stateMachine)
 		{
 			base.OnEnterState(_stateMachine);
+			controller.Detection.Target.Die(); 
 			UpdateManager.Instance.Register(this);
 		}
 

@@ -104,7 +104,6 @@ namespace LudumDare47.Navigation
                     Move(velocity);
                 }
             }
-
             base.MovableUpdate();
         }
         #endregion
