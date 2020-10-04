@@ -140,6 +140,8 @@ namespace LudumDare47
             ghosts.Add(player.OnStartLoop(playerStartPosition));
             for (int _i = 0; _i < ghosts.Count; _i++)
                 ghosts[_i].ResetBehaviour(playerStartPosition);
+
+            PlayDialog(startDialogID);
         }
 
         /// <summary>

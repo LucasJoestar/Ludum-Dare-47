@@ -34,6 +34,7 @@ namespace LudumDare47
 
         // -----------------------
 
+        private readonly int EnterDialog_Anim = Animator.StringToHash("Enter");
         private readonly int CloseDialog_Anim = Animator.StringToHash("Close");
         #endregion
 
@@ -48,13 +49,20 @@ namespace LudumDare47
         #endregion
 
         #region Dialogs
+        private bool isInDialog = false;
+
         /// <summary>
         /// Display a dialog on screen.
         /// </summary>
         public void DisplayDialog(string _sentence, Sprite _sprite)
         {
-            if (!dialogAnchor.gameObject.activeInHierarchy)
-                dialogAnchor.gameObject.SetActive(true);
+            if (!isInDialog)
+            {
+                isInDialog = true;
+                dialogAnchor.SetTrigger(EnterDialog_Anim);
+            }
+            else
+                LevelManager.Instance.ActivateDialog();
 
             dialogText.text = _sentence;
             dialogIcon.sprite = _sprite;
@@ -67,7 +75,11 @@ namespace LudumDare47
         /// <summary>
         /// Ends a dialog and hide dialog box.
         /// </summary>
-        public void EndDialog() => dialogAnchor.SetTrigger(CloseDialog_Anim);
+        public void EndDialog()
+        {
+            dialogAnchor.SetTrigger(CloseDialog_Anim);
+            isInDialog = false;
+        }
         #endregion
 
         #endregion

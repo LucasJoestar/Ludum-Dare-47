@@ -14,6 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogs:
   - ID: 537
+    NextID: 538
+    Duration: 0
+    Sentence: Bla bla bla Mr. Freeman... Bla bla bla Mr. Freeman... Bla bla bla Mr.
+      Freeman... Bla bla bla Mr. Freeman... Bla bla bla Mr. Freeman... Bla bla bla
+      Mr. Freeman...
+    Sprite: {fileID: 0}
+  - ID: 538
     NextID: 0
     Duration: 0
     Sentence: Bla bla bla Mr. Freeman... Bla bla bla Mr. Freeman... Bla bla bla Mr.
