@@ -9,17 +9,24 @@ using UnityEngine;
 
 namespace LudumDare47
 {
+	[CreateAssetMenu(fileName = "Catch State Tuto", menuName = "AI/States/Catch State Tuto", order = 50)]
 	public class TutoCatchState : BaseState, ILateUpdate
 	{
 		#region Fields / Properties
 		[HorizontalLine(1, order = 0), Section("TutoCatchState", order = 1)]
-		[SerializeField] private Vector2 tutoDestination = Vector2.zero; 
+		[SerializeField] private Vector2 tutoDestination = Vector2.zero;
 		#endregion
 
-		#region Methods
-		public override void OnEnterState(FiniteStateMachine _stateMachine)
+		#region Constructor
+		public TutoCatchState() : base() => StateType = StateType.Catch; 
+        #endregion
+
+        #region Methods
+        public override void OnEnterState(FiniteStateMachine _stateMachine)
 		{
 			base.OnEnterState(_stateMachine);
+			controller.Detection.Target.Die(); 
+			controller.Detection.TargetTransform.SetParent(controller.transform);
 			controller.NavAgent.SetDestination(tutoDestination); 
 			UpdateManager.Instance.Register(this); 
 		}
@@ -33,7 +40,6 @@ namespace LudumDare47
 		{
 			if(controller.NavAgent.IsMoving)
 			{
-				controller.Detection.CastDetection();
 				return; 
 			}
 			stateMachine.GoToState(this, StateType.Idle); 

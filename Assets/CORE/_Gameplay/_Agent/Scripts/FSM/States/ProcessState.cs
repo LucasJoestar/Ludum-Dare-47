@@ -24,7 +24,7 @@ namespace LudumDare47
 		#region Methods
 		private void Process()
 		{
-			if(controller.Detection.Target != null)
+			if(controller.Detection.TargetTransform != null)
 			{
 				if(Vector2.Distance(controller.transform.position, controller.Detection.TargetTransform.position) <= controller.InteractionRange)
 				{

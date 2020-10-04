@@ -37,7 +37,7 @@ namespace LudumDare47
 
 		void ILateUpdate.Update()
 		{
-			if(controller.Detection.CastDetection())
+			if(controller.HasToMove || controller.Detection.CastDetection())
 			{
 				stateMachine.GoToState(this, StateType.Process);
 			}

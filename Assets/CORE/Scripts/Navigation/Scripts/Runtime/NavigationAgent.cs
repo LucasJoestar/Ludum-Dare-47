@@ -35,7 +35,7 @@ namespace LudumDare47.Navigation
         }
         #endregion
         public Collider2D Collider => collider;
-
+        public Vector2 InitialPosition => initialPosition; 
         #endregion
 
         #region Methods
@@ -104,7 +104,6 @@ namespace LudumDare47.Navigation
                     Move(velocity);
                 }
             }
-
             base.MovableUpdate();
         }
         #endregion

@@ -41,10 +41,9 @@ namespace LudumDare47
 			patrolIndex = 0;
 			isInPatrol = false; 
 			// if target!=null --> Chase the target (set the chase speed)
-			if(controller.Detection.Target != null)
+			if(controller.Detection.TargetTransform != null)
 			{
-				//controller.NavAgent.SetDestination(controller.Detection.Target);
-				Debug.Log("Implement Method to get Interface position");
+				controller.NavAgent.SetDestination(controller.Detection.TargetTransform.position);
 			}
 			// else if destination != Vector2.zero --> Go to the destination (set the chase speed)
 			else if(controller.Destination != Vector2.zero)
@@ -61,12 +60,14 @@ namespace LudumDare47
 				stateMachine.GoToState(this, StateType.Process);
 				return; 
 			}
+			controller.SetMovementAnimation(true); 
 			controller.NavAgent.SetSpeedValue(isInPatrol);
 			UpdateManager.Instance.Register(this);
 		}
 
 		public override void OnExitState()
 		{
+			controller.SetMovementAnimation(false);
 			UpdateManager.Instance.Unregister(this);
 		}
 
@@ -74,14 +75,22 @@ namespace LudumDare47
 
 		void ILateUpdate.Update()
 		{
-			if(controller.Detection.CastDetection())
+			
+			if (controller.NavAgent.IsMoving)
 			{
-				// stop the agent here
-				stateMachine.GoToState(this, StateType.Process);
-				return; 
-			}
-			if(controller.NavAgent.IsMoving)
-			{
+				if (!isInPatrol)
+				{
+					if(controller.Detection.TargetTransform)
+					{
+						if (Vector2.Distance(controller.Detection.TargetTransform.position, controller.NavAgent.LastPosition) > controller.NavAgent.Collider.bounds.size.x)
+							controller.NavAgent.SetDestination(controller.Detection.TargetTransform.position);
+					}
+				}
+				else if (controller.Detection.CastDetection())
+				{
+					// stop the agent here
+					stateMachine.GoToState(this, StateType.Process);
+				}
 				return; 
 			}
 			if(isInPatrol)
@@ -90,7 +99,7 @@ namespace LudumDare47
 			}
 			else
 			{
-				controller.ReturnToOriginalPosition();
+				controller.ResetDestination(); 
 				stateMachine.GoToState(this, StateType.Process);
 			}
 		}

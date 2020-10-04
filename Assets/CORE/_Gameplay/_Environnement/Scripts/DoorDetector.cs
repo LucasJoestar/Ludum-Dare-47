@@ -9,20 +9,17 @@ using UnityEngine;
 
 namespace LudumDare47
 {
-	public class EnemyDoorDetector : Trigger
+	public class DoorDetector : Trigger
     {
 		#region Fields / Properties
-		//[HorizontalLine(1, order = 0), Section("EnemyDoorDetector", order = 1)]
-
+		[HorizontalLine(1, order = 0), Section("EnemyDoorDetector", order = 1)]
+		[SerializeField] private Door linkedDoor = null; 
 		#endregion
 
 		#region Methods
 		public override void OnEnter(GameObject _gameObject)
 		{
-			if(_gameObject.TryGetComponent<Door>(out Door _door))
-			{
-				_door.Open();
-			}
+			linkedDoor.ForceOpenning();
 		}
 		#endregion
 	}
