@@ -23,13 +23,13 @@ namespace LudumDare47
         [HorizontalLine(1, order = 0), Section("LEVEL MANAGER", order = 1)]
 
         [SerializeField, Required] private new CameraBehaviour camera = null;
-        [SerializeField, Required] private PlayerController player = null;
+        [SerializeField, Required] protected PlayerController player = null;
 
         // -----------------------
 
         [HorizontalLine(1)]
 
-        [SerializeField] private int startDialogID = 0;
+        [SerializeField] protected int startDialogID = 0;
         [SerializeField] private float loopDuration = 30;
 
         // -----------------------
@@ -63,14 +63,16 @@ namespace LudumDare47
 
         [HorizontalLine(1)]
 
-        [SerializeField, ReadOnly] private Vector2 playerStartPosition = new Vector2();
+        [SerializeField, ReadOnly] protected Vector2 playerStartPosition = new Vector2();
         [SerializeField, ReadOnly] private List<PlayerGhost> ghosts = new List<PlayerGhost>();
         #endregion
 
         #region Methods
 
         #region Loop State
-        void ILateUpdate.Update()
+        void ILateUpdate.Update() => LevelUpdate();
+
+        protected virtual void LevelUpdate()
         {
             // Dialog update.
             if (isInDialog)
@@ -127,6 +129,8 @@ namespace LudumDare47
             // Do stop enemies ?
         }
 
+        public void StartLoop() => camera.Loop();
+
         /// <summary>
         /// Restart this level loop.
         /// </summary>
@@ -140,8 +144,6 @@ namespace LudumDare47
             ghosts.Add(player.OnStartLoop(playerStartPosition));
             for (int _i = 0; _i < ghosts.Count; _i++)
                 ghosts[_i].ResetBehaviour(playerStartPosition);
-
-            PlayDialog(startDialogID);
         }
 
         /// <summary>
@@ -153,7 +155,7 @@ namespace LudumDare47
                 Destroy(ghosts[_i].gameObject);
 
             ghosts.Clear();
-            Loop();
+            StartLoop();
         }
         #endregion
 
@@ -220,7 +222,7 @@ namespace LudumDare47
         #endregion
 
         #region Monobehaviour
-        private void Start()
+        protected virtual void Start()
         {
             GameManager.Instance.LevelManager = this;
             UpdateManager.Instance.Register(this);

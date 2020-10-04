@@ -32,10 +32,16 @@ namespace LudumDare47
         [SerializeField, Required] private TextMeshProUGUI dialogText = null;
         [SerializeField, Required] private Image dialogIcon = null;
 
+        [HorizontalLine(1)]
+
+        [SerializeField, Required] private Animator blackBars = null;
+
         // -----------------------
 
         private readonly int EnterDialog_Anim = Animator.StringToHash("Enter");
         private readonly int CloseDialog_Anim = Animator.StringToHash("Close");
+
+        private readonly int BlackBars_Anim = Animator.StringToHash("Switch");
         #endregion
 
         #region Methods
@@ -46,6 +52,10 @@ namespace LudumDare47
             loopTime.text = _loopTime.ToString("0.##");
             loopGauge.fillAmount = _percent;
         }
+        #endregion
+
+        #region Animations
+        public void SwitchBlackBars() => blackBars.SetTrigger(BlackBars_Anim);
         #endregion
 
         #region Dialogs

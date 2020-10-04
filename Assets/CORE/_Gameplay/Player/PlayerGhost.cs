@@ -272,6 +272,7 @@ namespace LudumDare47
         private void RefreshPosition()
         {
             // Extract collider from potential collisions.
+            contactFilter.useTriggers = true;
             int _overlapAmount = collider.OverlapCollider(contactFilter, overlapColliders);
 
             // For each overlapping colliders, detect triggers and extract from collision ones.
@@ -312,6 +313,7 @@ namespace LudumDare47
                 SpriteUtility.Order(sprites);
 
             // Finally, move the object transform.
+            contactFilter.useTriggers = false;
             transform.position = _position;
 
             // ----- Local Methods ----- //

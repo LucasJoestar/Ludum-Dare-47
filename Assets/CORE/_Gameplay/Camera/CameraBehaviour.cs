@@ -15,12 +15,19 @@ namespace LudumDare47
         [HorizontalLine(1, order = 0), Section("CAMERA BEHAVIOUR", order = 1)]
 
         [SerializeField, Required] private PlayerController player = null;
+        [SerializeField, Required] private Animator animator = null;
 
         // -----------------------
 
         [HorizontalLine(1)]
 
         [SerializeField] private Bounds bounds = new Bounds();
+
+        // -----------------------
+
+        private readonly int loop_Anim = Animator.StringToHash("Loop");
+        private readonly int glitch_Anim = Animator.StringToHash("Glitch");
+        private readonly int forward_Anim = Animator.StringToHash("forward");
         #endregion
 
         #region Methods
@@ -38,6 +45,19 @@ namespace LudumDare47
                 transform.position += (_position - bounds.ClosestPoint(_position)) * .1f;
             }
         }
+
+        #region Animation
+        public void Loop() => animator.SetTrigger(loop_Anim);
+
+        public void Glitch() => animator.SetTrigger(glitch_Anim);
+
+        public void Forward(bool _isForward) => animator.SetBool(forward_Anim, _isForward);
+
+        // -----------------------
+
+        public void OnEndLoop() => LevelManager.Instance.Loop();
+        #endregion
+
         #endregion
 
         #region Monobehaviour

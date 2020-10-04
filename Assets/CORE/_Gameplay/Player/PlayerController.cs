@@ -90,7 +90,7 @@ namespace LudumDare47
             }
             else if (inputs.Loop.triggered)
             {
-                LevelManager.Instance.Loop();
+                LevelManager.Instance.StartLoop();
                 return;
             }
 
