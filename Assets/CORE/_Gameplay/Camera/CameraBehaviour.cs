@@ -27,7 +27,7 @@ namespace LudumDare47
 
         private readonly int loop_Anim = Animator.StringToHash("Loop");
         private readonly int glitch_Anim = Animator.StringToHash("Glitch");
-        private readonly int forward_Anim = Animator.StringToHash("forward");
+        private readonly int forward_Anim = Animator.StringToHash("IsForward");
         #endregion
 
         #region Methods

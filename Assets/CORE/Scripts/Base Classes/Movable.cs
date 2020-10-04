@@ -52,7 +52,7 @@ namespace LudumDare47
         #region Methods
 
         #region Velocity
-        protected virtual void Move(Vector2 _movement)
+        public virtual void Move(Vector2 _movement)
         {
             // Rotate towards moving direction.
             float _absAngle = Vector2.SignedAngle(transform.up, _movement);

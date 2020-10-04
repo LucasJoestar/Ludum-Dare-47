@@ -22,7 +22,7 @@ namespace LudumDare47
 
         [HorizontalLine(1, order = 0), Section("LEVEL MANAGER", order = 1)]
 
-        [SerializeField, Required] private new CameraBehaviour camera = null;
+        [SerializeField, Required] protected new CameraBehaviour camera = null;
         [SerializeField, Required] protected PlayerController player = null;
 
         // -----------------------
@@ -31,6 +31,8 @@ namespace LudumDare47
 
         [SerializeField] protected int startDialogID = 0;
         [SerializeField] private float loopDuration = 30;
+
+        [SerializeField] private Vector2 endLevelMovement = Vector2.up;
 
         // -----------------------
 
@@ -45,7 +47,7 @@ namespace LudumDare47
 
         [HorizontalLine(1)]
 
-        [SerializeField, ReadOnly] private bool isInDialog = false;
+        [SerializeField, ReadOnly] protected bool isInDialog = false;
         [SerializeField, ReadOnly] private bool isDisplayingDialog = false;
         [SerializeField, ReadOnly] private bool isDialogAutomatic = false;
 
@@ -70,10 +72,41 @@ namespace LudumDare47
         #region Methods
 
         #region Loop State
+        private bool isLevelEnded = false;
+        private float endLevelTimer = 5;
+
+        public void EndLevel()
+        {
+            isLevelEnded = true;
+            player.IsPaused = true;
+
+            camera.enabled = false;
+            UIManager.Instance.FadeToBlack(true);
+            UIManager.Instance.SwitchBlackBars();
+        }
+
+        // -----------------------
+
         void ILateUpdate.Update() => LevelUpdate();
 
         protected virtual void LevelUpdate()
         {
+            // End level.
+            if (isLevelEnded)
+            {
+                player.Move(endLevelMovement);
+                endLevelTimer -= Time.deltaTime;
+
+                if (endLevelTimer <= 0)
+                {
+                    // Load things.
+                    gameObject.SetActive(false);
+                    UIManager.Instance.SwitchBlackBars();
+                    GameManager.Instance.LoadNextLevel();
+                }
+                return;
+            }
+
             // Dialog update.
             if (isInDialog)
             {
@@ -144,6 +177,8 @@ namespace LudumDare47
             ghosts.Add(player.OnStartLoop(playerStartPosition));
             for (int _i = 0; _i < ghosts.Count; _i++)
                 ghosts[_i].ResetBehaviour(playerStartPosition);
+
+            UIManager.Instance.UpdateGhostAmount(ghosts.Count);
         }
 
         /// <summary>
@@ -225,7 +260,10 @@ namespace LudumDare47
         protected virtual void Start()
         {
             GameManager.Instance.LevelManager = this;
+            GameManager.Instance.UpdateLoadedScene();
+
             UpdateManager.Instance.Register(this);
+            UIManager.Instance.FadeToBlack(false);
 
             playerStartPosition = player.transform.position;
             if (startDialogID != 0)
