@@ -34,7 +34,7 @@ namespace LudumDare47
 
         [HorizontalLine(1)]
 
-        [SerializeField, ReadOnly] private bool isAtLoopEnd = false;
+        [SerializeField, ReadOnly] private bool isLooping = true;
         [SerializeField, ReadOnly] private float loopTime = 0;
 
         public float LoopTime => loopTime;
@@ -52,8 +52,12 @@ namespace LudumDare47
         #region Loop State
         void ILateUpdate.Update()
         {
-            if (!isAtLoopEnd)
+            if (isLooping)
             {
+                // Update ghosts.
+                for (int _i = 0; _i < ghosts.Count; _i++)
+                    ghosts[_i].MovableUpdate();
+
                 loopTime += GameManager.DeltaTime;
                 if (loopTime >= loopDuration)
                 {
@@ -61,7 +65,13 @@ namespace LudumDare47
 
                     // Stop everything, and display end loop informations.
                     StopLoop();
+
+                    // Update ghosts.
+                    for (int _i = 0; _i < ghosts.Count; _i++)
+                        ghosts[_i].MovableUpdate();
                 }
+
+                UIManager.Instance.UpdateLoopUI(loopDuration - loopTime, loopTime / loopDuration);
             }
         }
 
@@ -69,6 +79,7 @@ namespace LudumDare47
 
         public void StopLoop()
         {
+            isLooping = false;
             player.OnEndLoop();
             
             // Do stop enemies ?
@@ -79,10 +90,10 @@ namespace LudumDare47
         /// </summary>
         public void Loop()
         {
-            StopLoop();
-
             // Reset all interactables, enemies state
             // and player ghosts.
+            isLooping = true;
+            loopTime = 0;
 
             ghosts.Add(player.OnStartLoop(playerStartPosition));
             for (int _i = 0; _i < ghosts.Count; _i++)
@@ -106,6 +117,14 @@ namespace LudumDare47
         private void Awake()
         {
             GameManager.Instance.LevelManager = this;
+            UpdateManager.Instance.Register(this);
+
+            playerStartPosition = player.transform.position;
+        }
+
+        protected virtual void OnDisable()
+        {
+            UpdateManager.Instance.Unregister(this);
         }
         #endregion
 

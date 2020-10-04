@@ -18,6 +18,11 @@ namespace LudumDare47
 
         public InputAction Move = new InputAction();
         public InputAction Action = new InputAction();
+
+        [HorizontalLine(1)]
+
+        public InputAction Loop = new InputAction();
+        public InputAction ResetLoop = new InputAction();
         #endregion
     }
 }

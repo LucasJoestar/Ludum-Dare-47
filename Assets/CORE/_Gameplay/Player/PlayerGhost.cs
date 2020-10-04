@@ -19,7 +19,7 @@ namespace LudumDare47
     }
 
     // -----------------------
-
+    
     public struct PlayerGhostMoveState : IPlayerGhostState
     {
         private readonly float time;
@@ -40,6 +40,28 @@ namespace LudumDare47
         public bool DoUpdateContinuously() => true;
 
         public void UpdateState(PlayerGhost _ghost) => _ghost.Move(movement * GameManager.DeltaTime);
+    }
+
+    public struct PlayerGhostSetPositionState : IPlayerGhostState
+    {
+        private readonly float time;
+        private readonly Vector2 position;
+
+        // -----------------------
+
+        public PlayerGhostSetPositionState(float _time, Vector2 _position)
+        {
+            time = _time;
+            position = _position;
+        }
+
+        // -----------------------
+
+        public bool HasTimeCome() => LevelManager.Instance.LoopTime >= time;
+
+        public bool DoUpdateContinuously() => true;
+
+        public void UpdateState(PlayerGhost _ghost) => _ghost.SetPosition(position);
     }
 
     public struct PlayerGhostStopState : IPlayerGhostState
@@ -63,7 +85,7 @@ namespace LudumDare47
 
         public void UpdateState(PlayerGhost _ghost) => _ghost.Stop(position);
     }
-
+    
     public struct PlayerGhostInteractState : IPlayerGhostState
     {
         private readonly float time;
@@ -86,7 +108,7 @@ namespace LudumDare47
     #endregion
 
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerGhost : MonoBehaviour, IPlayerBehaviour, IMovableUpdate
+    public class PlayerGhost : MonoBehaviour, IPlayerBehaviour
     {
         #region Fields / Properties
         [HorizontalLine(1, order = 0), Section("PLAYER GHOST", order = 1)]
@@ -192,7 +214,7 @@ namespace LudumDare47
             SetPosition(_position);
         }
 
-        private void SetPosition(Vector2 _position)
+        public void SetPosition(Vector2 _position)
         {
             rigidbody.position = _position;
             transform.position = _position;
@@ -202,7 +224,7 @@ namespace LudumDare47
 
         // -----------------------
 
-        void IMovableUpdate.Update()
+        public void MovableUpdate()
         {
             // Update state while not reached loop end.
             if (!isLoopCompleted)
@@ -211,18 +233,19 @@ namespace LudumDare47
                 {
                     states[stateIndex].UpdateState(this);
                 }
-                if (states[stateIndex + 1].HasTimeCome())
+                while (states[stateIndex + 1].HasTimeCome())
                 {
                     stateIndex++;
                     states[stateIndex].UpdateState(this);
 
-                    if (stateIndex < states.Length)
+                    if (stateIndex < states.Length - 1)
                     {
                         isStateContinouslyUpdating = states[stateIndex].DoUpdateContinuously();
                     }
                     else
                     {
                         isLoopCompleted = true;
+                        break;
                     }
                 }
             }
@@ -299,6 +322,15 @@ namespace LudumDare47
                 }
                 return true;
             }
+        }
+        #endregion
+
+        #region Monobehaviour
+        protected virtual void Start()
+        {
+            // Initialize object contact filter.
+            contactFilter.layerMask = Physics2D.GetLayerCollisionMask(gameObject.layer);
+            contactFilter.useLayerMask = true;
         }
         #endregion
 

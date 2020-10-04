@@ -36,5 +36,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  ghostPrefab: {fileID: 4184502633223230583, guid: ba08666daeaa2a1418c69b93bc7e7fb5,
+    type: 3}
   MovementDecel: 30
   AboutTurnAccel: 10
+  ghostMovementRegistration: 0.25
+  InteractMask:
+    serializedVersion: 2
+    m_Bits: 0

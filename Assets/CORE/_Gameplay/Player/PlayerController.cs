@@ -12,7 +12,6 @@ namespace LudumDare47
 {
     public interface IPlayerBehaviour
     {
-        bool Interact();
         void Hack();
         void Die();
     }
@@ -59,9 +58,22 @@ namespace LudumDare47
                 Move(inputs.Move.ReadValue<Vector2>());
 
                 // Register current state.
-                if (inputs.Action.triggered)
-                    Interact();
+                if (inputs.Action.triggered &&
+                   (collider.OverlapCollider(contactFilter, overlapColliders) > 0) &&
+                    overlapColliders[0].GetComponent<IInteractable>().Interact(this))
+                {
+                    ghostStates.Add(new PlayerGhostInteractState(LevelManager.Instance.LoopTime));
+                }
             }
+            else if (inputs.Loop.triggered)
+            {
+                LevelManager.Instance.Loop();
+                return;
+            }
+
+            // Reset loop on button trigger.
+            if (inputs.ResetLoop.triggered)
+                LevelManager.Instance.ResetLoop();
         }
 
         // -----------------------
@@ -70,37 +82,32 @@ namespace LudumDare47
         {
             inputs.Move.Enable();
             inputs.Action.Enable();
+
+            inputs.Loop.Enable();
+            inputs.ResetLoop.Enable();
         }
 
         private void DisableInputs()
         {
             inputs.Move.Disable();
             inputs.Action.Disable();
+
+            inputs.Loop.Disable();
+            inputs.ResetLoop.Disable();
         }
         #endregion
 
         #region Actions
-        /// <summary>
-        /// Interact with whatever is close to the ghost.
-        /// </summary>
-        public bool Interact()
-        {
-            if (collider.OverlapCollider(contactFilter, overlapColliders) > 0)
-                return overlapColliders[0].GetComponent<IInteractable>().Interact(this);
-
-            return false;
-        }
-
         public void Hack()
         {
             // Set animation and other things.
-            animator.SetBool(Hack_Anim, isMoving);
+            animator.SetBool(Hack_Anim, true);
         }
 
         public void Die()
         {
             // Set animation and die.
-            animator.SetBool(Die_Anim, isMoving);
+            animator.SetTrigger(Die_Anim);
         }
         #endregion
 
@@ -116,15 +123,17 @@ namespace LudumDare47
             ghostStates.Clear();
             ghostStates.Add(new PlayerGhostStopState(0, rigidbody.position));
 
+            SetPosition(_position);
             isPlayable = true;
-
             return _ghost;
         }
 
         public void OnEndLoop()
         {
+            ResetMovement();
             ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
-            isPlayable = true;
+
+            isPlayable = false;
         }
         #endregion
 
@@ -155,6 +164,14 @@ namespace LudumDare47
 
             movement.Set(0, 0);
             lastMovement.Set(0, 0);
+
+            if (isMoving)
+            {
+                isMoving = false;
+                animator.SetBool(Moving_Anim, isMoving);
+
+                OnStopMoving();
+            }
         }
 
         // -----------------------
@@ -206,6 +223,11 @@ namespace LudumDare47
         #endregion
 
         #region Core Movements
+        private float moveStartTime = 0;
+        private Vector2 moveStartPosition = new Vector2();
+
+        // -----------------------
+
         /// <summary>
         /// Called after velocity has been applied.
         /// </summary>
@@ -221,11 +243,40 @@ namespace LudumDare47
             {
                 isMoving = _isMoving;
                 animator.SetBool(Moving_Anim, isMoving);
+
+                // Register ghost movement.
+                if (_isMoving)
+                {
+                    moveStartTime = LevelManager.Instance.LoopTime;
+                    moveStartPosition = rigidbody.position;
+                }
+                else
+                    OnStopMoving();
             }
 
             // Reset movement if not moving.
-            if (!_isMoving && (speed > 0))
+            if (_isMoving)
+            {
+                float _movingTime = LevelManager.Instance.LoopTime - moveStartTime - attributes.ghostMovementRegistration;
+                if (_movingTime >= 0)
+                {
+                    _movement = (rigidbody.position - moveStartPosition) / attributes.ghostMovementRegistration;
+                    ghostStates.Add(new PlayerGhostMoveState(moveStartTime, _movement));
+
+                    moveStartTime = LevelManager.Instance.LoopTime - _movingTime;
+                    moveStartPosition = rigidbody.position;
+                    ghostStates.Add(new PlayerGhostSetPositionState(moveStartTime, moveStartPosition));
+                }
+            }
+            else if (speed > 0)
                 ResetMovement();
+        }
+
+        private void OnStopMoving()
+        {
+            Vector2 _movement = (rigidbody.position - moveStartPosition) / (LevelManager.Instance.LoopTime - moveStartTime);
+            ghostStates.Add(new PlayerGhostMoveState(moveStartTime, _movement));
+            ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
         }
         #endregion
 
