@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2dafad6514ece341976fd9a9a4cfbf5, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Default Work Unit
+      ObjectType: 12
+    ParentPath: Default Work Unit
+    guid: 89dcb199dcfb4a4e9cf9ff2f1ecac141
+    GuidInternal: 
+    m_lastTime: -8585997878041421130
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Default Work Unit
+      ObjectType: 12
+    ParentPath: Default Work Unit
+    guid: 5630881b56e9d34f93562fdc99b2243d
+    GuidInternal: 
+    m_lastTime: -8585997878042069405
+    List:
+    - name: Master Audio Bus
+      guid: d8a41415a61d2a41a17e75ca0c2149f3
+      id: 3803692087
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      Path: Default Work Unit\Master Audio Bus
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Default Work Unit
+      ObjectType: 12
+    ParentPath: Default Work Unit
+    guid: 8fc39af544d01943828f3bd7823be8ea
+    GuidInternal: 
+    m_lastTime: -8585997867872137607
+    List:
+    - name: New_SoundBank
+      guid: 25d99a93b886b54d98cb726c18688f57
+      id: 4072029455
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: New_SoundBank
+        ObjectType: 7
+      Path: Default Work Unit\New_SoundBank
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Default Work Unit
+      ObjectType: 12
+    ParentPath: Default Work Unit
+    guid: bbf7381479b6154ba294c3217bd19744
+    GuidInternal: 
+    m_lastTime: -8585997868059192747
+    List:
+    - name: Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox
+      guid: 54c54ca20fcc6644abb2d613150bd273
+      id: 951140580
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox
+        ObjectType: 3
+      Path: Default Work Unit\Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Default Work Unit
+      ObjectType: 12
+    ParentPath: Default Work Unit
+    guid: c0dd30b0cfb9894c9a72981bde2342ad
+    GuidInternal: 
+    m_lastTime: -8585997878041939749
+    List: []
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Default Work Unit
+      ObjectType: 12
+    ParentPath: Default Work Unit
+    guid: 6bd14fbaddc22344aef9eb7f9e83f645
+    GuidInternal: 
+    m_lastTime: -8585997878041620602
+    List: []
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Default Work Unit
+      ObjectType: 12
+    ParentPath: Default Work Unit
+    guid: f1005e962bc9914884b7c270fb45afad
+    GuidInternal: 
+    m_lastTime: -8585997878041859961
+    List: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Default Work Unit
+      ObjectType: 12
+    ParentPath: Default Work Unit
+    guid: 97da1151b248264c9625f4add72b370e
+    GuidInternal: 
+    m_lastTime: -8585997878041191749
+    List: []
+  ExpandedItems:
+  - /ludum_47_lucas
+  - /ludum_47_lucas/Events
+  - /ludum_47_lucas/Events/Default Work Unit
+  autoPopulateEnabled: 1
+  CurrentPluginConfig: 
