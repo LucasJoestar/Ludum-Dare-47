@@ -69,6 +69,14 @@ namespace LudumDare47.Geometry
             float _b = Vector2.Distance(_secondSegmentPoint, _comparedPoint);
             return _segmentLength > _a && _segmentLength > _b;
         }
+
+        public static bool PointBetweenPoints(Vector2 _firstPoint, Vector2 _secondPoint, Vector2 _comparedPoint)
+        {
+            if(Mathf.Abs(_firstPoint.x - _secondPoint.x) >= Mathf.Abs(_firstPoint.y - _secondPoint.y))
+                return _firstPoint.x < _secondPoint.x ? _comparedPoint.x >= _firstPoint.x && _comparedPoint.x <= _secondPoint.x : _comparedPoint.x <= _firstPoint.x && _comparedPoint.x >= _secondPoint.x;
+
+            return _firstPoint.y < _secondPoint.y ? _comparedPoint.y >= _firstPoint.y && _comparedPoint.y <= _secondPoint.y : _comparedPoint.y <= _firstPoint.y && _comparedPoint.y >= _secondPoint.y;
+        }
         #endregion
 
         #region int

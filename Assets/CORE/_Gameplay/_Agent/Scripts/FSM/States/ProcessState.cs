@@ -24,6 +24,14 @@ namespace LudumDare47
 		#region Methods
 		private void Process()
 		{
+			if(controller.Detection.Target != null)
+			{
+				if(Vector2.Distance(controller.transform.position, controller.Detection.TargetTransform.position) <= controller.InteractionRange)
+				{
+					stateMachine.GoToState(this, StateType.Catch);
+					return; 
+				}
+			}
 			if (controller.HasToMove)
 				stateMachine.GoToState(this, StateType.Move);
 			else
