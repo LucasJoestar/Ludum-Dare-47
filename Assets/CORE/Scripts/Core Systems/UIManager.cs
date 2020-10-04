@@ -25,6 +25,8 @@ namespace LudumDare47
 
         [SerializeField, Required] private Image loopGauge = null;
         [SerializeField, Required] private TextMeshProUGUI loopTime = null;
+        [SerializeField, Required] private GameObject ghostAnchor = null;
+        [SerializeField, Required] private TextMeshProUGUI ghostAmount = null;
 
         [HorizontalLine(1)]
 
@@ -32,10 +34,18 @@ namespace LudumDare47
         [SerializeField, Required] private TextMeshProUGUI dialogText = null;
         [SerializeField, Required] private Image dialogIcon = null;
 
+        [HorizontalLine(1)]
+
+        [SerializeField, Required] private Animator blackBarsAnimator = null;
+        [SerializeField, Required] private Animator fadeAnimator = null;
+
         // -----------------------
 
         private readonly int EnterDialog_Anim = Animator.StringToHash("Enter");
         private readonly int CloseDialog_Anim = Animator.StringToHash("Close");
+
+        private readonly int BlackBars_Anim = Animator.StringToHash("Switch");
+        private readonly int FadeToBlack_Anim = Animator.StringToHash("IsFading");
         #endregion
 
         #region Methods
@@ -43,9 +53,30 @@ namespace LudumDare47
         #region Loop
         public void UpdateLoopUI(float _loopTime, float _percent)
         {
-            loopTime.text = _loopTime.ToString("0.##");
+            loopTime.text = _loopTime.ToString("0.00");
             loopGauge.fillAmount = _percent;
         }
+
+
+        public void UpdateGhostAmount(int _amount)
+        {
+            if (_amount == 1)
+                ghostAnchor.SetActive(true);
+
+            ghostAmount.text = _amount.ToString("00");
+        }
+
+        public void ResetUI(float _loopTime)
+        {
+            ghostAnchor.SetActive(false);
+            UpdateLoopUI(_loopTime, 0);
+        }
+        #endregion
+
+        #region Animations
+        public void SwitchBlackBars() => blackBarsAnimator.SetTrigger(BlackBars_Anim);
+
+        public void FadeToBlack(bool _isFading) => fadeAnimator.SetBool(FadeToBlack_Anim, _isFading);
         #endregion
 
         #region Dialogs

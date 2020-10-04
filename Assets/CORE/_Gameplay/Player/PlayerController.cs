@@ -90,7 +90,7 @@ namespace LudumDare47
             }
             else if (inputs.Loop.triggered)
             {
-                LevelManager.Instance.Loop();
+                LevelManager.Instance.StartLoop();
                 return;
             }
 
@@ -181,7 +181,7 @@ namespace LudumDare47
         #region Velocity
         private float speedCurveVarTime = 0;
 
-        protected override void Move(Vector2 _movement)
+        public override void Move(Vector2 _movement)
         {
             if (!_movement.IsNull())
             {

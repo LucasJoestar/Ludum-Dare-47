@@ -6,6 +6,7 @@
 
 using EnhancedEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LudumDare47
 {
@@ -41,17 +42,47 @@ namespace LudumDare47
 
         [HorizontalLine(1)]
 
+        [SerializeField, ReadOnly] private int levelIndex = 0;
         [ReadOnly] public float TimeCoef = 1;
         public static float DeltaTime => Time.deltaTime * Instance.TimeCoef;
         #endregion
 
         #region Methods
 
+        #region Levels
+        public void LoadNextLevel()
+        {
+            if (levelIndex != 0)
+                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+
+            levelIndex++;
+            if (levelIndex == SceneManager.sceneCount)
+                levelIndex = 1;
+
+            SceneManager.LoadScene(levelIndex, LoadSceneMode.Additive);
+        }
+
+        public void UpdateLoadedScene()
+        {
+            Scene _scene = SceneManager.GetSceneAt(1);
+            SceneManager.SetActiveScene(_scene);
+            //levelIndex = _scene.buildIndex;
+        }
+        #endregion
+
         #region Monobehaviour
         private void Awake()
         {
             if (!Instance)
+            {
                 Instance = this;
+
+#if !UNITY_EDITOR
+                LoadNextLevel();
+#else
+                levelIndex = 1;
+#endif
+            }
             else
                 Destroy(gameObject);
         }
