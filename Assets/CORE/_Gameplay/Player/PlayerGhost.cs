@@ -153,7 +153,7 @@ namespace LudumDare47
             return false;
         }
 
-        public void Hack()
+        public void Hack(Hackable _hackable)
         {
             // Set animation and other things.
             animator.SetBool(PlayerController.Hack_Anim, isMoving);
@@ -178,6 +178,8 @@ namespace LudumDare47
             animator.enabled = true;
 
             SetPosition(_position);
+            transform.rotation = Quaternion.identity;
+            rigidbody.rotation = 0;
 
             stateIndex = -1;
             isLoopCompleted = false;
@@ -195,6 +197,16 @@ namespace LudumDare47
             {
                 isMoving = true;
                 animator.SetBool(PlayerController.Moving_Anim, true);
+            }
+
+            // Rotate towards moving direction.
+            float _absAngle = Vector2.SignedAngle(transform.up, _movement);
+            if (_absAngle != 0)
+            {
+                float _angle = Mathf.Min(ProgramSettings.I.RotationSpeed * GameManager.DeltaTime, Mathf.Abs(_absAngle));
+
+                transform.Rotate(Vector3.forward, _angle * Mathf.Sign(_absAngle));
+                rigidbody.rotation = transform.rotation.eulerAngles.z;
             }
 
             SetPosition(rigidbody.position + _movement);
