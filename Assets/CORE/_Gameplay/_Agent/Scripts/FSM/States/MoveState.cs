@@ -90,9 +90,9 @@ namespace LudumDare47
 			}
 			else
 			{
+				controller.ReturnToOriginalPosition();
 				stateMachine.GoToState(this, StateType.Process);
 			}
-			// make the agent move here
 		}
 		#endregion
 	}

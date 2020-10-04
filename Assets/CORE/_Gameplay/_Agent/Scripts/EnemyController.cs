@@ -23,10 +23,15 @@ namespace LudumDare47
 		[SerializeField] private Vector2 destination = Vector2.zero;
 		[SerializeField] private Vector2[] patrolPath = new Vector2[] { };
 
+		[HorizontalLine(1, order = 0)]
+		[SerializeField, Range(2.0f, 10.0f)] private float interactionRange = 3.0f; 
+
 		public EnemyDetection Detection => detection;
 		public NavigationAgent NavAgent => navAgent;
 		public Vector2 Destination => destination; 
-		public Vector2[] PatrolPath => patrolPath; 
+		public Vector2[] PatrolPath => patrolPath;
+
+		public float InteractionRange => interactionRange;
 
 		public bool HasToMove 
 		{
@@ -35,6 +40,8 @@ namespace LudumDare47
 				return detection.Target != null || destination != Vector2.zero || patrolPath.Length > 0; 
 			}
 		}
+
+		public bool IsInAnimation { get; set; }
         #endregion
 		
 		#region Methods
@@ -42,6 +49,11 @@ namespace LudumDare47
 		{
 			stateMachine = stateMachine.Copy();
 			stateMachine.StartFSM(this); 
+		}
+
+		public void ReturnToOriginalPosition()
+		{
+			//destination = originalPositon; 
 		}
 
 		private void Start()

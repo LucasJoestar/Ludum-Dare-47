@@ -37,6 +37,12 @@ namespace LudumDare47
 
 		void ILateUpdate.Update()
 		{
+			if(controller.IsInAnimation)
+			{
+				return; 
+			}
+			controller.ReturnToOriginalPosition(); 
+			stateMachine.GoToState(this, StateType.Process);
 		}
 
 		#endregion
