@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	951140580	Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox			\Default Work Unit\Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	571705282	Monster Within - Bearer - RTalon_Attack_ParryAndGrab_vox	D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\SFX\Monster Within - Bearer - RTalon_Attack_ParryAndGrab_vox_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Monster Within - Bearer - RTalon_Attack_ParryAndGrab_vox		258980
+

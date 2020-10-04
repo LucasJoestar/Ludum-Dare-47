@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+	<RootPaths>
+		<ProjectRoot>D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\</ProjectRoot>
+		<SourceFilesRoot>D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\SOUND DESIGN\GAME JAM\ludum dare 2020\ludum74_lucas\Ludum-Dare-47\Assets\StreamingAssets\Audio\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="4204904655">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="4072029455" Language="SFX" Hash="1284891748">
+			<ObjectPath>\SoundBanks\Default Work Unit\New_SoundBank</ObjectPath>
+			<ShortName>New_SoundBank</ShortName>
+			<Path>New_SoundBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="951140580" Name="Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox" ObjectPath="\Events\Default Work Unit\Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox" DurationType="OneShot" DurationMin="1.348531" DurationMax="1.348531">
+					<IncludedMemoryFiles>
+						<File Id="571705282" Language="SFX">
+							<ShortName>Monster Within - Bearer - RTalon_Attack_ParryAndGrab_vox.wav</ShortName>
+							<Path>SFX\Monster Within - Bearer - RTalon_Attack_ParryAndGrab_vox_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="571705282" Language="SFX">
+					<ShortName>Monster Within - Bearer - RTalon_Attack_ParryAndGrab_vox.wav</ShortName>
+					<Path>SFX\Monster Within - Bearer - RTalon_Attack_ParryAndGrab_vox_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>
