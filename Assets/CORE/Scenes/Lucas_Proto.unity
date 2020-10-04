@@ -140,20 +140,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &213174048
-MonoBehaviour:
+--- !u!81 &213174048
+AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213174047}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f7c099b593cb64084c9e9fd37d63d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDefaultListener: 1
-  listenerId: 0
 --- !u!20 &213174049
 Camera:
   m_ObjectHideFlags: 0
@@ -220,19 +214,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 213174047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 700a3c622a44ee04fb94f7838fc8796a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1007ba7de717b274d8bd7d4d2bdff7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 0
-  isStaticObject: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
+  player: {fileID: 1519312926}
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &291310417
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,12 +771,16 @@ MonoBehaviour:
   - {fileID: 1913787763}
   speed: 1
   movement: {x: 0, y: 0}
+  initialPosition: {x: 0, y: 0}
   lastPosition: {x: 0, y: 0}
   attributes: {fileID: 11400000, guid: b955f9caa0ee4d8488489eee24946a56, type: 2}
   inputs: {fileID: 11400000, guid: e500a51766b91a448849e071769b9f4d, type: 2}
   animator: {fileID: 1519312929}
   isMoving: 0
+  isInDialog: 0
+  isHacking: 0
   isPlayable: 1
+  hacking: {fileID: 0}
   lastMovement: {x: 0, y: 0}
 --- !u!4 &1519312927
 Transform:
@@ -994,10 +986,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26050a95f25c40341b13e8a9097f47aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 213174051}
   player: {fileID: 1519312926}
-  loopDuration: 5
+  startDialogID: 537
+  loopDuration: 10
   isLooping: 1
   loopTime: 0
+  isInDialog: 0
+  isDisplayingDialog: 0
+  isDialogAutomatic: 0
+  dialogDisplay: 0
+  dialogDisplayVar: 0
+  dialogDurationVar: 0
+  nextDialogID: 0
   playerStartPosition: {x: 0, y: 0}
   ghosts: []
 --- !u!1 &1913787761

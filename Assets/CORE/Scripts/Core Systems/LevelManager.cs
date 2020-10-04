@@ -22,12 +22,14 @@ namespace LudumDare47
 
         [HorizontalLine(1, order = 0), Section("LEVEL MANAGER", order = 1)]
 
-        [SerializeField, Required] private PlayerController player = null;
+        [SerializeField, Required] private new CameraBehaviour camera = null;
+        [SerializeField, Required] protected PlayerController player = null;
 
         // -----------------------
 
         [HorizontalLine(1)]
 
+        [SerializeField] protected int startDialogID = 0;
         [SerializeField] private float loopDuration = 30;
 
         // -----------------------
@@ -43,15 +45,57 @@ namespace LudumDare47
 
         [HorizontalLine(1)]
 
-        [SerializeField, ReadOnly] private Vector2 playerStartPosition = new Vector2();
+        [SerializeField, ReadOnly] private bool isInDialog = false;
+        [SerializeField, ReadOnly] private bool isDisplayingDialog = false;
+        [SerializeField, ReadOnly] private bool isDialogAutomatic = false;
+
+        [Space]
+
+        [SerializeField, ReadOnly] private int dialogDisplay = 0;
+        [SerializeField, ReadOnly] private float dialogDisplayVar = 0;
+
+        [Space]
+
+        [SerializeField, ReadOnly] private float dialogDurationVar = 0;
+        [SerializeField, ReadOnly] private int nextDialogID = 0;
+
+        // -----------------------
+
+        [HorizontalLine(1)]
+
+        [SerializeField, ReadOnly] protected Vector2 playerStartPosition = new Vector2();
         [SerializeField, ReadOnly] private List<PlayerGhost> ghosts = new List<PlayerGhost>();
         #endregion
 
         #region Methods
 
         #region Loop State
-        void ILateUpdate.Update()
+        void ILateUpdate.Update() => LevelUpdate();
+
+        protected virtual void LevelUpdate()
         {
+            // Dialog update.
+            if (isInDialog)
+            {
+                if (isDisplayingDialog)
+                {
+                    dialogDisplayVar += (isDialogAutomatic ? GameManager.DeltaTime : Time.deltaTime) * ProgramSettings.I.DialogDisplay;
+                    if (dialogDisplayVar >= dialogDisplay)
+                    {
+                        isDisplayingDialog = false;
+                        UIManager.Instance.UpdateDialog(dialogDisplay);
+                    }
+                    else
+                        UIManager.Instance.UpdateDialog((int)dialogDisplayVar);
+                }
+                else if (isDialogAutomatic)
+                {
+                    dialogDurationVar -= GameManager.DeltaTime;
+                    if (dialogDurationVar <= 0)
+                        EndDialog();
+                }
+            }
+
             if (isLooping)
             {
                 // Update ghosts.
@@ -85,6 +129,8 @@ namespace LudumDare47
             // Do stop enemies ?
         }
 
+        public void StartLoop() => camera.Loop();
+
         /// <summary>
         /// Restart this level loop.
         /// </summary>
@@ -109,17 +155,81 @@ namespace LudumDare47
                 Destroy(ghosts[_i].gameObject);
 
             ghosts.Clear();
-            Loop();
+            StartLoop();
+        }
+        #endregion
+
+        #region Dialogs
+        public void PlayDialog(int _id)
+        {
+            // Register dialog information.
+            Dialog _dialog = GameManager.Instance.DialogDatabase.GetDialog(_id);
+
+            isDisplayingDialog = true;
+            dialogDisplay = _dialog.Sentence.Length;
+            dialogDisplayVar = 0;
+            nextDialogID = _dialog.NextID;
+
+            if (_dialog.Duration > 0)
+            {
+                isDialogAutomatic = true;
+                dialogDurationVar = _dialog.Duration;
+            }
+            else
+            {
+                isDialogAutomatic = false;
+                player.IsPaused = true;
+                GameManager.Instance.TimeCoef = 0;
+            }
+
+            // Display dialog.
+            UIManager.Instance.DisplayDialog(_dialog.Sentence, _dialog.Sprite);
+        }
+
+        public void ActivateDialog()
+        {
+            isInDialog = true;
+            if (!isDialogAutomatic)
+            {
+                player.IsPaused = false;
+                player.SetInDialog(true);
+            }
+        }
+
+        public void EndDialog()
+        {
+            if (isDisplayingDialog)
+            {
+                isDisplayingDialog = false;
+                UIManager.Instance.UpdateDialog(dialogDisplay);
+            }
+            else if (nextDialogID == 0)
+            {
+                isInDialog = false;
+                UIManager.Instance.EndDialog();
+
+                if (!isDialogAutomatic)
+                {
+                    player.SetInDialog(false);
+                    GameManager.Instance.TimeCoef = 1;
+                }
+                else
+                    isDialogAutomatic = false;
+            }
+            else
+                PlayDialog(nextDialogID);
         }
         #endregion
 
         #region Monobehaviour
-        private void Awake()
+        protected virtual void Start()
         {
             GameManager.Instance.LevelManager = this;
             UpdateManager.Instance.Register(this);
 
             playerStartPosition = player.transform.position;
+            if (startDialogID != 0)
+                PlayDialog(startDialogID);
         }
 
         protected virtual void OnDisable()
