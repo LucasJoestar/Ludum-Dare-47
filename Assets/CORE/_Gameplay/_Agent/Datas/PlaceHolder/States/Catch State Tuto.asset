@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67133dd12ec09c44a03112e6a36b637, type: 3}
   m_Name: Catch State Tuto
   m_EditorClassIdentifier: 
-  tutoDestination: {x: -8, y: 1}
+  tutoDestination: {x: -6.5, y: 4.5}

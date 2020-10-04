@@ -26,7 +26,7 @@ namespace LudumDare47
 		{
 			base.OnEnterState(_stateMachine);
 			controller.Detection.Target.Die(); 
-			controller.Detection.TargetTransform.SetParent(controller.transform);
+			controller.Detection.Target.Parent(controller.transform);
 			controller.NavAgent.SetDestination(tutoDestination); 
 			UpdateManager.Instance.Register(this); 
 		}

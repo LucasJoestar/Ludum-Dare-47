@@ -65,8 +65,16 @@ namespace LudumDare47
 			GenerateFOV();
 		}
 
+        private bool isInitiaized = false;
+
 		protected virtual void OnDrawGizmos()
 		{
+            if (!isInitiaized)
+            {
+                isInitiaized = true;
+                GenerateFOV();
+            }
+
 			for (int i = 0; i < fieldOfView.Length; i++)
 			{
 				if (i == 0) Gizmos.color = Color.cyan;

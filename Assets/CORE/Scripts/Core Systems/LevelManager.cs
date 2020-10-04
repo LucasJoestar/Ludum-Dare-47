@@ -35,7 +35,7 @@ namespace LudumDare47
         [Space]
 
         [SerializeField] private Vector2 endLevelMovement = Vector2.up;
-        [SerializeField] private IResetable[] resetables = new IResetable[] { };
+        private List<IResetable> resetables = new List<IResetable>();
 
         // -----------------------
 
@@ -73,6 +73,13 @@ namespace LudumDare47
         #endregion
 
         #region Methods
+
+        #region Management
+        /// <summary>
+        /// Register a resetable on this level.
+        /// </summary>
+        public void RegisterResetable(IResetable _resetable) => resetables.Add(_resetable);
+        #endregion
 
         #region Loop State
         private bool isLevelEnded = false;
@@ -184,7 +191,7 @@ namespace LudumDare47
             UIManager.Instance.UpdateGhostAmount(ghosts.Count);
 
             // Reset all behaviours.
-            for (int _i = 0; _i < resetables.Length; _i++)
+            for (int _i = 0; _i < resetables.Count; _i++)
                 resetables[_i].ResetBehaviour();
         }
 

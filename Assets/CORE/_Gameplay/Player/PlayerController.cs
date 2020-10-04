@@ -12,6 +12,7 @@ namespace LudumDare47
 {
     public interface IPlayerBehaviour
     {
+        void Parent(Transform _parent);
         void Hack(Hackable _hackable);
         void Die();
     }
@@ -121,6 +122,26 @@ namespace LudumDare47
         #endregion
 
         #region Actions
+        private bool isParent = false;
+        private Transform parent = null;
+
+        public void Parent(Transform _parent)
+        {
+            isParent = true;
+            parent = _parent;
+        }
+
+        public void Unparent()
+        {
+            if (isParent)
+            {
+                isParent = false;
+                parent = null;
+            }
+        }
+
+        // -----------------------
+
         public void Hack(Hackable _hackable)
         {
             isHacking = true;
@@ -131,6 +152,8 @@ namespace LudumDare47
 
         public void Die()
         {
+            Debug.LogError("Die");
+
             // Set animation and die.
             OnEndLoop();
             animator.SetTrigger(Die_Anim);
@@ -150,6 +173,7 @@ namespace LudumDare47
             PlayerGhost _ghost = Instantiate(attributes.ghostPrefab, transform.position, transform.rotation);
             _ghost.Init(ghostStates);
 
+            Unparent();
             SetPosition(_position);
             transform.rotation = Quaternion.identity;
             rigidbody.rotation = 0;
@@ -268,6 +292,15 @@ namespace LudumDare47
         private Vector2 moveStartPosition = new Vector2();
 
         // -----------------------
+
+        protected override void MovableUpdate()
+        {
+            // Parent update position.
+            if (isParent)
+                SetPosition(parent.position);
+
+            base.MovableUpdate();
+        }
 
         /// <summary>
         /// Called after velocity has been applied.

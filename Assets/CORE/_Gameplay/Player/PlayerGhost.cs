@@ -142,6 +142,19 @@ namespace LudumDare47
         #region Methods
 
         #region Actions
+        private bool isParent = false;
+        private Transform parent = null;
+
+        public void Parent(Transform _parent)
+        {
+            isLoopCompleted = true;
+
+            isParent = true;
+            parent = _parent;
+        }
+
+        // -----------------------
+
         /// <summary>
         /// Interact with whatever is close to the ghost.
         /// </summary>
@@ -193,6 +206,9 @@ namespace LudumDare47
         /// </summary>
         public void Move(Vector2 _movement)
         {
+            if (isParent)
+                SetPosition(parent.position);
+
             if (!isMoving)
             {
                 isMoving = true;

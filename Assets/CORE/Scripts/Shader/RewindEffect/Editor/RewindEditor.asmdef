@@ -1,0 +1,17 @@
+{
+    "name": "RewindEditor",
+    "references": [
+        "GUID:6e66a97add43a024bbe776d0b1309e8f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

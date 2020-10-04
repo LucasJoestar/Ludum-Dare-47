@@ -48,7 +48,7 @@ namespace LudumDare47.Navigation
         /// </summary>
         protected override void MovableUpdate()
         {
-            if (isMoving)
+            if (isMoving && (currentIndex > 0))
             {
                 Vector2 _previousPosition = currentPath[currentIndex - 1];
                 Vector2 _nextPosition = currentPath[currentIndex];
