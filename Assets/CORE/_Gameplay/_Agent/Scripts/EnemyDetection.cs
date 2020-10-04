@@ -15,11 +15,10 @@ namespace LudumDare47
 		[HorizontalLine(1, order = 0), Section("EnemyDetection", order = 1)]
 		[SerializeField, Range(10.0f, 90.0f)] protected float angleValue = 60.0f;
 		[SerializeField, Range(3, 50)] protected int fieldOfViewAccuracy = 5;
-		[SerializeField, Range(1.0f, 25.0f)] protected float range = 10.0f;		
-		protected Vector2[] fieldOfView = new Vector2[] { };
+		[SerializeField, Range(1.0f, 25.0f)] protected float range = 10.0f;
+		[SerializeField] protected LayerMask detectionMask = new LayerMask(); 
 
-		protected IPlayerBehaviour target = null;
-		public IPlayerBehaviour Target => target;
+		protected Vector2[] fieldOfView = new Vector2[] { };
 		public Transform TargetTransform { get; protected set; }
 		#endregion
 
@@ -36,35 +35,28 @@ namespace LudumDare47
 			}
 		}
 
-		protected bool targetFound = false;
+		protected IPlayerBehaviour target;
+		public IPlayerBehaviour Target => target; 
 		public virtual bool CastDetection()
 		{
-			targetFound = false; 
 			RaycastHit2D _hit; 
 			for (int i = 0; i < fieldOfView.Length; i++)
 			{
-				_hit = Physics2D.Raycast(transform.position, transform.rotation * fieldOfView[i]);
+				_hit = Physics2D.Raycast(transform.position, transform.rotation * fieldOfView[i], range, detectionMask.value);
 				if (_hit.collider == null)
 					continue;
-				if (!targetFound && _hit.collider.TryGetComponent<IPlayerBehaviour>(out target))
+				if (_hit.collider.TryGetComponent<IPlayerBehaviour>(out target))
 				{
-					targetFound = true; 
 					TargetTransform = _hit.collider.transform;
-					continue;
+					return true;
 				}				
 			}
-			if (!targetFound)
-			{
-				target = null;
-				TargetTransform = null; 
-			}
-			return targetFound; 
+			return false; 
 		}
 
 		public void SetTarget(IPlayerBehaviour _target, Transform _targetTransform)
 		{
-			if (target != null) return;
-			target = _target;
+			target = _target; 
 			TargetTransform = _targetTransform;
 		}
 
@@ -73,7 +65,7 @@ namespace LudumDare47
 			GenerateFOV();
 		}
 
-		private void OnDrawGizmos()
+		protected virtual void OnDrawGizmos()
 		{
 			for (int i = 0; i < fieldOfView.Length; i++)
 			{
@@ -83,7 +75,6 @@ namespace LudumDare47
 
 				Gizmos.DrawRay(transform.position, transform.rotation * fieldOfView[i] * range);
 			}
-
 		}
 		#endregion
 	}

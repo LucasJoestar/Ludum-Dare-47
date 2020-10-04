@@ -12,28 +12,40 @@ namespace LudumDare47
 	public class Door : MonoBehaviour
     {
 		#region Fields / Properties
+		public static readonly int Switch_Anim = Animator.StringToHash("Switch");
+
 		[HorizontalLine(1, order = 0), Section("Door", order = 1)]
 		[SerializeField] private bool isOpen = false;
 		public bool IsOpen => IsOpen;
 
 		[SerializeField] private DoorOpener[] doorOpeners = new DoorOpener[] { };
+		[SerializeField, Required] private Animator animator = null;
+		[SerializeField, Required] private Collider2D doorCollider = null; 
         #endregion
 		
 		#region Methods
 		public void ForceOpenning()
 		{
 			if (isOpen) return;
-			Debug.Log("Open!");
-			// Cast the animation to open the door
+			animator.SetTrigger(Switch_Anim); 
+			// Desactivate Collider
 		}
 		private void Open()
 		{
-			Debug.Log("open"); 
+			if (isOpen)
+			{
+				animator.SetTrigger(Switch_Anim);
+				doorCollider.enabled = false;
+			}
 		}
 
 		private void Close()
 		{
-			Debug.Log("close");
+			if (!isOpen)
+			{
+				animator.SetTrigger(Switch_Anim);
+				doorCollider.enabled = false; 
+			}
 		}
 
 		public void UpdateOpenningStatus()

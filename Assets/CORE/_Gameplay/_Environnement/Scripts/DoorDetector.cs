@@ -12,14 +12,14 @@ namespace LudumDare47
 	public class DoorDetector : Trigger
     {
 		#region Fields / Properties
-		//[HorizontalLine(1, order = 0), Section("EnemyDoorDetector", order = 1)]
-
+		[HorizontalLine(1, order = 0), Section("EnemyDoorDetector", order = 1)]
+		[SerializeField] private Door linkedDoor = null; 
 		#endregion
 
 		#region Methods
 		public override void OnEnter(GameObject _gameObject)
 		{
-			Debug.Log("in -> " + _gameObject.name);
+			linkedDoor.ForceOpenning();
 		}
 		#endregion
 	}
