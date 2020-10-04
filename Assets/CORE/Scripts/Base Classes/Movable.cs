@@ -35,6 +35,7 @@ namespace LudumDare47
         // -----------------------
 
         [SerializeField] protected Vector2 movement = Vector2.zero;
+        [SerializeField, ReadOnly] protected Vector2 initialPosition = new Vector2();
 
         #if UNITY_EDITOR
         [HorizontalLine(1, order = 0)]
@@ -54,6 +55,15 @@ namespace LudumDare47
         protected virtual void Move(Vector2 _movement)
         {
             // Rotate towards moving direction.
+            float _absAngle = Vector2.SignedAngle(transform.up, _movement);
+            if (_absAngle != 0)
+            {
+                float _angle = Mathf.Min(ProgramSettings.I.RotationSpeed * GameManager.DeltaTime, Mathf.Abs(_absAngle));
+
+                transform.Rotate(Vector3.forward, _angle * Mathf.Sign(_absAngle));
+                rigidbody.rotation = transform.rotation.eulerAngles.z;
+            }
+
             movement += _movement * speed;
         }
 
@@ -331,6 +341,8 @@ namespace LudumDare47
             #if UNITY_EDITOR
             lastPosition = transform.position;
             #endif
+
+            initialPosition = transform.position;
 
             // Initialize object contact filter.
             contactFilter.layerMask = Physics2D.GetLayerCollisionMask(gameObject.layer);

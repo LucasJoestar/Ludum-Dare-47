@@ -12,7 +12,7 @@ namespace LudumDare47
 {
     public interface IPlayerBehaviour
     {
-        void Hack();
+        void Hack(Hackable _hackable);
         void Die();
     }
 
@@ -25,21 +25,28 @@ namespace LudumDare47
         [SerializeField, Required] private PlayerInputs inputs = null;
         [SerializeField, Required] private Animator animator = null;
 
+        public Bounds GetCameraBounds => attributes.cameraBounds;
+
         // -----------------------
 
         [SerializeField, ReadOnly] private bool isMoving = false;
+        [SerializeField, ReadOnly] private bool isInDialog = false;
+        [SerializeField, ReadOnly] private bool isHacking = false;
         [SerializeField, ReadOnly] private bool isPlayable = true;
+
+        public bool IsPaused = false;
 
         // -----------------------
 
+        [SerializeField, ReadOnly] private Hackable hacking = null;
         [SerializeField, ReadOnly] private List<IPlayerGhostState> ghostStates = new List<IPlayerGhostState>();
 
         // -----------------------
 
         [HorizontalLine(1, order = 0)]
 
-        [ReadOnly, HelpBox("Last movement of the player on the X axis", HelpBoxType.Info, order = 1)]
-        [SerializeField] private Vector2 lastMovement = Vector2.zero;
+        [HelpBox("Last movement of the player on the X axis", HelpBoxType.Info, order = 1)]
+        [SerializeField, ReadOnly] private Vector2 lastMovement = Vector2.zero;
 
         // -----------------------
 
@@ -53,16 +60,32 @@ namespace LudumDare47
         #region Input Management
         void IInputUpdate.Update()
         {
+            if (IsPaused)
+                return;
+
+            // Dialog update.
+            if (isInDialog && inputs.Action.triggered)
+                LevelManager.Instance.EndDialog();
+
             if (isPlayable)
             {
-                Move(inputs.Move.ReadValue<Vector2>());
-
-                // Register current state.
-                if (inputs.Action.triggered &&
-                   (collider.OverlapCollider(contactFilter, overlapColliders) > 0) &&
-                    overlapColliders[0].GetComponent<IInteractable>().Interact(this))
+                // Hacking update.
+                if (isHacking)
                 {
-                    ghostStates.Add(new PlayerGhostInteractState(LevelManager.Instance.LoopTime));
+                    if (hacking.UpdateHack())
+                        isHacking = false;
+                }
+                else
+                {
+                    Move(inputs.Move.ReadValue<Vector2>());
+
+                    // Register current state.
+                    if (inputs.Action.triggered &&
+                       (collider.OverlapCollider(contactFilter, overlapColliders) > 0) &&
+                        overlapColliders[0].GetComponent<IInteractable>().Interact(this))
+                    {
+                        ghostStates.Add(new PlayerGhostInteractState(LevelManager.Instance.LoopTime));
+                    }
                 }
             }
             else if (inputs.Loop.triggered)
@@ -98,20 +121,27 @@ namespace LudumDare47
         #endregion
 
         #region Actions
-        public void Hack()
+        public void Hack(Hackable _hackable)
         {
-            // Set animation and other things.
+            isHacking = true;
+            hacking = _hackable;
+
             animator.SetBool(Hack_Anim, true);
         }
 
         public void Die()
         {
             // Set animation and die.
+            OnEndLoop();
             animator.SetTrigger(Die_Anim);
         }
         #endregion
 
         #region State
+        public void SetInDialog(bool _isInDialog) => isInDialog = _isInDialog;
+
+        // -----------------------
+
         /// <summary>
         /// Completely reset behaviour and restart the loop.
         /// </summary>
@@ -120,20 +150,31 @@ namespace LudumDare47
             PlayerGhost _ghost = Instantiate(attributes.ghostPrefab, transform.position, transform.rotation);
             _ghost.Init(ghostStates);
 
+            SetPosition(_position);
+            transform.rotation = Quaternion.identity;
+            rigidbody.rotation = 0;
+
             ghostStates.Clear();
             ghostStates.Add(new PlayerGhostStopState(0, rigidbody.position));
 
-            SetPosition(_position);
             isPlayable = true;
             return _ghost;
         }
 
         public void OnEndLoop()
         {
-            ResetMovement();
-            ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
+            if (isPlayable)
+            {
+                isPlayable = false;
+                ResetMovement();
+                ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
 
-            isPlayable = false;
+                if (isHacking)
+                {
+                    isHacking = false;
+                    hacking.CancelHack();
+                }
+            }
         }
         #endregion
 
@@ -285,7 +326,6 @@ namespace LudumDare47
         {
             base.OnEnable();
 
-            EnableInputs();
             UpdateManager.Instance.Register((IInputUpdate)this);
         }
 
@@ -295,6 +335,14 @@ namespace LudumDare47
 
             DisableInputs();
             UpdateManager.Instance.Unregister((IInputUpdate)this);
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+
+            EnableInputs();
+            ghostStates.Add(new PlayerGhostStopState(0, rigidbody.position));
         }
         #endregion
 

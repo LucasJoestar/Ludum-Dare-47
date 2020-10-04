@@ -30,6 +30,7 @@ namespace LudumDare47
         [HorizontalLine(1)]
 
         public LayerMask InteractMask = new LayerMask();
+        public Bounds cameraBounds = new Bounds();
         #endregion
     }
 }
