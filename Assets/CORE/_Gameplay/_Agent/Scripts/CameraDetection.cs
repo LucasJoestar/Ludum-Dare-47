@@ -64,7 +64,6 @@ namespace LudumDare47
 		}
 		#endregion
 
-
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.red;
