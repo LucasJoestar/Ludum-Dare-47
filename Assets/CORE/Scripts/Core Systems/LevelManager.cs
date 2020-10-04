@@ -32,7 +32,10 @@ namespace LudumDare47
         [SerializeField] protected int startDialogID = 0;
         [SerializeField] private float loopDuration = 30;
 
+        [Space]
+
         [SerializeField] private Vector2 endLevelMovement = Vector2.up;
+        [SerializeField] private IResetable[] resetables = new IResetable[] { };
 
         // -----------------------
 
@@ -179,6 +182,10 @@ namespace LudumDare47
                 ghosts[_i].ResetBehaviour(playerStartPosition);
 
             UIManager.Instance.UpdateGhostAmount(ghosts.Count);
+
+            // Reset all behaviours.
+            for (int _i = 0; _i < resetables.Length; _i++)
+                resetables[_i].ResetBehaviour();
         }
 
         /// <summary>
