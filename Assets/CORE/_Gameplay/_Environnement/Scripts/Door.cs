@@ -71,7 +71,17 @@ namespace LudumDare47
                 Open();
             }
         }
-		private void Open()
+
+        public void ForceClose()
+        {
+            if (isOpen)
+            {
+                isOpen = false;
+                Close();
+            }
+        }
+
+        private void Open()
 		{
             if (rigidbody.position != openPosition)
             {
@@ -80,7 +90,7 @@ namespace LudumDare47
             }
         }
 
-		private void Close()
+        private void Close()
 		{
             if (rigidbody.position != closePosition)
             {
