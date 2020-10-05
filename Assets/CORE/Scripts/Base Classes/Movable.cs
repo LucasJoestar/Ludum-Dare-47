@@ -52,7 +52,7 @@ namespace LudumDare47
         #region Methods
 
         #region Velocity
-        protected virtual void Move(Vector2 _movement)
+        public virtual void Move(Vector2 _movement)
         {
             // Rotate towards moving direction.
             float _absAngle = Vector2.SignedAngle(transform.up, _movement);
@@ -136,17 +136,17 @@ namespace LudumDare47
         protected static readonly Trigger[] overlapTriggers = new Trigger[4];
         protected List<Trigger> remainingTriggers = new List<Trigger>();
 
-        private void RefreshPosition()
+        protected void RefreshPosition()
         {
             // Extract collider from potential collisions.
             contactFilter.useTriggers = true;
             int _overlapAmount = collider.OverlapCollider(contactFilter, overlapColliders);
 
             // For each overlapping colliders, detect triggers and extract from collision ones.
+            int _triggerAmount = 0;
             if (_overlapAmount > 0)
             {
                 ColliderDistance2D _distance;
-                int _triggerAmount = 0;
 
                 for (int _i = 0; _i < _overlapAmount; _i++)
                 {
@@ -174,16 +174,16 @@ namespace LudumDare47
                             rigidbody.position += _distance.normal * _distance.distance;
                     }
                 }
+            }
 
-                // Remove no more overlapping triggers.
-                for (int _i = 0; _i < remainingTriggers.Count; _i++)
+            // Remove no more overlapping triggers.
+            for (int _i = 0; _i < remainingTriggers.Count; _i++)
+            {
+                if (HasExitedTrigger(remainingTriggers[_i], _triggerAmount))
                 {
-                    if (HasExitedTrigger(remainingTriggers[_i], _triggerAmount))
-                    {
-                        remainingTriggers[_i].OnExit(gameObject);
-                        remainingTriggers.RemoveAt(_i);
-                        _i--;
-                    }
+                    remainingTriggers[_i].OnExit(gameObject);
+                    remainingTriggers.RemoveAt(_i);
+                    _i--;
                 }
             }
 

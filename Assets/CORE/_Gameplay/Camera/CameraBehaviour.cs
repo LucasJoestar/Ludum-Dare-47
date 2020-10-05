@@ -14,6 +14,7 @@ namespace LudumDare47
         #region Fields / Properties
         [HorizontalLine(1, order = 0), Section("CAMERA BEHAVIOUR", order = 1)]
 
+        [SerializeField, Required] private new Camera camera = null;
         [SerializeField, Required] private PlayerController player = null;
         [SerializeField, Required] private Animator animator = null;
 
@@ -27,7 +28,8 @@ namespace LudumDare47
 
         private readonly int loop_Anim = Animator.StringToHash("Loop");
         private readonly int glitch_Anim = Animator.StringToHash("Glitch");
-        private readonly int forward_Anim = Animator.StringToHash("forward");
+        private readonly int forward_Anim = Animator.StringToHash("IsForward");
+        private readonly int bigGlitch_Anim = Animator.StringToHash("IsBigGlitch");
         #endregion
 
         #region Methods
@@ -51,6 +53,8 @@ namespace LudumDare47
 
         public void Glitch() => animator.SetTrigger(glitch_Anim);
 
+        public void BigGlitch(bool _isBigGlitch) => animator.SetBool(bigGlitch_Anim, _isBigGlitch);
+
         public void Forward(bool _isForward) => animator.SetBool(forward_Anim, _isForward);
 
         // -----------------------
@@ -64,6 +68,7 @@ namespace LudumDare47
         private void Awake()
         {
             bounds = player.GetCameraBounds;
+            UIManager.Instance.SetCamera(camera);
         }
 
         private void OnEnable()

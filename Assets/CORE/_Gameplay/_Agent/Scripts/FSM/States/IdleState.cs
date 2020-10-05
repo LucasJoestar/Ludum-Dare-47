@@ -37,7 +37,12 @@ namespace LudumDare47
 
 		void ILateUpdate.Update()
 		{
-			if(controller.Detection.CastDetection())
+			if (!stateMachine.IsActive)
+			{
+				stateMachine.GoToState(this, StateType.Process);
+				return;
+			}
+			if (controller.HasToChase || controller.Detection.CastDetection())
 			{
 				stateMachine.GoToState(this, StateType.Process);
 			}

@@ -22,11 +22,20 @@ namespace LudumDare47
         #endregion
 
         #region Methods
+        private bool hasGlitched = false;
+
         protected override void LevelUpdate()
         {
+            // Intro cutscene.
             if (isWaitingCutscene)
             {
                 cutsceneTime -= Time.deltaTime;
+                if (!hasGlitched && (cutsceneTime <= 3.5f))
+                {
+                    camera.Glitch();
+                    hasGlitched = true;
+                }
+
                 if (cutsceneTime <= 0)
                 {
                     isWaitingCutscene = false;
@@ -42,14 +51,16 @@ namespace LudumDare47
 
         protected override void Start()
         {
-            GameManager.Instance.LevelManager = this;
-            UpdateManager.Instance.Register(this);
+            GameManager.Instance.UpdateLoadedScene();
+
+            UIManager.Instance.FadeToBlack(false);
+            UIManager.Instance.ResetUI(loopDuration);
 
             playerStartPosition = player.transform.position;
             player.IsPaused = true;
 
-            GameManager.Instance.TimeCoef = 0;
             UIManager.Instance.SwitchBlackBars();
+            UIManager.Instance.DisplayLoopUI(false);
         }
         #endregion
     }

@@ -18,6 +18,7 @@ namespace LudumDare47
 
         public InputAction Move = new InputAction();
         public InputAction Action = new InputAction();
+        public InputAction Forward = new InputAction();
 
         [HorizontalLine(1)]
 
