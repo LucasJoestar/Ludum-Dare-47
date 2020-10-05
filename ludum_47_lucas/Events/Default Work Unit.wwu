@@ -314,6 +314,43 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="talking" ID="{59F2094C-52E0-4BBD-9642-95B43AA626B4}" ShortID="1018237954">
+					<ChildrenList>
+						<Event Name="Play_talk" ID="{DD950ACE-4E6A-483C-9565-6CAF575A73DB}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{26C2233F-71AE-4F3F-895F-D2976FE83D88}" ShortID="483588761">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="talk" ID="{723F7C70-2FA5-40DF-AD38-46F455FA9AAC}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_talk" ID="{CA7C0607-8DD4-4800-A9DC-DFFB20F1450F}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{F602C787-2184-4DE3-A2C5-09F722B9E9A1}" ShortID="582342043">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="talk" ID="{723F7C70-2FA5-40DF-AD38-46F455FA9AAC}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

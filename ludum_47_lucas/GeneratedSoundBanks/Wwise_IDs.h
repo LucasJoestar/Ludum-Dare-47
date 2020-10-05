@@ -32,9 +32,11 @@ namespace AK
         static const AkUniqueID PLAY_REWIND_RESET_ = 3853187510U;
         static const AkUniqueID PLAY_SAS_OPEN = 1096483956U;
         static const AkUniqueID PLAY_START_FASTFORWARD = 1316246830U;
+        static const AkUniqueID PLAY_TALK = 2835868768U;
         static const AkUniqueID STOP_AMB_LOOP = 3450745217U;
         static const AkUniqueID STOP_FAST_FORWARD = 2598502896U;
         static const AkUniqueID STOP_HACKING_LOOP = 3944575498U;
+        static const AkUniqueID STOP_TALK = 2034872402U;
     } // namespace EVENTS
 
     namespace STATES

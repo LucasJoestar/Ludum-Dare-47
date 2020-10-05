@@ -5,7 +5,7 @@
 			<ChildrenList>
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<PropertyList>
-						<Property Name="Volume" Type="Real64">
+						<Property Name="MakeUpGain" Type="Real64">
 							<RTPCList>
 								<RTPC Name="" ID="{85C57345-B207-4196-A11F-BAC4FFDA7ADC}" ShortID="474203164">
 									<ReferenceList>
@@ -20,7 +20,7 @@
 										<PointList>
 											<Point>
 												<XPos>0</XPos>
-												<YPos>-200</YPos>
+												<YPos>-400</YPos>
 												<Flags>5</Flags>
 											</Point>
 											<Point>

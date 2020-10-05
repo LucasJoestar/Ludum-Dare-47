@@ -21,9 +21,11 @@
 				<Property Name="Event Action List\{B7BF599C-69C1-4BF4-B435-4B8323C0169D}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{BC944368-7C40-4C3C-A86B-FFAA1A6529C7}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{C0385970-B179-4800-A215-7F1B888A634E}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{CA7C0607-8DD4-4800-A9DC-DFFB20F1450F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{CE361889-6DBD-46A5-86E4-65E79691DF06}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{D42737F7-8A7A-495B-9AB2-AA2D1B23188E}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{D9B4C45C-F9C2-40EC-A94A-DAFE3CBE5666}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{DD950ACE-4E6A-483C-9565-6CAF575A73DB}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F4B2D623-F675-4727-A53F-1A79FAEC7D2F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{FA6B93A8-44C0-447E-BB1D-F82E98779DED}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
@@ -102,7 +104,7 @@
 				<Property Name="ProjectExplorer\x64_Expanded_5_0" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_5_1" Type="string" Value="a9FPut3CI0Su+et/noP2RdZhhCf3WANMrxM6nYVTvWDTc/q0g2ByTqoP2tMHXFvB"/>
 				<Property Name="ProjectExplorer\x64_Expanded_6_0" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value="j8Oa9UTQGUOCjzvXgjvo6g=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_7_0" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_7_1" Type="string" Value="wN0wsM+5iUyacpgb3iNCrQ=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_8_0" Type="string" Value=""/>

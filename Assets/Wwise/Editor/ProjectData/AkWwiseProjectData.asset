@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 5630881b56e9d34f93562fdc99b2243d
     GuidInternal: 
-    m_lastTime: -8585996919624899398
+    m_lastTime: -8585996852648455394
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 8fc39af544d01943828f3bd7823be8ea
     GuidInternal: 
-    m_lastTime: -8585996919614466584
+    m_lastTime: -8585996788128635692
     List:
     - name: the_one_true_bank
       guid: 25d99a93b886b54d98cb726c18688f57
@@ -432,8 +432,17 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: c0dd30b0cfb9894c9a72981bde2342ad
     GuidInternal: 
-    m_lastTime: -8585996919643383393
-    List: []
+    m_lastTime: -8585996853097127575
+    List:
+    - name: sound_level
+      guid: 4b84524855da984cb616b7252d6dd6b9
+      id: 1385505913
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sound_level
+        ObjectType: 13
+      Path: Default Work Unit\sound_level
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -530,6 +539,7 @@ MonoBehaviour:
   - /ludum_47_lucas
   - /ludum_47_lucas/Events
   - /ludum_47_lucas/Events/Default Work Unit
+  - /ludum_47_lucas/Events/Default Work Unit/amb
   - /ludum_47_lucas/Events/Default Work Unit/fast_forward
   - /ludum_47_lucas/Events/Default Work Unit/oneshot
   autoPopulateEnabled: 1
