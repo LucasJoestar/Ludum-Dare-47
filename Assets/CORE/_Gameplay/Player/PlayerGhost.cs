@@ -126,8 +126,11 @@ namespace LudumDare47
         [HorizontalLine(1)]
 
         [SerializeField, ReadOnly] private bool isMoving = false;
+        [SerializeField, ReadOnly] private bool isHacking = false;
         [SerializeField, ReadOnly] private bool isLoopCompleted = false;
         [SerializeField, ReadOnly] private bool isStateContinouslyUpdating = false;
+
+        [SerializeField, ReadOnly] private Hackable hacking = null;
 
         [HorizontalLine(1)]
 
@@ -147,11 +150,9 @@ namespace LudumDare47
 
         public void Parent(Transform _parent)
         {
-            isLoopCompleted = true;
-            collider.enabled = false;
-
             isParent = true;
             parent = _parent;
+            OnEndLoop();
         }
 
         public void Unparent()
@@ -181,7 +182,9 @@ namespace LudumDare47
 
         public void Hack(Hackable _hackable)
         {
-            // Set animation and other things.
+            isHacking = true;
+            hacking = _hackable;
+
             animator.SetBool(PlayerController.Hack_Anim, true);
         }
 
@@ -189,9 +192,19 @@ namespace LudumDare47
         {
             // Set animation and die.
             animator.SetTrigger(PlayerController.Die_Anim);
+            OnEndLoop();
+        }
 
+        private void OnEndLoop()
+        {
             isLoopCompleted = true;
             collider.enabled = false;
+
+            if (isHacking)
+            {
+                isHacking = false;
+                hacking.CancelHack();
+            }
         }
         #endregion
 
@@ -209,6 +222,12 @@ namespace LudumDare47
             // Reset animator.
             animator.enabled = false;
             animator.enabled = true;
+
+            if (isHacking)
+            {
+                isHacking = false;
+                hacking.CancelHack();
+            }
 
             collider.enabled = true;
             SetPosition(_position);
@@ -282,6 +301,13 @@ namespace LudumDare47
                     Move(_movement);
                 else if (isMoving)
                     Stop(_position);
+            }
+
+            // Hacking update.
+            if (isHacking)
+            {
+                if (hacking.UpdateHack())
+                    isHacking = false;
             }
 
             // Update state while not reached loop end.

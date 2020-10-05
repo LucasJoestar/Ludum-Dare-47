@@ -30,6 +30,7 @@ namespace LudumDare47
         [SerializeField, Required] private GameObject loopAnchor = null;
         [SerializeField, Required] private RectTransform loopGaugeParent = null;
         [SerializeField, Required] private RectTransform loopGauge = null;
+        [SerializeField, Required] private TextMeshProUGUI forwardText = null;
         [SerializeField, Required] private GameObject forwardImage = null;
         [SerializeField, Required] private Image loopGaugeImage = null;
         [SerializeField, Required] private TextMeshProUGUI loopTime = null;
@@ -68,10 +69,15 @@ namespace LudumDare47
         #endregion
 
         #region Loop
-        public void UpdateForwardIcon(bool _isForward)
+        public void UpdateForwardIcon(float _value)
         {
+            bool _isForward = _value > 1;
+
             if (forwardImage.activeInHierarchy != _isForward)
                 forwardImage.SetActive(_isForward);
+
+            if (_isForward)
+                forwardText.text = "x " + (Mathf.CeilToInt((int)_value / 2) * 2).ToString();
         }
 
         public void UpdateLoopUI(float _loopTime, float _percent)

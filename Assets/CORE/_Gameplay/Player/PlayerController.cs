@@ -215,6 +215,7 @@ namespace LudumDare47
             {
                 UIManager.Instance.FadeOver(true);
                 LevelManager.Instance.Camera.BigGlitch(true);
+                GameManager.Instance.SetTimeCoef(0);
 
                 isPlayable = false;
                 collider.enabled = false;

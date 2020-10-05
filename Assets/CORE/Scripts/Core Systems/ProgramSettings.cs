@@ -24,6 +24,13 @@ namespace LudumDare47
 
         [Min(.1f)] public float RotationSpeed = 5;
         [Min(.1f)] public float DialogDisplay = 5;
+
+        // -----------------------
+
+        [HorizontalLine(1, order = 0), Section("PREFABS", order = 1)]
+
+        public GameObject PlantExplosion = null;
+        public GameObject WalkSmoke = null;
         #endregion
     }
 }
