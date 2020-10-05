@@ -15,6 +15,7 @@ namespace LudumDare47
 		#region Fields / Properties
 		[HorizontalLine(1, order = 0), Section("TutoCatchState", order = 1)]
 		[SerializeField] private Vector2 tutoDestination = Vector2.zero;
+		private IPlayerBehaviour caughtTarget = null; 
 		#endregion
 
 		#region Constructor
@@ -27,8 +28,9 @@ namespace LudumDare47
 			base.OnEnterState(_stateMachine);
 			if(controller.Detection.Target != null)
 			{
-				controller.Detection.Target.Die();
-				controller.Detection.Target.Parent(controller.GrabTransform);
+				caughtTarget = controller.Detection.Target;
+				caughtTarget.Die();
+				caughtTarget.Parent(controller.GrabTransform);
 			}
 			controller.NavAgent.SetDestination(tutoDestination); 
 			UpdateManager.Instance.Register(this); 
@@ -37,17 +39,22 @@ namespace LudumDare47
 		public override void OnExitState()
 		{
 			UpdateManager.Instance.Unregister(this);
-			if(controller.Detection.Target != null) 
-				controller.Detection.Target.Unparent();
-
-			controller.Detection.SetTarget(null, null);
-			controller.ResetDestination(); 
+			caughtTarget.Unparent();
+			if(controller.Detection.Target == caughtTarget)
+			{
+				controller.Detection.SetTarget(null, null);
+				controller.ResetDestination();
+			}
 		}
 
 		public void Update()
 		{
 			if(controller.NavAgent.IsMoving)
 			{
+				if(controller.Detection.CastDetection())
+				{
+					stateMachine.GoToState(this, StateType.Process);
+				}
 				return; 
 			}
 			stateMachine.GoToState(this, StateType.Idle); 
