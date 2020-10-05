@@ -28,7 +28,7 @@ namespace LudumDare47
 
 		public void SetSoundValue(float _value)
 		{
-			AkSoundEngine.SetRTPCValue(sound_volume_id, _value);
+			AkSoundEngine.SetRTPCValue("sound_level", _value);
 		}
 
 		public void SelectNextRes()

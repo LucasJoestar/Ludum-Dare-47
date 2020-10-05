@@ -77,8 +77,11 @@ namespace LudumDare47
 
         // -----------------------
 
-        private readonly uint doTalk_ID = AkSoundEngine.GetIDFromString("Play_talk");
-        private readonly uint noTalk_ID = AkSoundEngine.GetIDFromString("Stop_talk");
+        protected readonly uint doAmbiance_ID = AkSoundEngine.GetIDFromString("Play_amb_loop");
+        protected readonly uint noAmbiance_ID = AkSoundEngine.GetIDFromString("Stop_amb_loop");
+
+        protected readonly uint doTalk_ID = AkSoundEngine.GetIDFromString("Play_talk");
+        protected readonly uint noTalk_ID = AkSoundEngine.GetIDFromString("Stop_talk");
         #endregion
 
         #region Methods
@@ -327,6 +330,7 @@ namespace LudumDare47
 
             UIManager.Instance.FadeToBlack(false);
             UIManager.Instance.ResetUI(loopDuration);
+            AkSoundEngine.PostEvent(doAmbiance_ID, gameObject);
 
             playerStartPosition = player.transform.position;
             if (startDialogID != 0)
@@ -340,6 +344,7 @@ namespace LudumDare47
 
         protected virtual void OnDisable()
         {
+            AkSoundEngine.PostEvent(noAmbiance_ID, gameObject);
             UpdateManager.Instance.Unregister(this);
         }
         #endregion

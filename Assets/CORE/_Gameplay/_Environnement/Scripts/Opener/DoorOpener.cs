@@ -6,14 +6,16 @@
 
 using EnhancedEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LudumDare47
 {
 	public class DoorOpener : Trigger, IInteractable, IResetable
     {
-		#region Fields / Properties
-		[HorizontalLine(1, order = 0), Section("DoorOpener", order = 1)]
+        #region Fields / Properties
+        [HorizontalLine(1, order = 0), Section("DoorOpener", order = 1)]
 
+        [SerializeField] private UnityEvent OnEnterEvent = null;
 		[SerializeField, ReadOnly] private Door linkedDoor = null;
 		public bool IsActivated { get; private set; } = false;
 
@@ -46,7 +48,10 @@ namespace LudumDare47
                 IsActivated = true;
                 linkedDoor.UpdateOpenningStatus();
             }
-		}
+
+            if (_gameObject.TryGetComponent(out PlayerController _))
+                OnEnterEvent.Invoke();
+        }
 		public override void OnExit(GameObject _gameObject)
 		{
             inAmount--;
