@@ -43,7 +43,7 @@ namespace LudumDare47
             else if (isLever)
                 AkSoundEngine.PostEvent(Interactable.Lever_ID, gameObject);
 
-            if (inAmount == 1)
+            if (inAmount > 0)
             {
                 IsActivated = true;
                 linkedDoor.UpdateOpenningStatus();

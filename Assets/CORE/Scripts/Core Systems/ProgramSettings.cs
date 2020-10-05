@@ -31,6 +31,7 @@ namespace LudumDare47
 
         public GameObject PlantExplosion = null;
         public int plantDialogID = 5037;
+        public int CoffeeDialogID = 998;
 
         [HorizontalLine(1)]
 

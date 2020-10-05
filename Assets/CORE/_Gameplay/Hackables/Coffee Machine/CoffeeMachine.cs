@@ -47,7 +47,7 @@ namespace LudumDare47
 
                 Instantiate(ProgramSettings.I.Explosion, transform.position, Quaternion.identity);
                 AkSoundEngine.PostEvent(crash_ID, gameObject);
-                LevelManager.Instance.PlayDialog(ProgramSettings.I.plantDialogID);
+                LevelManager.Instance.PlayDialog(ProgramSettings.I.CoffeeDialogID);
             }
         }
         #endregion

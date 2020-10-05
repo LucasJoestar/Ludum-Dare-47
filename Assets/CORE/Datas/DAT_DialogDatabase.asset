@@ -72,3 +72,9 @@ MonoBehaviour:
       contact you when I'm out of this mess...
     Sprite: {fileID: 5553523197137858346, guid: 09b67ea702b83bf4d9e988da2b330068,
       type: 3}
+  - ID: 998
+    NextID: 0
+    Duration: 0
+    Sentence: Oh noooo!!
+    Sprite: {fileID: 4919309567317257975, guid: 0f268afcdae3dd444bad02060a86782b,
+      type: 3}
