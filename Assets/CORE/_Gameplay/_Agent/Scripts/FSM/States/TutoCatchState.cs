@@ -25,8 +25,11 @@ namespace LudumDare47
         public override void OnEnterState(FiniteStateMachine _stateMachine)
 		{
 			base.OnEnterState(_stateMachine);
-			controller.Detection.Target.Die(); 
-			controller.Detection.Target.Parent(controller.GrabTransform);
+			if(controller.Detection.Target != null)
+			{
+				controller.Detection.Target.Die();
+				controller.Detection.Target.Parent(controller.GrabTransform);
+			}
 			controller.NavAgent.SetDestination(tutoDestination); 
 			UpdateManager.Instance.Register(this); 
 		}
@@ -34,8 +37,11 @@ namespace LudumDare47
 		public override void OnExitState()
 		{
 			UpdateManager.Instance.Unregister(this);
-			controller.Detection.Target.Unparent();
+			if(controller.Detection.Target != null) 
+				controller.Detection.Target.Unparent();
+
 			controller.Detection.SetTarget(null, null);
+			controller.ResetDestination(); 
 		}
 
 		public void Update()

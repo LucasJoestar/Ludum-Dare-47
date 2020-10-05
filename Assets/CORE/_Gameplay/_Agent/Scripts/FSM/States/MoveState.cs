@@ -82,6 +82,11 @@ namespace LudumDare47
 				{
 					// stop the agent here
 					stateMachine.GoToState(this, StateType.Process);
+					return; 
+				}
+				if(controller.Detection.TargetTransform && Vector2.Distance(controller.transform.position, controller.Detection.TargetTransform.position) <= controller.InteractionRange)
+				{
+					stateMachine.GoToState(this, StateType.Process);
 				}
 				return; 
 			}
