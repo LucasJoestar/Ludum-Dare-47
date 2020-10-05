@@ -15,7 +15,9 @@ namespace LudumDare47
 		#region Fields / Properties
 		[HorizontalLine(1, order = 0), Section("TutoCatchState", order = 1)]
 		[SerializeField] private Vector2 tutoDestination = Vector2.zero;
-		private IPlayerBehaviour caughtTarget = null; 
+		private IPlayerBehaviour caughtTarget = null;
+
+		private bool isGrabbed = false; 
 		#endregion
 
 		#region Constructor
@@ -26,19 +28,20 @@ namespace LudumDare47
         public override void OnEnterState(FiniteStateMachine _stateMachine)
 		{
 			base.OnEnterState(_stateMachine);
-			if(controller.Detection.Target != null)
+			controller.SetCatchAnimation();
+			isGrabbed = false; 
+			if (controller.Detection.Target != null)
 			{
 				caughtTarget = controller.Detection.Target;
 				caughtTarget.Die();
-				caughtTarget.Parent(controller.GrabTransform);
 			}
-			controller.NavAgent.SetDestination(tutoDestination); 
 			UpdateManager.Instance.Register(this); 
 		}
 
 		public override void OnExitState()
 		{
 			UpdateManager.Instance.Unregister(this);
+			if(controller) controller.SetMovementAnimation(false);
 			caughtTarget.Unparent();
 			if(controller.Detection.Target == caughtTarget)
 			{
@@ -51,9 +54,24 @@ namespace LudumDare47
 		{
 			if (!stateMachine.IsActive)
 			{
+
 				stateMachine.GoToState(this, StateType.Process);
 				return;
 			}
+			if(controller.IsInAnimation)
+			{
+				return; 
+			}
+
+			if(!isGrabbed)
+			{
+				caughtTarget.Parent(controller.GrabTransform);
+				controller.NavAgent.SetDestination(tutoDestination);
+				controller.SetMovementAnimation(true);
+				isGrabbed = true;
+				return; 
+			}
+
 			if (controller.NavAgent.IsMoving)
 			{
 				if(controller.Detection.CastDetection())
