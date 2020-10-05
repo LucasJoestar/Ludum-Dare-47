@@ -1,0 +1,19 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	48693701	is_a_ghost			\Default Work Unit\is_a_ghost	
+	3461000837	fast_forward			\Default Work Unit\fast_forward	
+
+State	ID	Name	State Group			Notes
+	748895195	None	is_a_ghost			
+	843872697	no_its_not	is_a_ghost			
+	3554677398	yes_ghost	is_a_ghost			
+	748895195	None	fast_forward			
+	1279935180	is_fast_forward	fast_forward			
+	3304282407	is_not	fast_forward			
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+
