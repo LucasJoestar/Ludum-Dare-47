@@ -52,7 +52,11 @@ namespace LudumDare47
 
 		#region Methods
 		public void SetMovementAnimation(bool _isMoving) => animator.SetBool(Moving_Anim, _isMoving);
-		public void SetCatchAnimation() => animator.SetTrigger(Catch_Anim);
+		public void SetCatchAnimation()
+		{
+			IsInAnimation = true; 
+			animator.SetTrigger(Catch_Anim);
+		}
 
 		private void StartBehaviour()
 		{
@@ -76,6 +80,7 @@ namespace LudumDare47
 		private void Start()
 		{
 			LevelManager.Instance.RegisterResetable(this);
+			LevelManager.Instance.RegisterAnimator(animator); 
 			StartBehaviour(); 
 		}
 
