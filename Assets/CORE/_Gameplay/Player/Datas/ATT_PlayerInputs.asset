@@ -76,6 +76,22 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Action
       m_Flags: 0
+  Forward:
+    m_Name: Forward
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d076c27c-c58d-47bd-bb77-847bfc3677d7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f2b0c0c3-78ec-4be2-a5fc-fed99239b632
+      m_Path: <Keyboard>/q
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Forward
+      m_Flags: 0
   Loop:
     m_Name: Loop
     m_Type: 0
@@ -99,4 +115,12 @@ MonoBehaviour:
     m_Id: f13b8d75-34f6-4a32-8008-cfcffbc8050e
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 9c9ddaa6-117f-4d14-b465-ca5579bb423f
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Reset Loop
+      m_Flags: 0

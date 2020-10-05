@@ -78,10 +78,13 @@ namespace LudumDare47
 			
 			if (controller.NavAgent.IsMoving)
 			{
-				if ((isInPatrol || controller.Detection.TargetTransform == null) && controller.Detection.CastDetection())
+                if (controller.Detection.CastDetection())
 				{
-					// stop the agent here
-					stateMachine.GoToState(this, StateType.Process);
+                    // Ne détecte pas le même Player que je suis
+                    // Si je suis une cible, unparent la cible
+
+                    // stop the agent here
+                    stateMachine.GoToState(this, StateType.Process);
 					return; 
 				}
 				if(controller.Detection.TargetTransform && Vector2.Distance(controller.transform.position, controller.Detection.TargetTransform.position) <= controller.InteractionRange)

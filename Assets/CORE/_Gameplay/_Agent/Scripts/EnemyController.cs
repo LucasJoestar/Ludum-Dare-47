@@ -15,7 +15,6 @@ namespace LudumDare47
 		public static readonly int Moving_Anim = Animator.StringToHash("IsMoving");
 		public static readonly int Catch_Anim = Animator.StringToHash("Catch");
 
-
 		#region Fields / Properties
 		[HorizontalLine(1, order = 0), Section("EnemyController", order = 1)]
 		[SerializeField] private FiniteStateMachine stateMachine;
@@ -29,7 +28,7 @@ namespace LudumDare47
 		[SerializeField] private Vector2[] patrolPath = new Vector2[] { };
 
 		[HorizontalLine(1, order = 0)]
-		[SerializeField, Range(2.0f, 10.0f)] private float interactionRange = 3.0f;
+		[SerializeField, Range(.1f, 10.0f)] private float interactionRange = 3.0f;
 		[SerializeField] private Transform grabTransfom = null;
 		public Transform GrabTransform => grabTransfom; 
 

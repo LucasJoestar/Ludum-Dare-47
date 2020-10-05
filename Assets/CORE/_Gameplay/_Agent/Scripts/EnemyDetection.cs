@@ -23,13 +23,17 @@ namespace LudumDare47
 
 		protected IPlayerBehaviour target;
 		public IPlayerBehaviour Target => target;
-		#endregion
 
-		#region Methods
+        public bool 
+        #endregion
+
+        #region Methods
+        private readonly static RaycastHit2D[] detectionCast = new RaycastHit2D[6];
+
 		protected virtual void GenerateFOV()
 		{
 			fieldOfView = new Vector2[fieldOfViewAccuracy];
-			float _currentAngle = -angleValue / 2;
+            float _currentAngle = -angleValue / 2;
 			float _angleInterval = angleValue / (fieldOfViewAccuracy - 1);
 			for (int i = 0; i < fieldOfView.Length; i++)
 			{
@@ -40,18 +44,36 @@ namespace LudumDare47
 
 		public virtual bool CastDetection()
 		{
-			RaycastHit2D _hit; 
-			for (int i = 0; i < fieldOfView.Length; i++)
+            PlayerGhost _ghost = null;
+            for (int i = 0; i < fieldOfView.Length; i++)
 			{
-				_hit = Physics2D.Raycast(transform.position, transform.rotation * fieldOfView[i], range, detectionMask.value);
-				if (_hit.collider == null)
-					continue;
-				if (_hit.collider.TryGetComponent<IPlayerBehaviour>(out target))
-				{
-					TargetTransform = _hit.collider.transform;
-					return true;
-				}				
-			}
+                int _amount = Physics2D.RaycastNonAlloc(transform.position, transform.rotation * fieldOfView[i], detectionCast, range, detectionMask.value);
+
+                for (int _j = 0; _j < _amount; _j++)
+                {
+                    if (detectionCast[_j].collider.TryGetComponent(out PlayerController _player))
+                    {
+                        target = _player;
+                        TargetTransform = detectionCast[_j].collider.transform;
+                        return true;
+                    }
+                    else if (detectionCast[_j].collider.TryGetComponent(out PlayerGhost _testGhost))
+                    {
+                        // IS OK
+                        _ghost = _testGhost;
+                    }
+                    else
+                        break;
+                }
+            }
+
+            if (_ghost)
+            {
+                target = _ghost;
+                TargetTransform = _ghost.transform;
+                return true;
+            }
+
 			return false; 
 		}
 

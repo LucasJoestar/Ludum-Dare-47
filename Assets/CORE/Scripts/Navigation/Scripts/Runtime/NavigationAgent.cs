@@ -22,7 +22,7 @@ namespace LudumDare47.Navigation
         [SerializeField, Range(.05f, 1)] private float steerForce = .1f;
         [Space(order = 1)]
         [SerializeField, Range(1.0f, 10.0f)] private float patrolSpeed = 1.5f;
-        [SerializeField, Range(1.0f, 10.0f)] private float alertSpeed = 2.5f;
+        [SerializeField, Range(1.0f, 20.0f)] private float alertSpeed = 2.5f;
 
         #region Vector2
         public Vector2 LastPosition

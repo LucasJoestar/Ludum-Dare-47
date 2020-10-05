@@ -26,10 +26,9 @@ namespace LudumDare47
 		protected override void GenerateFOV()
 		{
 			base.GenerateFOV();
-			UpdateManager.Instance.Register(this);
-		}
+        }
 
-		public void LinkEnemy(EnemyDetection _linkedDetection)
+        public void LinkEnemy(EnemyDetection _linkedDetection)
 		{
 			if (linkedEnemy != null) return;
 			linkedEnemy = _linkedDetection; 
@@ -50,37 +49,37 @@ namespace LudumDare47
 			}
 		}
 
-		private IPlayerBehaviour _tempTarget = null; 
-		public override bool CastDetection()
-		{
-			target = null; 
-			RaycastHit2D _hit;
-			for (int i = 0; i < fieldOfView.Length; i++)
-			{
-				_hit = Physics2D.Raycast(transform.position, transform.rotation * fieldOfView[i], range, detectionMask.value);
-				if (_hit.collider == null)
-					continue;
-				Debug.Log(_hit.collider.name);
-				if (_hit.collider.TryGetComponent<IPlayerBehaviour>(out _tempTarget))
-				{
-					if (detectedIDs.Contains(_hit.transform.GetInstanceID()))
-					{
-						target = _tempTarget;
-						TargetTransform = _hit.collider.transform;
-						continue;
-					}
-					target = _tempTarget; 
-					TargetTransform = _hit.collider.transform;
-					detectedIDs.Add(TargetTransform.GetInstanceID());
-					return true;
-				}
-			}
-			if(target != null)
-			{
-				return true; 
-			}
-			return false;
-		}
+		//private IPlayerBehaviour _tempTarget = null; 
+		//public override bool CastDetection()
+		//{
+		//	target = null; 
+		//	RaycastHit2D _hit;
+		//	for (int i = 0; i < fieldOfView.Length; i++)
+		//	{
+		//		_hit = Physics2D.Raycast(transform.position, transform.rotation * fieldOfView[i], range, detectionMask.value);
+		//		if (_hit.collider == null)
+		//			continue;
+
+		//		if (_hit.collider.TryGetComponent(out _tempTarget))
+		//		{
+		//			if (detectedIDs.Contains(_hit.transform.GetInstanceID()))
+		//			{
+		//				target = _tempTarget;
+		//				TargetTransform = _hit.collider.transform;
+		//				continue;
+		//			}
+		//			target = _tempTarget; 
+		//			TargetTransform = _hit.collider.transform;
+		//			detectedIDs.Add(TargetTransform.GetInstanceID());
+		//			return true;
+		//		}
+		//	}
+		//	if(target != null)
+		//	{
+		//		return true; 
+		//	}
+		//	return false;
+		//}
 
 		protected override void ResetDetectionBehaviour()
 		{
@@ -88,9 +87,19 @@ namespace LudumDare47
 			onLevelReseted.Invoke();
 			detectedIDs.Clear(); 
 		}
-		#endregion
+        #endregion
 
-		protected override void OnDrawGizmos()
+        private void OnEnable()
+        {
+            UpdateManager.Instance.Register(this);
+        }
+
+        private void OnDisable()
+        {
+            UpdateManager.Instance.Unregister(this);
+        }
+
+        protected override void OnDrawGizmos()
 		{
 			base.OnDrawGizmos();
 			if (!linkedEnemy) return;  

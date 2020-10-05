@@ -37,6 +37,8 @@ namespace LudumDare47
         [Space]
 
         [SerializeField] private Vector2 endLevelMovement = Vector2.up;
+
+        [SerializeField] private List<Animator> animators = new List<Animator>();
         private List<IResetable> resetables = new List<IResetable>();
 
         // -----------------------
@@ -77,6 +79,17 @@ namespace LudumDare47
         #region Methods
 
         #region Management
+        private readonly int speed_Anim = Animator.StringToHash("Speed");
+
+        public void UpdateTimeCoef(float _timeCoef)
+        {
+            camera.Forward(_timeCoef > 1);
+            for (int _i = 0; _i < animators.Count; _i++)
+                animators[_i].SetFloat(speed_Anim, _timeCoef);
+        }
+
+        public void RegisterAnimator(Animator _animator) => animators.Add(_animator);
+
         /// <summary>
         /// Register a resetable on this level.
         /// </summary>
@@ -166,6 +179,8 @@ namespace LudumDare47
 
         // -----------------------
 
+        private bool isHardReset = false;
+
         public void StopLoop()
         {
             isLooping = false;
@@ -191,9 +206,23 @@ namespace LudumDare47
             isLooping = true;
             loopTime = 0;
 
-            ghosts.Add(player.OnStartLoop(playerStartPosition));
-            for (int _i = 0; _i < ghosts.Count; _i++)
-                ghosts[_i].ResetBehaviour(playerStartPosition);
+            if (isHardReset)
+            {
+                isHardReset = false;
+                UIManager.Instance.ResetUI(loopDuration);
+
+                for (int _i = 0; _i < ghosts.Count; _i++)
+                    Destroy(ghosts[_i].gameObject);
+
+                ghosts.Clear();
+                player.OnStartLoop(playerStartPosition, false);
+            }
+            else
+            {
+                ghosts.Add(player.OnStartLoop(playerStartPosition, true));
+                for (int _i = 0; _i < ghosts.Count; _i++)
+                    ghosts[_i].ResetBehaviour(playerStartPosition);
+            }
 
             GameManager.Instance.SetTimeCoef(1);
             UIManager.Instance.UpdateGhostAmount(ghosts.Count);
@@ -209,12 +238,7 @@ namespace LudumDare47
         /// </summary>
         public void ResetLoop()
         {
-            for (int _i = 0; _i < ghosts.Count; _i++)
-                Destroy(ghosts[_i].gameObject);
-
-            ghosts.Clear();
-
-            UIManager.Instance.ResetUI(loopDuration);
+            isHardReset = true;
             StartLoop();
         }
         #endregion
