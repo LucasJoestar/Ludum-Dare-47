@@ -80,6 +80,7 @@ namespace LudumDare47
 			{
 				if (!isInPatrol)
 				{
+					return;
 					if(controller.Detection.TargetTransform)
 					{
 						if (Vector2.Distance(controller.Detection.TargetTransform.position, controller.NavAgent.LastPosition) > controller.NavAgent.Collider.bounds.size.x)

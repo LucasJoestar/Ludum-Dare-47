@@ -29,7 +29,9 @@ namespace LudumDare47
 		[SerializeField] private Vector2[] patrolPath = new Vector2[] { };
 
 		[HorizontalLine(1, order = 0)]
-		[SerializeField, Range(2.0f, 10.0f)] private float interactionRange = 3.0f; 
+		[SerializeField, Range(2.0f, 10.0f)] private float interactionRange = 3.0f;
+		[SerializeField] private Transform grabTransfom = null;
+		public Transform GrabTransform => grabTransfom; 
 
 		public EnemyDetection Detection => detection;
 		public NavigationAgent NavAgent => navAgent;
@@ -61,7 +63,9 @@ namespace LudumDare47
 
 		public void ReturnToOriginalPosition() => destination = NavAgent.InitialPosition; 
 
-		public void ResetDestination() => destination = Vector2.zero;  
+		public void ResetDestination() => destination = Vector2.zero;
+
+		public void SetDestination(Vector2 _destination) => destination = _destination; 
 
 		private void Start()
 		{

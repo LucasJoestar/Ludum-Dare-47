@@ -34,6 +34,8 @@ namespace LudumDare47
 		public override void OnExitState()
 		{
 			UpdateManager.Instance.Unregister(this);
+			controller.Detection.SetTarget(null, null);
+			controller.ReturnToOriginalPosition();
 		}
 
 		// ------------------------------ // 
@@ -50,8 +52,6 @@ namespace LudumDare47
 				timer += Time.deltaTime;
 				return; 
 			}
-			controller.Detection.SetTarget(null, null); 
-			controller.ReturnToOriginalPosition(); 
 			stateMachine.GoToState(this, StateType.Process);
 		}
 

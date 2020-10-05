@@ -29,12 +29,24 @@ namespace LudumDare47
 			UpdateManager.Instance.Register(this);
 		}
 
+		public void LinkEnemy(EnemyDetection _linkedDetection)
+		{
+			if (linkedEnemy != null) return;
+			linkedEnemy = _linkedDetection; 
+		}
+
+		public void BreakLink(EnemyDetection _unlinkedDetection)
+		{
+			if (linkedEnemy != _unlinkedDetection) return;
+			linkedEnemy = null; 
+		}
+
 		void ILateUpdate.Update()
 		{
 			if (CastDetection())
 			{
 				onPlayerDetected.Invoke();
-				linkedEnemy.SetTarget(target, TargetTransform);
+				if(linkedEnemy) linkedEnemy.GetComponent<EnemyController>().SetDestination(TargetTransform.position);
 			}
 		}
 
