@@ -201,7 +201,11 @@ namespace LudumDare47.Navigation
 
         #region Speed 
         public void SetSpeedValue(bool _isInPatrol) => speed = _isInPatrol ? patrolSpeed : alertSpeed;
-        #endregion 
+        #endregion
+
+        #region Sound
+        public void PlayFootstep() => AkSoundEngine.PostEvent(Movable.Foosteps_ID, gameObject); 
+        #endregion
 
         #endregion
 
