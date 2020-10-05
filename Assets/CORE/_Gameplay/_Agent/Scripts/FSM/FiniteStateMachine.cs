@@ -20,6 +20,7 @@ namespace LudumDare47
         [SerializeField] private int startStateIndex = 0;
 
         private bool isActive = true;
+        private bool hasToReset = false;
 
         public EnemyController Controller { get; private set; }
         #endregion
@@ -29,6 +30,12 @@ namespace LudumDare47
         {
             _previousSate.OnExitState();
             if (!isActive) return;
+            if(hasToReset)
+            {
+                behaviourStates[startStateIndex].OnEnterState(this);
+                hasToReset = false;
+                return; 
+            }
             for (int i = 0; i < behaviourStates.Length; i++)
             {
                 if (behaviourStates[i].StateType == _nextType)
@@ -48,11 +55,24 @@ namespace LudumDare47
         }
 
         public void StopFSM() => isActive = false;
+
+        public void ResetFSM()
+        {
+            if(!isActive)
+            {
+                isActive = true;
+                behaviourStates[startStateIndex].OnEnterState(this);
+                return; 
+            }
+            hasToReset = true; 
+        }
+
         // ----------------- //
 
         public FiniteStateMachine Copy()
         {
             FiniteStateMachine _copiedMachine = Instantiate(this);
+            _copiedMachine.isActive = true; 
             for (int i = 0; i < behaviourStates.Length; i++)
             {
                 _copiedMachine.BehaviourStates[i] = Instantiate(behaviourStates[i]);

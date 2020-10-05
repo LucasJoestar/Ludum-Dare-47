@@ -36,6 +36,7 @@ namespace LudumDare47.Navigation
         #endregion
         public Collider2D Collider => collider;
         public Vector2 InitialPosition => initialPosition; 
+        public Quaternion InitialRotation { get; private set; }
         #endregion
 
         #region Methods
@@ -48,6 +49,11 @@ namespace LudumDare47.Navigation
         /// </summary>
         protected override void MovableUpdate()
         {
+            if (currentPath == null || currentPath.Length == 0)
+            {
+                StopAgent();
+                return; 
+            }
             if (isMoving && (currentIndex > 0))
             {
                 Vector2 _previousPosition = currentPath[currentIndex - 1];
@@ -196,6 +202,7 @@ namespace LudumDare47.Navigation
         protected override void Start()
         {
             base.Start();
+            InitialRotation = transform.rotation;
         }
 
 #if UNITY_EDITOR
