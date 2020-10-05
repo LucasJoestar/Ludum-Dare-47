@@ -142,7 +142,7 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: 3257fb02-9645-4eb7-88a9-017e75b80103
-      m_Path: <Gamepad>/leftTrigger
+      m_Path: <Gamepad>/leftShoulder
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -150,7 +150,7 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: 9cafd5b2-0ff0-44d1-b9fd-76be28ed09c4
-      m_Path: <Gamepad>/rightTrigger
+      m_Path: <Gamepad>/rightShoulder
       m_Interactions: 
       m_Processors: 
       m_Groups: 

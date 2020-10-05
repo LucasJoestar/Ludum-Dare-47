@@ -66,6 +66,13 @@ namespace LudumDare47
 
 		public void SetDestination(Vector2 _destination) => destination = _destination; 
 
+		public void Die()
+		{
+			navAgent.StopAgent();
+			stateMachine.StopFSM();
+			gameObject.SetActive(false); 
+		}
+
 		private void Start()
 		{
 			LevelManager.Instance.RegisterResetable(this);
@@ -96,6 +103,7 @@ namespace LudumDare47
 
 		public void ResetBehaviour()
 		{
+			gameObject.SetActive(true); 
 			navAgent.StopAgent();
 			destination = initialDestination;
 			NavAgent.ResetAgent(); 
