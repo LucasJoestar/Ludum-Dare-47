@@ -12,6 +12,7 @@
 						<ObjectRef Name="Play_rewind_reset_" ID="{D9B4C45C-F9C2-40EC-A94A-DAFE3CBE5666}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="explosion plant" ID="{66FECF1F-2871-411F-8651-A171F54E60FD}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Default Work Unit" ID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B883056-E956-4FD3-9356-2FDC99B2243D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="prison_door" ID="{E23ECA8B-E2DE-4132-8D1F-EF1D368817A6}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="singleshotevent" ID="{9D7AF9FF-1556-413C-BD73-7CA3BB267BC2}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="loop_fast3" ID="{B9449977-29E6-4215-9F50-0DF94F055B0A}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}" Origin="Manual" Filter="7"/>

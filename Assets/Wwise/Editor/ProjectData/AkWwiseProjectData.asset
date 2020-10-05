@@ -20,7 +20,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 89dcb199dcfb4a4e9cf9ff2f1ecac141
     GuidInternal: 
-    m_lastTime: -8585996893970729962
+    m_lastTime: -8585996919614386609
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 5630881b56e9d34f93562fdc99b2243d
     GuidInternal: 
-    m_lastTime: -8585996804775622165
+    m_lastTime: -8585996852648455394
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 8fc39af544d01943828f3bd7823be8ea
     GuidInternal: 
-    m_lastTime: -8585996893970759951
+    m_lastTime: -8585996788128635692
     List:
     - name: the_one_true_bank
       guid: 25d99a93b886b54d98cb726c18688f57
@@ -68,7 +68,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: bbf7381479b6154ba294c3217bd19744
     GuidInternal: 
-    m_lastTime: -8585996894026018037
+    m_lastTime: -8585996919643443373
     List:
     - name: amb
       guid: 6f11dc2c4934a041a766a3308533dcfe
@@ -432,7 +432,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: c0dd30b0cfb9894c9a72981bde2342ad
     GuidInternal: 
-    m_lastTime: -8585996804776082018
+    m_lastTime: -8585996853097127575
     List:
     - name: sound_level
       guid: 4b84524855da984cb616b7252d6dd6b9
@@ -451,7 +451,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 6bd14fbaddc22344aef9eb7f9e83f645
     GuidInternal: 
-    m_lastTime: -8585996893970749957
+    m_lastTime: -8585996919614456587
     List:
     - name: fast_forward
       guid: d6618427f758034caf133a9d8553bd60
@@ -523,7 +523,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f1005e962bc9914884b7c270fb45afad
     GuidInternal: 
-    m_lastTime: -8585996893970739959
+    m_lastTime: -8585996919614446589
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -533,9 +533,14 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 97da1151b248264c9625f4add72b370e
     GuidInternal: 
-    m_lastTime: -8585996893970729962
+    m_lastTime: -8585996919614436595
     List: []
   ExpandedItems:
   - /ludum_47_lucas
+  - /ludum_47_lucas/Events
+  - /ludum_47_lucas/Events/Default Work Unit
+  - /ludum_47_lucas/Events/Default Work Unit/amb
+  - /ludum_47_lucas/Events/Default Work Unit/fast_forward
+  - /ludum_47_lucas/Events/Default Work Unit/oneshot
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
