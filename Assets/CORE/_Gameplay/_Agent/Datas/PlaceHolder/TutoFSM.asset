@@ -17,5 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 325e2696c02938342accdbe8757e4dbb, type: 2}
   - {fileID: 11400000, guid: 817da0041f7f8fe448d362a5e2f92103, type: 2}
   - {fileID: 11400000, guid: db00cf6b345d8004389eac873b45daca, type: 2}
-  resetState: {fileID: 11400000, guid: 17a17a7910dce8e499cdb1c50d79a1ab, type: 2}
-  startStateIndex: 0
+  startStateIndex: 1

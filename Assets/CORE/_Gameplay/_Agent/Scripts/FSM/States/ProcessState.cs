@@ -26,7 +26,7 @@ namespace LudumDare47
 		{
 			if (!stateMachine.IsActive)
 			{
-				stateMachine.GoToState(this, StateType.Process);
+				stateMachine.GoToState(this, StateType.Idle);
 				return; 
 			}
 			if (controller.Detection.TargetTransform != null)
