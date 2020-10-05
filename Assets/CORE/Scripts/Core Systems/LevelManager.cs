@@ -74,6 +74,11 @@ namespace LudumDare47
 
         [SerializeField, ReadOnly] protected Vector2 playerStartPosition = new Vector2();
         [SerializeField, ReadOnly] private List<PlayerGhost> ghosts = new List<PlayerGhost>();
+
+        // -----------------------
+
+        private readonly uint doTalk_ID = AkSoundEngine.GetIDFromString("Play_talk");
+        private readonly uint noTalk_ID = AkSoundEngine.GetIDFromString("Stop_talk");
         #endregion
 
         #region Methods
@@ -141,6 +146,7 @@ namespace LudumDare47
                     if (dialogDisplayVar >= dialogDisplay)
                     {
                         isDisplayingDialog = false;
+                        AkSoundEngine.PostEvent(noTalk_ID, gameObject);
                         UIManager.Instance.UpdateDialog(dialogDisplay);
                     }
                     else
@@ -273,6 +279,7 @@ namespace LudumDare47
         public void ActivateDialog()
         {
             isInDialog = true;
+            AkSoundEngine.PostEvent(doTalk_ID, gameObject);
             if (!isDialogAutomatic)
             {
                 player.IsPaused = false;
@@ -285,6 +292,7 @@ namespace LudumDare47
             if (isDisplayingDialog)
             {
                 isDisplayingDialog = false;
+                AkSoundEngine.PostEvent(noTalk_ID, gameObject);
                 UIManager.Instance.UpdateDialog(dialogDisplay);
             }
             else if (nextDialogID == 0)
