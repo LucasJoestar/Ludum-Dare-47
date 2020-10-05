@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{BA4FD16B-C2DD-4423-AEF9-EB7F9E83F645}" SchemaVersion="97">
+	<States>
+		<WorkUnit Name="Default Work Unit" ID="{BA4FD16B-C2DD-4423-AEF9-EB7F9E83F645}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="fast_forward" ID="{278461D6-58F7-4C03-AF13-3A9D8553BD60}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="11"/>
+						<Property Name="DefaultTransitionTime" Type="Real64" Value="0.5"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<State Name="None" ID="{5B433409-204B-4639-B3ED-A7CBA570814B}"/>
+						<State Name="is_fast_forward" ID="{905D4212-09F4-4560-9E82-EADA82D21F5E}"/>
+						<State Name="is_not" ID="{8B031DF7-5192-4408-9E3E-E2A58C3601DB}"/>
+					</ChildrenList>
+				</StateGroup>
+				<StateGroup Name="is_a_ghost" ID="{B4FA73D3-6083-4E72-AA0F-DAD3075C5BC1}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="15"/>
+						<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<State Name="None" ID="{66869F33-9597-4CA9-B234-87426DCB8395}"/>
+						<State Name="yes_ghost" ID="{8138E442-1A41-4A81-95C3-A67E258703AA}"/>
+						<State Name="no_its_not" ID="{23423769-C0DE-4FE3-8F9E-BD0956AB7E61}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

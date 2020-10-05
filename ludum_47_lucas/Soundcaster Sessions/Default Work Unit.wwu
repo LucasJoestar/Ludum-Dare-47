@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E3EC5B34-26DF-40CE-B571-D2D993528B0D}" SchemaVersion="97">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{E3EC5B34-26DF-40CE-B571-D2D993528B0D}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="New Soundcaster Session" ID="{B0BCB334-5355-447D-A1D7-2C7AB360335E}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Play_start_fastforward" ID="{A830905D-8A99-4035-BBBC-013D6BC48A17}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_hacking_loop" ID="{BC944368-7C40-4C3C-A86B-FFAA1A6529C7}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_alarme_camera" ID="{C0385970-B179-4800-A215-7F1B888A634E}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Stop_fast_forward" ID="{4D315A3F-F6A8-4730-B78E-94F951775E8C}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Stop_hacking_loop" ID="{B7BF599C-69C1-4BF4-B435-4B8323C0169D}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_hack_validation" ID="{B40E4ED2-8BA5-47BD-8232-59E2B1DD268F}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="1" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_footsteps" ID="{D42737F7-8A7A-495B-9AB2-AA2D1B23188E}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_amb_loop" ID="{F4B2D623-F675-4727-A53F-1A79FAEC7D2F}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_rewind_reset_" ID="{D9B4C45C-F9C2-40EC-A94A-DAFE3CBE5666}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="2" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Stop_amb_loop" ID="{066DAD59-EF7A-4C33-93DD-7EC2BAB369E3}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_reset_fin_" ID="{8F35D726-7D29-4F98-BBD6-774EAE0F4D2A}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="3" Y="2"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="is_fast_forward" ID="{905D4212-09F4-4560-9E82-EADA82D21F5E}"/>
+						<CurrentStateRef Name="no_its_not" ID="{23423769-C0DE-4FE3-8F9E-BD0956AB7E61}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>
