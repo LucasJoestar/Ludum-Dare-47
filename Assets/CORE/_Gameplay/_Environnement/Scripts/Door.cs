@@ -9,13 +9,14 @@ using UnityEngine;
 
 namespace LudumDare47
 {
-	public class Door : MonoBehaviour
+	public class Door : MonoBehaviour, IResetable
     {
 		#region Fields / Properties
 		public static readonly int Switch_Anim = Animator.StringToHash("Switch");
 
 		[HorizontalLine(1, order = 0), Section("Door", order = 1)]
-		[SerializeField] private bool isOpen = false;
+		[SerializeField] private bool isOpenAtStart = false;
+		[SerializeField, ReadOnly] private bool isOpen = false; 
 		public bool IsOpen => IsOpen;
 
 		[SerializeField] private DoorOpener[] doorOpeners = new DoorOpener[] { };
@@ -27,8 +28,8 @@ namespace LudumDare47
 		public void ForceOpenning()
 		{
 			if (isOpen) return;
+			isOpen = true; 
 			animator.SetTrigger(Switch_Anim); 
-			// Desactivate Collider
 		}
 		private void Open()
 		{
@@ -65,8 +66,20 @@ namespace LudumDare47
 			else Close();
 		}
 
+		public void ResetBehaviour()
+		{
+			if(isOpen != isOpenAtStart)
+			{
+				isOpen = isOpenAtStart;
+				if (isOpen) Open();
+				else Close(); 
+			}
+		}
+
 		private void Start()
 		{
+			LevelManager.Instance.RegisterResetable(this);
+			isOpen = isOpenAtStart;
 			for (int i = 0; i < doorOpeners.Length; i++)
 			{
 				doorOpeners[i].LinkToDoor(this);
@@ -80,6 +93,8 @@ namespace LudumDare47
 				Gizmos.DrawLine(transform.position, doorOpeners[i].transform.position);
 			}
 		}
+
+
 		#endregion
 	}
 }

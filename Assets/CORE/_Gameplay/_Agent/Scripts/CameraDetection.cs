@@ -16,6 +16,7 @@ namespace LudumDare47
 		#region Fields / Properties
 		[HorizontalLine(1, order = 0), Section("CameraDetection", order = 1)]
 		[SerializeField] private UnityEvent onPlayerDetected = new UnityEvent();
+		[SerializeField] private UnityEvent onLevelReseted = new UnityEvent();
 		[SerializeField] private EnemyDetection linkedEnemy = null;
 
 		private List<int> detectedIDs = new List<int>(); 
@@ -57,6 +58,13 @@ namespace LudumDare47
 				}
 			}
 			return false;
+		}
+
+		protected override void ResetDetectionBehaviour()
+		{
+			base.ResetDetectionBehaviour();
+			onLevelReseted.Invoke();
+			detectedIDs.Clear(); 
 		}
 		#endregion
 

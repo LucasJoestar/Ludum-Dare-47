@@ -10,7 +10,7 @@ using LudumDare47.Navigation;
 
 namespace LudumDare47
 {
-	public class EnemyController : MonoBehaviour
+	public class EnemyController : MonoBehaviour, IResetable
     {
 		public static readonly int Moving_Anim = Animator.StringToHash("IsMoving");
 		public static readonly int Catch_Anim = Animator.StringToHash("Catch");
@@ -24,6 +24,7 @@ namespace LudumDare47
 		[SerializeField, Required] private Animator animator = null;
 
 		[HorizontalLine(1, order = 0)]
+		[SerializeField] private Vector2 initialDestination = Vector2.zero;
 		[SerializeField] private Vector2 destination = Vector2.zero;
 		[SerializeField] private Vector2[] patrolPath = new Vector2[] { };
 
@@ -64,7 +65,8 @@ namespace LudumDare47
 
 		private void Start()
 		{
-			Invoke("StartBehaviour", 1.0f);  
+			LevelManager.Instance.RegisterResetable(this);
+			StartBehaviour(); 
 		}
 
 
@@ -84,6 +86,15 @@ namespace LudumDare47
 					Gizmos.DrawLine(patrolPath[i], patrolPath[0]);
 				else Gizmos.DrawLine(patrolPath[i], patrolPath[i + 1]); 
 			}
+		}
+
+		public void ResetBehaviour()
+		{
+			navAgent.StopAgent();
+			destination = initialDestination;
+			NavAgent.ResetAgent(); 
+			animator.SetBool(Moving_Anim, false); 
+			stateMachine.ResetFSM(); 
 		}
 		#endregion
 	}

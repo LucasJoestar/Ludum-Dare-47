@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace LudumDare47
 {
-	public class DoorOpener : Trigger, IInteractable
+	public class DoorOpener : Trigger, IInteractable, IResetable
     {
 		#region Fields / Properties
 		[HorizontalLine(1, order = 0), Section("DoorOpener", order = 1)]
@@ -39,6 +39,16 @@ namespace LudumDare47
 			if (!isTrigger) return;
 			IsActivated = false;
 			linkedDoor.UpdateOpenningStatus();
+		}
+
+		public void ResetBehaviour()
+		{
+			IsActivated = false; 
+		}
+
+		private void Start()
+		{
+			LevelManager.Instance.RegisterResetable(this);
 		}
 		#endregion
 	}

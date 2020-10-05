@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace LudumDare47
 {
-	public class EnemyDetection : MonoBehaviour
+	public class EnemyDetection : MonoBehaviour, IResetable 
     {
 		#region Fields / Properties
 		[HorizontalLine(1, order = 0), Section("EnemyDetection", order = 1)]
@@ -20,6 +20,9 @@ namespace LudumDare47
 
 		protected Vector2[] fieldOfView = new Vector2[] { };
 		public Transform TargetTransform { get; protected set; }
+
+		protected IPlayerBehaviour target;
+		public IPlayerBehaviour Target => target;
 		#endregion
 
 		#region Methods
@@ -35,8 +38,6 @@ namespace LudumDare47
 			}
 		}
 
-		protected IPlayerBehaviour target;
-		public IPlayerBehaviour Target => target; 
 		public virtual bool CastDetection()
 		{
 			RaycastHit2D _hit; 
@@ -60,8 +61,16 @@ namespace LudumDare47
 			TargetTransform = _targetTransform;
 		}
 
+		public void ResetBehaviour() => ResetDetectionBehaviour();
+
+		protected virtual void ResetDetectionBehaviour()
+		{
+			SetTarget(null, null); 
+		}
+
 		protected virtual void Start()
 		{
+			LevelManager.Instance.RegisterResetable(this);
 			GenerateFOV();
 		}
 
