@@ -3849,7 +3849,6 @@ GameObject:
   - component: {fileID: 1031073651}
   - component: {fileID: 1031073653}
   - component: {fileID: 1031073652}
-  - component: {fileID: 1031073654}
   m_Layer: 0
   m_Name: Sprite (1)
   m_TagString: Untagged
@@ -3888,7 +3887,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 13.201413, y: 6.48}
+    oldSize: {x: 12.881378, y: 6.1899996}
     newSize: {x: 12.881378, y: 6.1899996}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3915,7 +3914,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 624cd886aaeffb44f96ef4567d35b353, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3948,21 +3947,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1031073654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031073650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d32547d46327a24c82dd7cc6640324b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enableOutline: 1
-  color: {r: 0.8962264, g: 0.35979182, b: 0.097232126, a: 1}
-  outlineSize: 15
 --- !u!1 &1042372728
 GameObject:
   m_ObjectHideFlags: 0
@@ -4944,7 +4928,6 @@ GameObject:
   - component: {fileID: 1291885009}
   - component: {fileID: 1291885011}
   - component: {fileID: 1291885010}
-  - component: {fileID: 1291885012}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -4983,7 +4966,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 13.201413, y: 6.48}
+    oldSize: {x: 12.881378, y: 6.1899996}
     newSize: {x: 12.881378, y: 6.1899996}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5010,7 +4993,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 624cd886aaeffb44f96ef4567d35b353, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5043,21 +5026,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1291885012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291885008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d32547d46327a24c82dd7cc6640324b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enableOutline: 1
-  color: {r: 0.8962264, g: 0.35979182, b: 0.097232126, a: 1}
-  outlineSize: 15
 --- !u!1 &1300902180
 GameObject:
   m_ObjectHideFlags: 0
