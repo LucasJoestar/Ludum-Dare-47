@@ -73,7 +73,7 @@ SpriteRenderer:
   m_Sprite: {fileID: -8798790879011725894, guid: d4b1b3ee663e26b4398410fbbd20b8c5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.960317, y: 3.1399999}
@@ -355,11 +355,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1126526244668675340}
   gauge: {fileID: 1126526244795456268}
-  collider: {fileID: 1126526245162568297}
+  collider: {fileID: 553955696}
   interactable: {fileID: 1126526244680672891}
   trigger: {fileID: 1126526245075163447}
   hackLight: {fileID: 6903326788260034141}
-  info: {fileID: 1126526244602308551}
+  info: {fileID: 6928128666539205804}
   hackDuration: 2.5
   isHacked: 0
   isBeingHack: 0
@@ -391,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1126526245162568296}
-  - component: {fileID: 1126526245162568297}
+  - component: {fileID: 553955696}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -413,8 +413,8 @@ Transform:
   m_Father: {fileID: 1126526245075163446}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1126526245162568297
-CircleCollider2D:
+--- !u!61 &553955696
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -426,9 +426,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.07203996, y: 0.59352875}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Size: {x: 3.0788238, y: 1.0790558}
+  m_EdgeRadius: 0
 --- !u!1 &1126526245682743349
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +812,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: -1469119178732734122, guid: d4b1b3ee663e26b4398410fbbd20b8c5,
     type: 3}
-  m_Color: {r: 0.7935666, g: 0.5803922, b: 0.9529412, a: 1}
+  m_Color: {r: 0.5803922, g: 0.9529412, b: 0.85588443, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -884,7 +894,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: 5322675195480508898, guid: d4b1b3ee663e26b4398410fbbd20b8c5,
     type: 3}
-  m_Color: {r: 0.7935666, g: 0.5803922, b: 0.9529412, a: 1}
+  m_Color: {r: 0.5803922, g: 0.9529412, b: 0.85588443, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
