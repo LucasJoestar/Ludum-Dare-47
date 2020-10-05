@@ -318,6 +318,8 @@ namespace LudumDare47
         #endregion
 
         #region Monobehaviour
+        [SerializeField] private bool isMenu = false;
+
         private void Awake()
         {
             GameManager.Instance.LevelManager = this;
@@ -327,6 +329,8 @@ namespace LudumDare47
         protected virtual void Start()
         {
             GameManager.Instance.UpdateLoadedScene();
+            if (isMenu)
+                return;
 
             UIManager.Instance.FadeToBlack(false);
             UIManager.Instance.ResetUI(loopDuration);
