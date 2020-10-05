@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 5630881b56e9d34f93562fdc99b2243d
     GuidInternal: 
-    m_lastTime: -8585996852648455394
+    m_lastTime: -8585996766885386873
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 8fc39af544d01943828f3bd7823be8ea
     GuidInternal: 
-    m_lastTime: -8585996788128635692
+    m_lastTime: -8585996755313202370
     List:
     - name: the_one_true_bank
       guid: 25d99a93b886b54d98cb726c18688f57
@@ -68,7 +68,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: bbf7381479b6154ba294c3217bd19744
     GuidInternal: 
-    m_lastTime: -8585996919643443373
+    m_lastTime: -8585996762182497705
     List:
     - name: amb
       guid: 6f11dc2c4934a041a766a3308533dcfe
@@ -382,6 +382,20 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Play_talk
+      guid: ce0a95dd6a4e3c4895656caf575a73db
+      id: 2835868768
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: talking
+        ObjectType: 4
+      - ElementName: Play_talk
+        ObjectType: 3
+      Path: Default Work Unit\talking\Play_talk
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Stop_amb_loop
       guid: 59ad6d067aef334c93dd7ec2bab369e3
       id: 3450745217
@@ -421,6 +435,32 @@ MonoBehaviour:
       - ElementName: Stop_hacking_loop
         ObjectType: 3
       Path: Default Work Unit\hacking loop\Stop_hacking_loop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_talk
+      guid: 07067ccad48d0048a9dcdffb20f1450f
+      id: 2034872402
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: talking
+        ObjectType: 4
+      - ElementName: Stop_talk
+        ObjectType: 3
+      Path: Default Work Unit\talking\Stop_talk
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: talking
+      guid: 4c09f259e052bd4b964295b43aa626b4
+      id: 3375731105
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: talking
+        ObjectType: 4
+      Path: Default Work Unit\talking
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -542,5 +582,6 @@ MonoBehaviour:
   - /ludum_47_lucas/Events/Default Work Unit/amb
   - /ludum_47_lucas/Events/Default Work Unit/fast_forward
   - /ludum_47_lucas/Events/Default Work Unit/oneshot
+  - /ludum_47_lucas/Events/Default Work Unit/talking
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
