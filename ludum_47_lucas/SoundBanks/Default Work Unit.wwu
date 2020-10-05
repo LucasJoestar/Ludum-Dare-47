@@ -34,7 +34,9 @@
 						<ObjectRef Name="start fastforward" ID="{62A4DF6D-DF7D-4773-849C-5B079B9D113A}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="footsteps" ID="{0DD06522-A14C-47B3-976B-E23A8B6E77B1}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_hack_validation" ID="{B40E4ED2-8BA5-47BD-8232-59E2B1DD268F}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_talk" ID="{CA7C0607-8DD4-4800-A9DC-DFFB20F1450F}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_alarme_camera" ID="{C0385970-B179-4800-A215-7F1B888A634E}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_talk" ID="{DD950ACE-4E6A-483C-9565-6CAF575A73DB}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="sas_open" ID="{A6901F1C-B4DD-48FB-91D6-E767656ED256}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_footsteps" ID="{D42737F7-8A7A-495B-9AB2-AA2D1B23188E}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="oneshot" ID="{F057C9A3-3B2D-4A46-8320-A12F0FD355B8}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}" Origin="Manual" Filter="7"/>
