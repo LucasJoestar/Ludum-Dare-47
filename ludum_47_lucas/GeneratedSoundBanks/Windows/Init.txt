@@ -10,6 +10,9 @@ State	ID	Name	State Group			Notes
 	1279935180	is_fast_forward	fast_forward			
 	3304282407	is_not	fast_forward			
 
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1385505913	sound_level			\Default Work Unit\sound_level	
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 
