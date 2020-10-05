@@ -126,8 +126,11 @@ namespace LudumDare47
         [HorizontalLine(1)]
 
         [SerializeField, ReadOnly] private bool isMoving = false;
+        [SerializeField, ReadOnly] private bool isHacking = false;
         [SerializeField, ReadOnly] private bool isLoopCompleted = false;
         [SerializeField, ReadOnly] private bool isStateContinouslyUpdating = false;
+
+        [SerializeField, ReadOnly] private Hackable hacking = null;
 
         [HorizontalLine(1)]
 
@@ -142,32 +145,76 @@ namespace LudumDare47
         #region Methods
 
         #region Actions
+        private bool isParent = false;
+        private Transform parent = null;
+
+        public void Parent(Transform _parent)
+        {
+            isParent = true;
+            parent = _parent;
+            OnEndLoop();
+        }
+
+        public void Unparent()
+        {
+            if (isParent)
+            {
+                isParent = false;
+                parent = null;
+            }
+        }
+
+        // -----------------------
+
+        private ContactFilter2D interactFilter = new ContactFilter2D();
+
         /// <summary>
         /// Interact with whatever is close to the ghost.
         /// </summary>
         public bool Interact()
         {
-            if (collider.OverlapCollider(contactFilter, overlapColliders) > 0)
-                return overlapColliders[0].GetComponent<IInteractable>().Interact(this);
+            if (collider.OverlapCollider(interactFilter, overlapColliders) > 0)
+                return overlapColliders[0].GetComponentInParent<IInteractable>().Interact(this);
 
             return false;
         }
 
         public void Hack(Hackable _hackable)
         {
-            // Set animation and other things.
-            animator.SetBool(PlayerController.Hack_Anim, isMoving);
+            isHacking = true;
+            hacking = _hackable;
+
+            animator.SetBool(PlayerController.Hack_Anim, true);
         }
 
         public void Die()
         {
             // Set animation and die.
-            animator.SetBool(PlayerController.Die_Anim, isMoving);
+            animator.SetTrigger(PlayerController.Die_Anim);
+            OnEndLoop();
+        }
+
+        private void OnEndLoop()
+        {
+            isLoopCompleted = true;
+            collider.enabled = false;
+
+            if (isHacking)
+            {
+                isHacking = false;
+                animator.SetBool(PlayerController.Hack_Anim, false);
+
+                hacking.CancelHack();
+            }
         }
         #endregion
 
         #region State
-        public void Init(List<IPlayerGhostState> _states) => states = _states.ToArray();
+        public void Init(List<IPlayerGhostState> _states, ContactFilter2D _filter)
+        {
+            states = _states.ToArray();
+            interactFilter = _filter;
+        }
 
         // -----------------------
 
@@ -177,6 +224,15 @@ namespace LudumDare47
             animator.enabled = false;
             animator.enabled = true;
 
+            if (isHacking)
+            {
+                isHacking = false;
+                animator.SetBool(PlayerController.Hack_Anim, false);
+
+                hacking.CancelHack();
+            }
+
+            collider.enabled = true;
             SetPosition(_position);
             transform.rotation = Quaternion.identity;
             rigidbody.rotation = 0;
@@ -238,6 +294,28 @@ namespace LudumDare47
 
         public void MovableUpdate()
         {
+            // Parent update position.
+            if (isParent)
+            {
+                Vector2 _position = parent.position;
+                Vector2 _movement = _position - (Vector2)transform.position;
+
+                if (!_movement.IsNull())
+                    Move(_movement);
+                else if (isMoving)
+                    Stop(_position);
+            }
+
+            // Hacking update.
+            if (isHacking)
+            {
+                if (hacking.UpdateHack())
+                {
+                    isHacking = false;
+                    animator.SetBool(PlayerController.Hack_Anim, false);
+                }
+            }
+
             // Update state while not reached loop end.
             if (!isLoopCompleted)
             {

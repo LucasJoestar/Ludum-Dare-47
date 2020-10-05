@@ -27,3 +27,8 @@ MonoBehaviour:
       Freeman... Bla bla bla Mr. Freeman... Bla bla bla Mr. Freeman... Bla bla bla
       Mr. Freeman...
     Sprite: {fileID: 0}
+  - ID: 5037
+    NextID: 0
+    Duration: 2
+    Sentence: Oh no !
+    Sprite: {fileID: 0}

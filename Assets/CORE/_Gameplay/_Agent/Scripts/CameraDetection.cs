@@ -6,7 +6,8 @@
 
 using EnhancedEditor;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
+using System.Collections.Generic; 
 
 namespace LudumDare47
 {
@@ -15,43 +16,28 @@ namespace LudumDare47
 		#region Fields / Properties
 		[HorizontalLine(1, order = 0), Section("CameraDetection", order = 1)]
 		[SerializeField] private UnityEvent onPlayerDetected = new UnityEvent();
-		[SerializeField] private EnemyDetection linkedEnemy = null; 
+		[SerializeField] private UnityEvent onLevelReseted = new UnityEvent();
+		[SerializeField] private EnemyDetection linkedEnemy = null;
+
+		private List<int> detectedIDs = new List<int>(); 
 		#endregion
 
 		#region Methods
 		protected override void GenerateFOV()
 		{
 			base.GenerateFOV();
-			UpdateManager.Instance.Register(this);
+        }
+
+        public void LinkEnemy(EnemyDetection _linkedDetection)
+		{
+			if (linkedEnemy != null) return;
+			linkedEnemy = _linkedDetection; 
 		}
 
-		private IPlayerBehaviour _tempTarget;
-		public override bool CastDetection()
+		public void BreakLink(EnemyDetection _unlinkedDetection)
 		{
-			targetFound = false;
-			RaycastHit2D _hit;
-			for (int i = 0; i < fieldOfView.Length; i++)
-			{
-				_hit = Physics2D.Raycast(transform.position, transform.rotation * fieldOfView[i]);
-				if (_hit.collider == null)
-					continue;
-				if (_hit.collider.TryGetComponent<IPlayerBehaviour>(out _tempTarget))
-				{
-					if(target != _tempTarget)
-					{
-						targetFound = true;
-						target = _tempTarget;
-						TargetTransform = _hit.collider.transform;
-						break;
-					}					
-				}
-			}
-			if (!targetFound)
-			{
-				target = null;
-				TargetTransform = null;
-			}
-			return targetFound;
+			if (linkedEnemy != _unlinkedDetection) return;
+			linkedEnemy = null; 
 		}
 
 		void ILateUpdate.Update()
@@ -59,13 +45,32 @@ namespace LudumDare47
 			if (CastDetection())
 			{
 				onPlayerDetected.Invoke();
-				linkedEnemy.SetTarget(target, TargetTransform);
+				if(linkedEnemy) linkedEnemy.GetComponent<EnemyController>().SetDestination(TargetTransform.position + TargetTransform.up);
 			}
 		}
-		#endregion
 
-		private void OnDrawGizmos()
+		protected override void ResetDetectionBehaviour()
 		{
+			base.ResetDetectionBehaviour();
+			onLevelReseted.Invoke();
+			detectedIDs.Clear(); 
+		}
+        #endregion
+
+        private void OnEnable()
+        {
+            UpdateManager.Instance.Register(this);
+        }
+
+        private void OnDisable()
+        {
+            UpdateManager.Instance.Unregister(this);
+        }
+
+        protected override void OnDrawGizmos()
+		{
+			base.OnDrawGizmos();
+			if (!linkedEnemy) return;  
 			Gizmos.color = Color.red;
 			Gizmos.DrawLine(transform.position, linkedEnemy.transform.position);
 		}

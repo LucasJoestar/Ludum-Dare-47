@@ -12,6 +12,8 @@ namespace LudumDare47
 {
     public interface IPlayerBehaviour
     {
+        void Unparent();
+        void Parent(Transform _parent);
         void Hack(Hackable _hackable);
         void Die();
     }
@@ -58,6 +60,8 @@ namespace LudumDare47
         #region Methods
 
         #region Input Management
+        private ContactFilter2D interactFilter = new ContactFilter2D();
+
         void IInputUpdate.Update()
         {
             if (IsPaused)
@@ -73,17 +77,29 @@ namespace LudumDare47
                 if (isHacking)
                 {
                     if (hacking.UpdateHack())
+                    {
                         isHacking = false;
+                        animator.SetBool(Hack_Anim, false);
+                    }
                 }
                 else
                 {
                     Move(inputs.Move.ReadValue<Vector2>());
 
+                    if (inputs.Forward.triggered)
+                    {
+                        if (GameManager.Instance.TimeCoef >= 1)
+                            GameManager.Instance.SetTimeCoef(GameManager.Instance.TimeCoef == 1 ? 2 : 1);
+                    }
+                    else if (GameManager.Instance.TimeCoef > 1)
+                        GameManager.Instance.SetTimeCoef(Mathf.Min(GameManager.Instance.TimeCoef + GameManager.DeltaTime, 32));
+
                     // Register current state.
                     if (inputs.Action.triggered &&
-                       (collider.OverlapCollider(contactFilter, overlapColliders) > 0) &&
-                        overlapColliders[0].GetComponent<IInteractable>().Interact(this))
+                       (collider.OverlapCollider(interactFilter, overlapColliders) > 0) &&
+                        overlapColliders[0].GetComponentInParent<IInteractable>().Interact(this))
                     {
+                        ghostStates.Add(new PlayerGhostSetPositionState(LevelManager.Instance.LoopTime, rigidbody.position));
                         ghostStates.Add(new PlayerGhostInteractState(LevelManager.Instance.LoopTime));
                     }
                 }
@@ -105,6 +121,7 @@ namespace LudumDare47
         {
             inputs.Move.Enable();
             inputs.Action.Enable();
+            inputs.Forward.Enable();
 
             inputs.Loop.Enable();
             inputs.ResetLoop.Enable();
@@ -114,6 +131,7 @@ namespace LudumDare47
         {
             inputs.Move.Disable();
             inputs.Action.Disable();
+            inputs.Forward.Disable();
 
             inputs.Loop.Disable();
             inputs.ResetLoop.Disable();
@@ -121,6 +139,28 @@ namespace LudumDare47
         #endregion
 
         #region Actions
+        private bool isParent = false;
+        private Transform parent = null;
+
+        public void Parent(Transform _parent)
+        {
+            isParent = true;
+            parent = _parent;
+
+            OnEndLoop();
+        }
+
+        public void Unparent()
+        {
+            if (isParent)
+            {
+                isParent = false;
+                parent = null;
+            }
+        }
+
+        // -----------------------
+
         public void Hack(Hackable _hackable)
         {
             isHacking = true;
@@ -145,11 +185,22 @@ namespace LudumDare47
         /// <summary>
         /// Completely reset behaviour and restart the loop.
         /// </summary>
-        public PlayerGhost OnStartLoop(Vector2 _position)
+        public PlayerGhost OnStartLoop(Vector2 _position, bool _doGetGhost)
         {
-            PlayerGhost _ghost = Instantiate(attributes.ghostPrefab, transform.position, transform.rotation);
-            _ghost.Init(ghostStates);
+            PlayerGhost _ghost;
+            if (_doGetGhost)
+            {
+                ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
+                _ghost = Instantiate(attributes.ghostPrefab, transform.position, transform.rotation);
+                _ghost.Init(ghostStates, interactFilter);
+            }
+            else
+                _ghost = null;
 
+            Unparent();
+            collider.enabled = true;
+
+            ResetMovement();
             SetPosition(_position);
             transform.rotation = Quaternion.identity;
             rigidbody.rotation = 0;
@@ -165,13 +216,19 @@ namespace LudumDare47
         {
             if (isPlayable)
             {
+                UIManager.Instance.FadeOver(true);
+                LevelManager.Instance.Camera.BigGlitch(true);
+                GameManager.Instance.SetTimeCoef(1);
+
                 isPlayable = false;
+                collider.enabled = false;
                 ResetMovement();
-                ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
 
                 if (isHacking)
                 {
                     isHacking = false;
+                    animator.SetBool(Hack_Anim, false);
+
                     hacking.CancelHack();
                 }
             }
@@ -181,7 +238,7 @@ namespace LudumDare47
         #region Velocity
         private float speedCurveVarTime = 0;
 
-        protected override void Move(Vector2 _movement)
+        public override void Move(Vector2 _movement)
         {
             if (!_movement.IsNull())
             {
@@ -269,6 +326,24 @@ namespace LudumDare47
 
         // -----------------------
 
+        protected override void MovableUpdate()
+        {
+            // Parent update position.
+            if (isParent)
+            {
+                Vector2 _position = parent.position;
+                Vector2 _movement = _position - (Vector2)transform.position;
+
+                SetPosition(_position);
+                RefreshPosition();
+
+                lastMovement.Set(_movement.x, _movement.y);
+                OnAppliedVelocity(_movement);
+            }
+            else
+                base.MovableUpdate();
+        }
+
         /// <summary>
         /// Called after velocity has been applied.
         /// </summary>
@@ -343,6 +418,10 @@ namespace LudumDare47
 
             EnableInputs();
             ghostStates.Add(new PlayerGhostStopState(0, rigidbody.position));
+
+            interactFilter.layerMask = attributes.InteractMask;
+            interactFilter.useLayerMask = true;
+            interactFilter.useTriggers = true;
         }
         #endregion
 

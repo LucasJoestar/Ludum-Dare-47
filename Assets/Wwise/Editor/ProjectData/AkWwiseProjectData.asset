@@ -20,7 +20,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 89dcb199dcfb4a4e9cf9ff2f1ecac141
     GuidInternal: 
-    m_lastTime: -8585997878041421130
+    m_lastTime: -8585996940339695255
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 5630881b56e9d34f93562fdc99b2243d
     GuidInternal: 
-    m_lastTime: -8585997878042069405
+    m_lastTime: -8585996940344312905
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 8fc39af544d01943828f3bd7823be8ea
     GuidInternal: 
-    m_lastTime: -8585996993351351782
+    m_lastTime: -8585996940339725173
     List:
     - name: the_one_true_bank
       guid: 25d99a93b886b54d98cb726c18688f57
@@ -68,8 +68,20 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: bbf7381479b6154ba294c3217bd19744
     GuidInternal: 
-    m_lastTime: -8585996994066343885
+    m_lastTime: -8585996940346437223
     List:
+    - name: amb
+      guid: 6f11dc2c4934a041a766a3308533dcfe
+      id: 1117531639
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: amb
+        ObjectType: 4
+      Path: Default Work Unit\amb
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: fast_forward
       guid: 9ceb8f7bc37af04cbe90f32864f09777
       id: 3461000837
@@ -131,6 +143,20 @@ MonoBehaviour:
       - ElementName: Play_alert_sound
         ObjectType: 3
       Path: Default Work Unit\oneshot\Play_alert_sound
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_amb_loop
+      guid: 23d6b2f475f62747a53f1a79faec7d2f
+      id: 3787131803
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: amb
+        ObjectType: 4
+      - ElementName: Play_amb_loop
+        ObjectType: 3
+      Path: Default Work Unit\amb\Play_amb_loop
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -356,6 +382,20 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Stop_amb_loop
+      guid: 59ad6d067aef334c93dd7ec2bab369e3
+      id: 3450745217
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: amb
+        ObjectType: 4
+      - ElementName: Stop_amb_loop
+        ObjectType: 3
+      Path: Default Work Unit\amb\Stop_amb_loop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Stop_fast_forward
       guid: 3f5a314da8f63047b78e94f951775e8c
       id: 2598502896
@@ -392,7 +432,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: c0dd30b0cfb9894c9a72981bde2342ad
     GuidInternal: 
-    m_lastTime: -8585997878041939749
+    m_lastTime: -8585996940346437223
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -402,7 +442,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 6bd14fbaddc22344aef9eb7f9e83f645
     GuidInternal: 
-    m_lastTime: -8585997000255412925
+    m_lastTime: -8585996940339715204
     List:
     - name: fast_forward
       guid: d6618427f758034caf133a9d8553bd60
@@ -474,7 +514,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f1005e962bc9914884b7c270fb45afad
     GuidInternal: 
-    m_lastTime: -8585997878041859961
+    m_lastTime: -8585996940339705227
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -484,12 +524,19 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 97da1151b248264c9625f4add72b370e
     GuidInternal: 
-    m_lastTime: -8585997878041191749
+    m_lastTime: -8585996940339705227
     List: []
   ExpandedItems:
   - /ludum_47_lucas
   - /ludum_47_lucas/Events
   - /ludum_47_lucas/Events/Default Work Unit
+  - /ludum_47_lucas/Events/Default Work Unit/amb
   - /ludum_47_lucas/Events/Default Work Unit/fast_forward
+  - /ludum_47_lucas/Events/Default Work Unit/hacking loop
+  - /ludum_47_lucas/Events/Default Work Unit/oneshot
+  - /ludum_47_lucas/States
+  - /ludum_47_lucas/States/Default Work Unit
+  - /ludum_47_lucas/States/Default Work Unit/fast_forward
+  - /ludum_47_lucas/States/Default Work Unit/is_a_ghost
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
