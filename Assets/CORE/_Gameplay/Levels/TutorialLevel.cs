@@ -61,6 +61,8 @@ namespace LudumDare47
 
             UIManager.Instance.SwitchBlackBars();
             UIManager.Instance.DisplayLoopUI(false);
+
+            AkSoundEngine.PostEvent(doAmbiance_ID, gameObject);
         }
         #endregion
     }
