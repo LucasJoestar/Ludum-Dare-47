@@ -19,7 +19,15 @@ namespace LudumDare47
 		[SerializeField] private UnityEvent onLevelReseted = new UnityEvent();
 		[SerializeField] private EnemyDetection linkedEnemy = null;
 
-		private List<int> detectedIDs = new List<int>(); 
+		private List<int> detectedIDs = new List<int>();
+
+		// ----------------------------------------------------
+
+		private static readonly uint play_alarme_camera_ID = AkSoundEngine.GetIDFromString("Play_alarme_camera");
+
+		// ----------------------------------------------------
+
+
 		#endregion
 
 		#region Methods
@@ -55,9 +63,15 @@ namespace LudumDare47
 			onLevelReseted.Invoke();
 			detectedIDs.Clear(); 
 		}
-        #endregion
+		#endregion
 
-        private void OnEnable()
+		// ----------------------------------------------------
+
+		protected override void PlayDetectionSound() => AkSoundEngine.PostEvent(play_alarme_camera_ID, gameObject);
+
+		// ----------------------------------------------------
+
+		private void OnEnable()
         {
             UpdateManager.Instance.Register(this);
         }

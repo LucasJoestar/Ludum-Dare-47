@@ -16,6 +16,9 @@ namespace LudumDare47
 
 		[SerializeField, ReadOnly] private Door linkedDoor = null;
 		public bool IsActivated { get; private set; } = false;
+
+        [SerializeField] private bool isSwitch = false;
+        [SerializeField] private bool isLever = false;
         #endregion
 
         #region Methods
@@ -33,6 +36,11 @@ namespace LudumDare47
 		public override void OnEnter(GameObject _gameObject)
 		{
             inAmount++;
+            if (isSwitch)
+                AkSoundEngine.PostEvent(Interactable.Switch_ID, gameObject);
+            else if (isLever)
+                AkSoundEngine.PostEvent(Interactable.Lever_ID, gameObject);
+
             if (inAmount == 1)
             {
                 IsActivated = true;

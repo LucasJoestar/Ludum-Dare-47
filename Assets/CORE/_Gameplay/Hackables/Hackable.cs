@@ -41,6 +41,12 @@ namespace LudumDare47
         [SerializeField, ReadOnly] private bool isHacked = false;
         [SerializeField, ReadOnly] private bool isBeingHack = false;
         [SerializeField, ReadOnly] private float hackProgression = 0;
+
+        // -----------------------
+
+        private readonly uint hackLoopStart_ID = AkSoundEngine.GetIDFromString("Play_hacking_loop");
+        private readonly uint hackLoopEnd_ID = AkSoundEngine.GetIDFromString("Stop_hacking_loop");
+        private readonly uint hackValidate_ID = AkSoundEngine.GetIDFromString("Play_hacking_validation");
         #endregion
 
         #region Methods
@@ -71,6 +77,7 @@ namespace LudumDare47
                 gauge.fillAmount = 0;
 
                 _player.Hack(this);
+                AkSoundEngine.PostEvent(hackLoopStart_ID, gameObject);
                 return true;
             }
             return false;
@@ -86,6 +93,8 @@ namespace LudumDare47
 
                 // Hide Hack UI.
                 canvas.SetActive(false);
+                AkSoundEngine.PostEvent(hackLoopEnd_ID, gameObject);
+                AkSoundEngine.PostEvent(hackValidate_ID, gameObject);
 
                 isHacked = true;
                 trigger.enabled = true;
@@ -107,6 +116,7 @@ namespace LudumDare47
 
                 // Hide Hack UI.
                 canvas.SetActive(false);
+                AkSoundEngine.PostEvent(hackLoopEnd_ID, gameObject);
             }
         }
         #endregion

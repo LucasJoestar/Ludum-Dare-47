@@ -16,6 +16,10 @@ namespace LudumDare47
 
         [SerializeField, Required] private GameObject originalSprite = null;
         [SerializeField, Required] private GameObject hackSprite = null;
+
+        // -----------------------
+
+        private readonly uint explosion_ID = AkSoundEngine.GetIDFromString("Play_explosion_plant");
         #endregion
 
         #region Methods
@@ -42,6 +46,7 @@ namespace LudumDare47
                 _enemy.Die();
 
                 //Instantiate(ProgramSettings.I.PlantExplosion, transform.position, Quaternion.identity);
+                AkSoundEngine.PostEvent(explosion_ID, gameObject);
                 LevelManager.Instance.PlayDialog(ProgramSettings.I.plantDialogID);
             }
         }
