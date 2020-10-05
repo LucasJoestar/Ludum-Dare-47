@@ -78,16 +78,7 @@ namespace LudumDare47
 			
 			if (controller.NavAgent.IsMoving)
 			{
-				if (!isInPatrol)
-				{
-					return;
-					if(controller.Detection.TargetTransform)
-					{
-						if (Vector2.Distance(controller.Detection.TargetTransform.position, controller.NavAgent.LastPosition) > controller.NavAgent.Collider.bounds.size.x)
-							controller.NavAgent.SetDestination(controller.Detection.TargetTransform.position);
-					}
-				}
-				else if (controller.Detection.CastDetection())
+				if ((isInPatrol || controller.Detection.TargetTransform == null) && controller.Detection.CastDetection())
 				{
 					// stop the agent here
 					stateMachine.GoToState(this, StateType.Process);
