@@ -34,6 +34,10 @@ namespace LudumDare47
         // -----------------------
 
         private readonly uint loop_ID = AkSoundEngine.GetIDFromString("Play_rewind_reset_");
+        private readonly uint rewind_ID = AkSoundEngine.GetIDFromString("Play_reset_fin_");
+
+        private readonly uint doForward_ID = AkSoundEngine.GetIDFromString("Play_start_fastforward");
+        private readonly uint noForward_ID = AkSoundEngine.GetIDFromString("Stop_fast_forward");
         #endregion
 
         #region Methods
@@ -59,11 +63,20 @@ namespace LudumDare47
             AkSoundEngine.PostEvent(loop_ID, gameObject);
         }
 
-        public void Glitch() => animator.SetTrigger(glitch_Anim);
+        public void Glitch()
+        {
+            animator.SetTrigger(glitch_Anim);
+            AkSoundEngine.PostEvent(loop_ID, gameObject);
+        }
 
         public void BigGlitch(bool _isBigGlitch) => animator.SetBool(bigGlitch_Anim, _isBigGlitch);
 
-        public void Forward(bool _isForward) => animator.SetBool(forward_Anim, _isForward);
+        public void Forward(bool _isForward)
+        {
+            animator.SetBool(forward_Anim, _isForward);
+            AkSoundEngine.PostEvent(_isForward ? doForward_ID : noForward_ID, gameObject);
+            AkSoundEngine.SetState(GameManager.Forward_ID, _isForward ? GameManager.DoForward_ID : GameManager.NoForward_ID);
+        }
 
         // -----------------------
 

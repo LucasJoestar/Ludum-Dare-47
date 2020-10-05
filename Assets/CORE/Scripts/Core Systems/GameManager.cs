@@ -47,6 +47,16 @@ namespace LudumDare47
         public float TimeCoef => timeCoef;
 
         public static float DeltaTime => Time.deltaTime * Instance.timeCoef;
+
+        // -----------------------
+
+        public static readonly uint Forward_ID = AkSoundEngine.GetIDFromString("fast_forward");
+        public static readonly uint DoForward_ID = AkSoundEngine.GetIDFromString("is_fast_forward");
+        public static readonly uint NoForward_ID = AkSoundEngine.GetIDFromString("is_not");
+
+        public static readonly uint Ghost_ID = AkSoundEngine.GetIDFromString("is_a_ghost");
+        public static readonly uint IsGhost_ID = AkSoundEngine.GetIDFromString("yes_ghost");
+        public static readonly uint NoGhost_ID = AkSoundEngine.GetIDFromString("no_its_not");
         #endregion
 
         #region Methods

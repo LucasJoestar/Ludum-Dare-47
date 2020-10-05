@@ -46,7 +46,7 @@ namespace LudumDare47
 
         private readonly uint hackLoopStart_ID = AkSoundEngine.GetIDFromString("Play_hacking_loop");
         private readonly uint hackLoopEnd_ID = AkSoundEngine.GetIDFromString("Stop_hacking_loop");
-        private readonly uint hackValidate_ID = AkSoundEngine.GetIDFromString("Play_hacking_validation");
+        private readonly uint hackValidate_ID = AkSoundEngine.GetIDFromString("Play_hack_validation");
         #endregion
 
         #region Methods
