@@ -57,8 +57,8 @@
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="is_fast_forward" ID="{905D4212-09F4-4560-9E82-EADA82D21F5E}"/>
-						<CurrentStateRef Name="no_its_not" ID="{23423769-C0DE-4FE3-8F9E-BD0956AB7E61}"/>
+						<CurrentStateRef Name="None" ID="{5B433409-204B-4639-B3ED-A7CBA570814B}"/>
+						<CurrentStateRef Name="None" ID="{66869F33-9597-4CA9-B234-87426DCB8395}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>

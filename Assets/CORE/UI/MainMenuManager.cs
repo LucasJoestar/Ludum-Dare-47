@@ -14,7 +14,7 @@ namespace LudumDare47
     {
 		#region Fields / Properties
 		private static Resolution[] resolutions ;
-		private static readonly uint sound_volume_id = AkSoundEngine.GetIDFromString("sound_volume");
+		private static readonly uint sound_volume_id = AkSoundEngine.GetIDFromString("sound_level");
 		[HorizontalLine(1, order = 0), Section("OPTIONS", order = 1)]
 		[SerializeField] private TextMeshProUGUI resolutionDisplayer = null;
 		[SerializeField] private UnityEngine.UI.Toggle fullScreenCheckMark = null; 
@@ -24,9 +24,12 @@ namespace LudumDare47
 		#region Methods
 		public void StartGame() => GameManager.Instance.LoadNextLevel();
 
-		public void QuitGame() => Application.Quit(); 
+		public void QuitGame() => Application.Quit();
 
-		public void SetSoundValue(float _value) => AkSoundEngine.SetRTPCValue(sound_volume_id, _value);
+		public void SetSoundValue(float _value)
+		{
+			AkSoundEngine.SetRTPCValue(sound_volume_id, _value);
+		}
 
 		public void SelectNextRes()
 		{
