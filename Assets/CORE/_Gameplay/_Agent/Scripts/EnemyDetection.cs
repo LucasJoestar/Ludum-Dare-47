@@ -23,8 +23,6 @@ namespace LudumDare47
 
 		protected IPlayerBehaviour target;
 		public IPlayerBehaviour Target => target;
-
-        public bool 
         #endregion
 
         #region Methods
