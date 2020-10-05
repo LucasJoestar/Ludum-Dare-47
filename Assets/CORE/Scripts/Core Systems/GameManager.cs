@@ -77,7 +77,8 @@ namespace LudumDare47
                 SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
 
             levelIndex++;
-            if (levelIndex == SceneManager.sceneCount)
+
+            if (levelIndex == SceneManager.sceneCountInBuildSettings)
                 levelIndex = 1;
 
             SceneManager.LoadScene(levelIndex, LoadSceneMode.Additive);
