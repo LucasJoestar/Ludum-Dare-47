@@ -50,7 +50,12 @@
 							<Position X="3" Y="2"/>
 						</Module>
 					</ModuleList>
-					<RTPCValueList ShowAll="true"/>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="sound_level" ID="{4852844B-DA55-4C98-B616-B7252D6DD6B9}"/>
+							<Value>100</Value>
+						</RTPCValue>
+					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
 						<CurrentStateRef Name="is_fast_forward" ID="{905D4212-09F4-4560-9E82-EADA82D21F5E}"/>
 						<CurrentStateRef Name="no_its_not" ID="{23423769-C0DE-4FE3-8F9E-BD0956AB7E61}"/>
