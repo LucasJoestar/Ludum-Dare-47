@@ -154,6 +154,15 @@ namespace LudumDare47
             parent = _parent;
         }
 
+        public void Unparent()
+        {
+            if (isParent)
+            {
+                isParent = false;
+                parent = null;
+            }
+        }
+
         // -----------------------
 
         /// <summary>
