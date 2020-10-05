@@ -55,7 +55,7 @@ namespace LudumDare47
         public void SetTimeCoef(float _value)
         {
             timeCoef = _value;
-            UIManager.Instance.UpdateForwardIcon(_value > 1);
+            UIManager.Instance.UpdateForwardIcon(_value);
             LevelManager.Instance.UpdateTimeCoef(_value);
         }
         #endregion

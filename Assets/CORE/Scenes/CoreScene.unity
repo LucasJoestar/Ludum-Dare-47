@@ -1162,7 +1162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1090124066
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2002,6 +2002,7 @@ MonoBehaviour:
   loopAnchor: {fileID: 1011865635}
   loopGaugeParent: {fileID: 1546601706}
   loopGauge: {fileID: 2027922898}
+  forwardText: {fileID: 587376477}
   forwardImage: {fileID: 1090124065}
   loopGaugeImage: {fileID: 903370365}
   loopTime: {fileID: 585623383}
