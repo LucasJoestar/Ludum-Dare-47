@@ -57,6 +57,8 @@ namespace LudumDare47
         }
 
         #region Animation
+        private bool isForward = false;
+
         public void Loop()
         {
             animator.SetTrigger(loop_Anim);
@@ -73,9 +75,14 @@ namespace LudumDare47
 
         public void Forward(bool _isForward)
         {
-            animator.SetBool(forward_Anim, _isForward);
-            AkSoundEngine.PostEvent(_isForward ? doForward_ID : noForward_ID, gameObject);
-            AkSoundEngine.SetState(GameManager.Forward_ID, _isForward ? GameManager.DoForward_ID : GameManager.NoForward_ID);
+            if (isForward != _isForward)
+            {
+                isForward = _isForward;
+                animator.SetBool(forward_Anim, _isForward);
+
+                AkSoundEngine.PostEvent(_isForward ? doForward_ID : noForward_ID, gameObject);
+                AkSoundEngine.SetState(GameManager.Forward_ID, _isForward ? GameManager.DoForward_ID : GameManager.NoForward_ID);
+            }
         }
 
         // -----------------------

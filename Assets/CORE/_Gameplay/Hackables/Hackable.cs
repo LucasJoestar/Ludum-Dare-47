@@ -27,6 +27,7 @@ namespace LudumDare47
         [Space()]
 
         [SerializeField, Required] protected GameObject hackLight = null;
+        [SerializeField, Required] protected GameObject info = null;
 
         // -----------------------
 
@@ -60,6 +61,7 @@ namespace LudumDare47
             interactable.enabled = true;
             trigger.enabled = false;
 
+            info.SetActive(true);
             hackLight.SetActive(false);
         }
         #endregion
@@ -100,6 +102,7 @@ namespace LudumDare47
                 trigger.enabled = true;
                 interactable.enabled = false;
 
+                info.SetActive(false);
                 hackLight.SetActive(true);
                 return true;
             }
