@@ -23,10 +23,17 @@ namespace LudumDare47
 
 		protected IPlayerBehaviour target;
 		public IPlayerBehaviour Target => target;
-        #endregion
 
-        #region Methods
-        private readonly static RaycastHit2D[] detectionCast = new RaycastHit2D[6];
+		// ----------------------------------------------------
+
+		private static readonly uint play_alert_sound_ID = AkSoundEngine.GetIDFromString("Play_alert_sound");
+
+		// ----------------------------------------------------
+
+		#endregion
+
+		#region Methods
+		private readonly static RaycastHit2D[] detectionCast = new RaycastHit2D[6];
 
 		protected virtual void GenerateFOV()
 		{
@@ -51,7 +58,9 @@ namespace LudumDare47
                 {
                     if (detectionCast[_j].collider.TryGetComponent(out PlayerController _player))
                     {
-                        target = _player;
+						if(target == null) 
+							PlayDetectionSound();
+						target = _player;
                         TargetTransform = detectionCast[_j].collider.transform;
                         return true;
                     }
@@ -69,7 +78,8 @@ namespace LudumDare47
             {
                 target = _ghost;
                 TargetTransform = _ghost.transform;
-                return true;
+				PlayDetectionSound(); 
+				return true;
             }
 
 			return false; 
@@ -87,6 +97,12 @@ namespace LudumDare47
 		{
 			SetTarget(null, null); 
 		}
+
+		// ----------------------------------------------------
+
+		protected virtual void PlayDetectionSound() => AkSoundEngine.PostEvent(play_alert_sound_ID, gameObject);
+
+		// ----------------------------------------------------
 
 		protected virtual void Start()
 		{

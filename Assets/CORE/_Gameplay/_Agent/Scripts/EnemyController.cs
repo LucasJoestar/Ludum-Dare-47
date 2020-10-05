@@ -51,12 +51,17 @@ namespace LudumDare47
 		#endregion
 
 		#region Methods
+		// ----------------------------------------------------
+
 		public void SetMovementAnimation(bool _isMoving) => animator.SetBool(Moving_Anim, _isMoving);
+
 		public void SetCatchAnimation()
 		{
 			IsInAnimation = true; 
 			animator.SetTrigger(Catch_Anim);
 		}
+
+		// ----------------------------------------------------
 
 		private void StartBehaviour()
 		{
@@ -64,11 +69,15 @@ namespace LudumDare47
 			stateMachine.StartFSM(this); 
 		}
 
+		// ----------------------------------------------------
+
 		public void ReturnToOriginalPosition() => destination = NavAgent.InitialPosition; 
 
 		public void ResetDestination() => destination = Vector2.zero;
 
-		public void SetDestination(Vector2 _destination) => destination = _destination; 
+		public void SetDestination(Vector2 _destination) => destination = _destination;
+
+		// ----------------------------------------------------
 
 		public void Die()
 		{
@@ -76,6 +85,8 @@ namespace LudumDare47
 			stateMachine.StopFSM();
 			gameObject.SetActive(false); 
 		}
+
+		// ----------------------------------------------------
 
 		private void Start()
 		{
