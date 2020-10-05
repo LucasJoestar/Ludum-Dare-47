@@ -129,6 +129,8 @@ namespace LudumDare47
         {
             isParent = true;
             parent = _parent;
+
+            OnEndLoop();
         }
 
         public void Unparent()
@@ -170,10 +172,14 @@ namespace LudumDare47
         /// </summary>
         public PlayerGhost OnStartLoop(Vector2 _position)
         {
+            ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
             PlayerGhost _ghost = Instantiate(attributes.ghostPrefab, transform.position, transform.rotation);
             _ghost.Init(ghostStates);
 
             Unparent();
+            collider.enabled = true;
+
+            ResetMovement();
             SetPosition(_position);
             transform.rotation = Quaternion.identity;
             rigidbody.rotation = 0;
@@ -189,9 +195,11 @@ namespace LudumDare47
         {
             if (isPlayable)
             {
+                UIManager.Instance.FadeOver(true);
+
                 isPlayable = false;
+                collider.enabled = false;
                 ResetMovement();
-                ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
 
                 if (isHacking)
                 {
@@ -297,9 +305,18 @@ namespace LudumDare47
         {
             // Parent update position.
             if (isParent)
-                SetPosition(parent.position);
+            {
+                Vector2 _position = parent.position;
+                Vector2 _movement = _position - (Vector2)transform.position;
 
-            base.MovableUpdate();
+                SetPosition(_position);
+                RefreshPosition();
+
+                lastMovement.Set(_movement.x, _movement.y);
+                OnAppliedVelocity(_movement);
+            }
+            else
+                base.MovableUpdate();
         }
 
         /// <summary>

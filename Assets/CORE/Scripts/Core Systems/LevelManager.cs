@@ -30,7 +30,7 @@ namespace LudumDare47
         [HorizontalLine(1)]
 
         [SerializeField] protected int startDialogID = 0;
-        [SerializeField] private float loopDuration = 30;
+        [SerializeField] protected float loopDuration = 30;
 
         [Space]
 
@@ -189,6 +189,7 @@ namespace LudumDare47
                 ghosts[_i].ResetBehaviour(playerStartPosition);
 
             UIManager.Instance.UpdateGhostAmount(ghosts.Count);
+            UIManager.Instance.FadeOver(false);
 
             // Reset all behaviours.
             for (int _i = 0; _i < resetables.Count; _i++)
@@ -204,6 +205,8 @@ namespace LudumDare47
                 Destroy(ghosts[_i].gameObject);
 
             ghosts.Clear();
+
+            UIManager.Instance.ResetUI(loopDuration);
             StartLoop();
         }
         #endregion
@@ -261,6 +264,7 @@ namespace LudumDare47
                 {
                     player.SetInDialog(false);
                     GameManager.Instance.TimeCoef = 1;
+                    UIManager.Instance.DisplayLoopUI(true);
                 }
                 else
                     isDialogAutomatic = false;
@@ -271,17 +275,27 @@ namespace LudumDare47
         #endregion
 
         #region Monobehaviour
-        protected virtual void Start()
+        private void Awake()
         {
             GameManager.Instance.LevelManager = this;
+            UpdateManager.Instance.Register(this);
+        }
+
+        protected virtual void Start()
+        {
             GameManager.Instance.UpdateLoadedScene();
 
-            UpdateManager.Instance.Register(this);
             UIManager.Instance.FadeToBlack(false);
+            UIManager.Instance.ResetUI(loopDuration);
 
             playerStartPosition = player.transform.position;
             if (startDialogID != 0)
+            {
                 PlayDialog(startDialogID);
+                UIManager.Instance.DisplayLoopUI(false);
+            }
+            else
+                UIManager.Instance.DisplayLoopUI(true);
         }
 
         protected virtual void OnDisable()
