@@ -16,7 +16,7 @@ TextureImporter:
     second: Agent_Dead_Chair
   - first:
       213: 5322675195480508898
-    second: SpriteSheetAgents_4
+    second: Hack_01
   - first:
       213: -8798790879011725894
     second: Agent_Dead_Distributor
@@ -26,6 +26,9 @@ TextureImporter:
   - first:
       213: 264660290988705861
     second: Door
+  - first:
+      213: -1469119178732734122
+    second: Hack_02
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,7 +185,7 @@ TextureImporter:
         width: 433
         height: 391
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -203,7 +206,7 @@ TextureImporter:
         width: 721
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -224,7 +227,7 @@ TextureImporter:
         width: 550
         height: 539
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -245,7 +248,7 @@ TextureImporter:
         width: 1048
         height: 127
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,6 +256,48 @@ TextureImporter:
       bones: []
       spriteID: 5488886e1234ca300800000000000000
       internalID: 264660290988705861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hack_01
+      rect:
+        serializedVersion: 2
+        x: 1929
+        y: 3067
+        width: 166
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e90669b3e0fdd940800000000000000
+      internalID: 5322675195480508898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hack_02
+      rect:
+        serializedVersion: 2
+        x: 2294
+        y: 3091
+        width: 127
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 659fbe204e3ac9be0800000000000000
+      internalID: -1469119178732734122
       vertices: []
       indices: 
       edges: []

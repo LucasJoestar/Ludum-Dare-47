@@ -42,12 +42,20 @@
 							<Position X="2" Y="2"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="Play_talk" ID="{DD950ACE-4E6A-483C-9565-6CAF575A73DB}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Stop_amb_loop" ID="{066DAD59-EF7A-4C33-93DD-7EC2BAB369E3}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
 							<Position X="3" Y="1"/>
 						</Module>
 						<Module>
 							<ObjectRef Name="Play_reset_fin_" ID="{8F35D726-7D29-4F98-BBD6-774EAE0F4D2A}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
 							<Position X="3" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Stop_talk" ID="{CA7C0607-8DD4-4800-A9DC-DFFB20F1450F}" WorkUnitID="{1438F7BB-B679-4B15-A294-C3217BD19744}"/>
+							<Position X="4" Y="0"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">

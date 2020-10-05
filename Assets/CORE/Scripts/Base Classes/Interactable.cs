@@ -21,6 +21,8 @@ namespace LudumDare47
         [SerializeField] private bool isSwitch = false;
         [SerializeField] private bool isLever = false;
 
+        [SerializeField, Required] protected GameObject info = null;
+
         // -----------------------
 
         public static readonly uint Switch_ID = AkSoundEngine.GetIDFromString("Play_door_pressure_plate");
@@ -40,6 +42,7 @@ namespace LudumDare47
             {
                 isInteract = true;
                 OnInteract.Invoke();
+                info.SetActive(false);
 
                 if (isSwitch)
                     AkSoundEngine.PostEvent(Switch_ID, gameObject);
@@ -56,6 +59,7 @@ namespace LudumDare47
             if (isInteract)
             {
                 isInteract = false;
+                info.SetActive(true);
                 OnReset.Invoke();
             }
         }
