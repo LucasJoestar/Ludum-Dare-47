@@ -60,6 +60,8 @@ namespace LudumDare47
         #region Methods
 
         #region Input Management
+        private ContactFilter2D interactFilter = new ContactFilter2D();
+
         void IInputUpdate.Update()
         {
             if (IsPaused)
@@ -81,16 +83,20 @@ namespace LudumDare47
                 {
                     Move(inputs.Move.ReadValue<Vector2>());
 
-                    if (inputs.Forward.triggered && (GameManager.Instance.TimeCoef >= 1))
+                    if (inputs.Forward.triggered)
                     {
-                        GameManager.Instance.SetTimeCoef(GameManager.Instance.TimeCoef == 1 ? 2 : 1);
+                        if (GameManager.Instance.TimeCoef >= 1)
+                            GameManager.Instance.SetTimeCoef(GameManager.Instance.TimeCoef == 1 ? 2 : 1);
                     }
+                    else if (GameManager.Instance.TimeCoef > 1)
+                        GameManager.Instance.SetTimeCoef(Mathf.Min(GameManager.Instance.TimeCoef + GameManager.DeltaTime, 32));
 
                     // Register current state.
                     if (inputs.Action.triggered &&
-                       (collider.OverlapCollider(contactFilter, overlapColliders) > 0) &&
+                       (collider.OverlapCollider(interactFilter, overlapColliders) > 0) &&
                         overlapColliders[0].GetComponent<IInteractable>().Interact(this))
                     {
+                        ghostStates.Add(new PlayerGhostSetPositionState(LevelManager.Instance.LoopTime, rigidbody.position));
                         ghostStates.Add(new PlayerGhostInteractState(LevelManager.Instance.LoopTime));
                     }
                 }
@@ -183,7 +189,7 @@ namespace LudumDare47
             {
                 ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
                 _ghost = Instantiate(attributes.ghostPrefab, transform.position, transform.rotation);
-                _ghost.Init(ghostStates);
+                _ghost.Init(ghostStates, interactFilter);
             }
             else
                 _ghost = null;
@@ -406,6 +412,10 @@ namespace LudumDare47
 
             EnableInputs();
             ghostStates.Add(new PlayerGhostStopState(0, rigidbody.position));
+
+            interactFilter.layerMask = attributes.InteractMask;
+            interactFilter.useLayerMask = true;
+            interactFilter.useTriggers = true;
         }
         #endregion
 

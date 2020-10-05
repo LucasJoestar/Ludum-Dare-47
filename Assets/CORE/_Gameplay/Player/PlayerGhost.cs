@@ -165,12 +165,15 @@ namespace LudumDare47
 
         // -----------------------
 
+        private ContactFilter2D interactFilter = new ContactFilter2D();
+
         /// <summary>
         /// Interact with whatever is close to the ghost.
         /// </summary>
         public bool Interact()
         {
-            if (collider.OverlapCollider(contactFilter, overlapColliders) > 0)
+            Debug.LogError("Try Interact");
+            if (collider.OverlapCollider(interactFilter, overlapColliders) > 0)
                 return overlapColliders[0].GetComponent<IInteractable>().Interact(this);
 
             return false;
@@ -193,7 +196,11 @@ namespace LudumDare47
         #endregion
 
         #region State
-        public void Init(List<IPlayerGhostState> _states) => states = _states.ToArray();
+        public void Init(List<IPlayerGhostState> _states, ContactFilter2D _filter)
+        {
+            states = _states.ToArray();
+            interactFilter = _filter;
+        }
 
         // -----------------------
 
