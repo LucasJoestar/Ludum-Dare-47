@@ -28,6 +28,7 @@ namespace LudumDare47
         private readonly int loop_Anim = Animator.StringToHash("Loop");
         private readonly int glitch_Anim = Animator.StringToHash("Glitch");
         private readonly int forward_Anim = Animator.StringToHash("IsForward");
+        private readonly int bigGlitch_Anim = Animator.StringToHash("IsBigGlitch");
         #endregion
 
         #region Methods
@@ -50,6 +51,8 @@ namespace LudumDare47
         public void Loop() => animator.SetTrigger(loop_Anim);
 
         public void Glitch() => animator.SetTrigger(glitch_Anim);
+
+        public void BigGlitch(bool _isBigGlitch) => animator.SetBool(bigGlitch_Anim, _isBigGlitch);
 
         public void Forward(bool _isForward) => animator.SetBool(forward_Anim, _isForward);
 

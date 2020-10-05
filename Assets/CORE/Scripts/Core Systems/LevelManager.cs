@@ -25,6 +25,8 @@ namespace LudumDare47
         [SerializeField, Required] protected new CameraBehaviour camera = null;
         [SerializeField, Required] protected PlayerController player = null;
 
+        public CameraBehaviour Camera => camera;
+
         // -----------------------
 
         [HorizontalLine(1)]
@@ -172,7 +174,11 @@ namespace LudumDare47
             // Do stop enemies ?
         }
 
-        public void StartLoop() => camera.Loop();
+        public void StartLoop()
+        {
+            camera.BigGlitch(false);
+            camera.Loop();
+        }
 
         /// <summary>
         /// Restart this level loop.

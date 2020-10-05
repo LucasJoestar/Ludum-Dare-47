@@ -196,6 +196,7 @@ namespace LudumDare47
             if (isPlayable)
             {
                 UIManager.Instance.FadeOver(true);
+                LevelManager.Instance.Camera.BigGlitch(true);
 
                 isPlayable = false;
                 collider.enabled = false;
