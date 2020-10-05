@@ -244,6 +244,8 @@ namespace LudumDare47
         #endregion
 
         #region Core Movements
+        public void PlayFootsteps() => AkSoundEngine.PostEvent(Movable.Foosteps_ID, gameObject);
+
         /// <summary>
         /// Move the ghost with a certain movement.
         /// </summary>

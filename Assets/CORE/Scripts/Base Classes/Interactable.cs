@@ -17,6 +17,14 @@ namespace LudumDare47
 
         [SerializeField] private UnityEvent OnInteract = new UnityEvent();
         [SerializeField] private UnityEvent OnReset = new UnityEvent();
+
+        [SerializeField] private bool isSwitch = false;
+        [SerializeField] private bool isLever = false;
+
+        // -----------------------
+
+        public static readonly uint Switch_ID = AkSoundEngine.GetIDFromString("Play_door_pressure_plate");
+        public static readonly uint Lever_ID = AkSoundEngine.GetIDFromString("Play_lever_pull");
         #endregion
 
         #region Methods
@@ -32,6 +40,12 @@ namespace LudumDare47
             {
                 isInteract = true;
                 OnInteract.Invoke();
+
+                if (isSwitch)
+                    AkSoundEngine.PostEvent(Switch_ID, gameObject);
+                else if (isLever)
+                    AkSoundEngine.PostEvent(Lever_ID, gameObject);
+
                 return true;
             }
             return false;

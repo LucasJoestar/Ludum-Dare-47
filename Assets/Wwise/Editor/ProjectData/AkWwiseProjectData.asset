@@ -530,8 +530,6 @@ MonoBehaviour:
   - /ludum_47_lucas
   - /ludum_47_lucas/Events
   - /ludum_47_lucas/Events/Default Work Unit
-  - /ludum_47_lucas/Events/Default Work Unit/amb
-  - /ludum_47_lucas/Events/Default Work Unit/fast_forward
   - /ludum_47_lucas/Events/Default Work Unit/hacking loop
   - /ludum_47_lucas/Events/Default Work Unit/oneshot
   autoPopulateEnabled: 1

@@ -55,6 +55,10 @@ namespace LudumDare47
         public static readonly int Moving_Anim = Animator.StringToHash("IsMoving");
         public static readonly int Hack_Anim = Animator.StringToHash("Hack");
         public static readonly int Die_Anim = Animator.StringToHash("Die");
+
+        // -----------------------
+
+        private readonly uint death_ID = AkSoundEngine.GetIDFromString("Play_death_punch_player");
         #endregion
 
         #region Methods
@@ -173,7 +177,9 @@ namespace LudumDare47
         {
             // Set animation and die.
             OnEndLoop();
+
             animator.SetTrigger(Die_Anim);
+            AkSoundEngine.PostEvent(death_ID, gameObject);
         }
         #endregion
 
@@ -325,6 +331,8 @@ namespace LudumDare47
         private Vector2 moveStartPosition = new Vector2();
 
         // -----------------------
+
+        public void PlayFootsteps() => AkSoundEngine.PostEvent(Movable.Foosteps_ID, gameObject);
 
         protected override void MovableUpdate()
         {

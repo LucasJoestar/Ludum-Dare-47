@@ -26,6 +26,15 @@ namespace LudumDare47
 		[SerializeField, Required] private new Rigidbody2D rigidbody = null;
         [SerializeField, Required] private Vector2 openPosition = new Vector2();
         [SerializeField] private float swichDuration = 1;
+
+        [HorizontalLine(1)]
+
+        [SerializeField] private bool isMettalic = false;
+
+        // -----------------------
+
+        public static readonly uint mettalic_ID = AkSoundEngine.GetIDFromString("Play_prison_door");
+        public static readonly uint sas_ID = AkSoundEngine.GetIDFromString("Play_sas_open");
         #endregion
 
         #region Methods
@@ -85,6 +94,7 @@ namespace LudumDare47
 		{
             if (rigidbody.position != openPosition)
             {
+                AkSoundEngine.PostEvent(isMettalic ? mettalic_ID : sas_ID, gameObject);
                 isSwitching = true;
                 swichVar = 0;
             }
@@ -94,6 +104,7 @@ namespace LudumDare47
 		{
             if (rigidbody.position != closePosition)
             {
+                AkSoundEngine.PostEvent(isMettalic ? mettalic_ID : sas_ID, gameObject);
                 isSwitching = true;
                 swichVar = 0;
             }
