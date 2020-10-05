@@ -26,10 +26,9 @@ namespace LudumDare47
 		protected override void GenerateFOV()
 		{
 			base.GenerateFOV();
-			UpdateManager.Instance.Register(this);
-		}
+        }
 
-		public void LinkEnemy(EnemyDetection _linkedDetection)
+        public void LinkEnemy(EnemyDetection _linkedDetection)
 		{
 			if (linkedEnemy != null) return;
 			linkedEnemy = _linkedDetection; 
@@ -88,9 +87,19 @@ namespace LudumDare47
 			onLevelReseted.Invoke();
 			detectedIDs.Clear(); 
 		}
-		#endregion
+        #endregion
 
-		protected override void OnDrawGizmos()
+        private void OnEnable()
+        {
+            UpdateManager.Instance.Register(this);
+        }
+
+        private void OnDisable()
+        {
+            UpdateManager.Instance.Unregister(this);
+        }
+
+        protected override void OnDrawGizmos()
 		{
 			base.OnDrawGizmos();
 			if (!linkedEnemy) return;  
