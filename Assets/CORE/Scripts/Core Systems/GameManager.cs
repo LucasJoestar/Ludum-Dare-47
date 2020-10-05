@@ -43,11 +43,17 @@ namespace LudumDare47
         [HorizontalLine(1)]
 
         [SerializeField, ReadOnly] private int levelIndex = 0;
-        [ReadOnly] public float TimeCoef = 1;
-        public static float DeltaTime => Time.deltaTime * Instance.TimeCoef;
+        [SerializeField, ReadOnly] private float timeCoef = 1;
+        public float TimeCoef => timeCoef;
+
+        public static float DeltaTime => Time.deltaTime * Instance.timeCoef;
         #endregion
 
         #region Methods
+
+        #region Time
+        public void SetTimeCoef(float _value) => timeCoef = _value;
+        #endregion
 
         #region Levels
         public void LoadNextLevel()

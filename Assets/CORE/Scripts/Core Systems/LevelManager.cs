@@ -170,6 +170,7 @@ namespace LudumDare47
         {
             isLooping = false;
             player.OnEndLoop();
+            GameManager.Instance.SetTimeCoef(0);
             
             // Do stop enemies ?
         }
@@ -194,6 +195,7 @@ namespace LudumDare47
             for (int _i = 0; _i < ghosts.Count; _i++)
                 ghosts[_i].ResetBehaviour(playerStartPosition);
 
+            GameManager.Instance.SetTimeCoef(1);
             UIManager.Instance.UpdateGhostAmount(ghosts.Count);
             UIManager.Instance.FadeOver(false);
 
@@ -237,7 +239,7 @@ namespace LudumDare47
             {
                 isDialogAutomatic = false;
                 player.IsPaused = true;
-                GameManager.Instance.TimeCoef = 0;
+                GameManager.Instance.SetTimeCoef(0);
             }
 
             // Display dialog.
@@ -269,7 +271,7 @@ namespace LudumDare47
                 if (!isDialogAutomatic)
                 {
                     player.SetInDialog(false);
-                    GameManager.Instance.TimeCoef = 1;
+                    GameManager.Instance.SetTimeCoef(1);
                     UIManager.Instance.DisplayLoopUI(true);
                 }
                 else

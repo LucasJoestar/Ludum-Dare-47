@@ -59,7 +59,6 @@ namespace LudumDare47
             playerStartPosition = player.transform.position;
             player.IsPaused = true;
 
-            GameManager.Instance.TimeCoef = 0;
             UIManager.Instance.SwitchBlackBars();
             UIManager.Instance.DisplayLoopUI(false);
         }

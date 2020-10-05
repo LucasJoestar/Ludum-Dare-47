@@ -12,6 +12,7 @@ namespace LudumDare47
 {
     public interface IPlayerBehaviour
     {
+        void Unparent();
         void Parent(Transform _parent);
         void Hack(Hackable _hackable);
         void Die();
@@ -80,6 +81,11 @@ namespace LudumDare47
                 {
                     Move(inputs.Move.ReadValue<Vector2>());
 
+                    if (inputs.Forward.triggered && (GameManager.Instance.TimeCoef >= 1))
+                    {
+                        GameManager.Instance.SetTimeCoef(GameManager.Instance.TimeCoef == 1 ? 2 : 1);
+                    }
+
                     // Register current state.
                     if (inputs.Action.triggered &&
                        (collider.OverlapCollider(contactFilter, overlapColliders) > 0) &&
@@ -106,6 +112,7 @@ namespace LudumDare47
         {
             inputs.Move.Enable();
             inputs.Action.Enable();
+            inputs.Forward.Enable();
 
             inputs.Loop.Enable();
             inputs.ResetLoop.Enable();
@@ -115,6 +122,7 @@ namespace LudumDare47
         {
             inputs.Move.Disable();
             inputs.Action.Disable();
+            inputs.Forward.Disable();
 
             inputs.Loop.Disable();
             inputs.ResetLoop.Disable();
