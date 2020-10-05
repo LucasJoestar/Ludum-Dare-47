@@ -594,10 +594,10 @@ TextureImporter:
       name: Commands
       rect:
         serializedVersion: 2
-        x: 991
-        y: 415
-        width: 1288
-        height: 619
+        x: 975
+        y: 402
+        width: 1320
+        height: 648
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
