@@ -983,7 +983,6 @@
 				</Sound>
 				<RandomSequenceContainer Name="talk" ID="{723F7C70-2FA5-40DF-AD38-46F455FA9AAC}" ShortID="686065357">
 					<PropertyList>
-						<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 						<Property Name="Pitch" Type="int32">
 							<ValueList>
 								<Value>-250</Value>
