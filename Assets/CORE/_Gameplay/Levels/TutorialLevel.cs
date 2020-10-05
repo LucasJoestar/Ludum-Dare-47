@@ -51,17 +51,17 @@ namespace LudumDare47
 
         protected override void Start()
         {
-            GameManager.Instance.LevelManager = this;
             GameManager.Instance.UpdateLoadedScene();
 
-            UpdateManager.Instance.Register(this);
             UIManager.Instance.FadeToBlack(false);
+            UIManager.Instance.ResetUI(loopDuration);
 
             playerStartPosition = player.transform.position;
             player.IsPaused = true;
 
             GameManager.Instance.TimeCoef = 0;
             UIManager.Instance.SwitchBlackBars();
+            UIManager.Instance.DisplayLoopUI(false);
         }
         #endregion
     }

@@ -23,6 +23,7 @@ namespace LudumDare47
 
         [HorizontalLine(1, order = 0), Section("UI MANAGER", order = 1)]
 
+        [SerializeField, Required] private GameObject loopAnchor = null;
         [SerializeField, Required] private Image loopGauge = null;
         [SerializeField, Required] private TextMeshProUGUI loopTime = null;
         [SerializeField, Required] private GameObject ghostAnchor = null;
@@ -39,6 +40,10 @@ namespace LudumDare47
         [SerializeField, Required] private Animator blackBarsAnimator = null;
         [SerializeField, Required] private Animator fadeAnimator = null;
 
+        [HorizontalLine(1)]
+
+        [SerializeField, Required] private GameObject loopInfo = null;
+
         // -----------------------
 
         private readonly int EnterDialog_Anim = Animator.StringToHash("Enter");
@@ -46,6 +51,7 @@ namespace LudumDare47
 
         private readonly int BlackBars_Anim = Animator.StringToHash("Switch");
         private readonly int FadeToBlack_Anim = Animator.StringToHash("IsFading");
+        private readonly int FadeOver_Anim = Animator.StringToHash("IsOver");
         #endregion
 
         #region Methods
@@ -56,7 +62,6 @@ namespace LudumDare47
             loopTime.text = _loopTime.ToString("0.00");
             loopGauge.fillAmount = _percent;
         }
-
 
         public void UpdateGhostAmount(int _amount)
         {
@@ -71,12 +76,24 @@ namespace LudumDare47
             ghostAnchor.SetActive(false);
             UpdateLoopUI(_loopTime, 0);
         }
+
+        public void DisplayLoopUI(bool _doDisplay)
+        {
+            if (loopAnchor.activeInHierarchy != _doDisplay)
+                loopAnchor.SetActive(_doDisplay);
+        }
         #endregion
 
         #region Animations
         public void SwitchBlackBars() => blackBarsAnimator.SetTrigger(BlackBars_Anim);
 
         public void FadeToBlack(bool _isFading) => fadeAnimator.SetBool(FadeToBlack_Anim, _isFading);
+
+        public void FadeOver(bool isOver)
+        {
+            loopInfo.SetActive(isOver);
+            fadeAnimator.SetBool(FadeOver_Anim, isOver);
+        }
         #endregion
 
         #region Dialogs

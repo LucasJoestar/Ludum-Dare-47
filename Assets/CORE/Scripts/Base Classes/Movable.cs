@@ -136,7 +136,7 @@ namespace LudumDare47
         protected static readonly Trigger[] overlapTriggers = new Trigger[4];
         protected List<Trigger> remainingTriggers = new List<Trigger>();
 
-        private void RefreshPosition()
+        protected void RefreshPosition()
         {
             // Extract collider from potential collisions.
             contactFilter.useTriggers = true;

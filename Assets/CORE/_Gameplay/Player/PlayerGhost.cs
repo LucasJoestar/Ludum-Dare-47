@@ -148,6 +148,7 @@ namespace LudumDare47
         public void Parent(Transform _parent)
         {
             isLoopCompleted = true;
+            collider.enabled = false;
 
             isParent = true;
             parent = _parent;
@@ -169,13 +170,16 @@ namespace LudumDare47
         public void Hack(Hackable _hackable)
         {
             // Set animation and other things.
-            animator.SetBool(PlayerController.Hack_Anim, isMoving);
+            animator.SetBool(PlayerController.Hack_Anim, true);
         }
 
         public void Die()
         {
             // Set animation and die.
-            animator.SetBool(PlayerController.Die_Anim, isMoving);
+            animator.SetTrigger(PlayerController.Die_Anim);
+
+            isLoopCompleted = true;
+            collider.enabled = false;
         }
         #endregion
 
@@ -190,6 +194,7 @@ namespace LudumDare47
             animator.enabled = false;
             animator.enabled = true;
 
+            collider.enabled = true;
             SetPosition(_position);
             transform.rotation = Quaternion.identity;
             rigidbody.rotation = 0;
@@ -206,9 +211,6 @@ namespace LudumDare47
         /// </summary>
         public void Move(Vector2 _movement)
         {
-            if (isParent)
-                SetPosition(parent.position);
-
             if (!isMoving)
             {
                 isMoving = true;
@@ -254,6 +256,18 @@ namespace LudumDare47
 
         public void MovableUpdate()
         {
+            // Parent update position.
+            if (isParent)
+            {
+                Vector2 _position = parent.position;
+                Vector2 _movement = _position - (Vector2)transform.position;
+
+                if (!_movement.IsNull())
+                    Move(_movement);
+                else if (isMoving)
+                    Stop(_position);
+            }
+
             // Update state while not reached loop end.
             if (!isLoopCompleted)
             {
