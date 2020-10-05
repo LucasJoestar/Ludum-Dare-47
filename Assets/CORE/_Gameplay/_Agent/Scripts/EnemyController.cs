@@ -39,14 +39,14 @@ namespace LudumDare47
 
 		public float InteractionRange => interactionRange;
 
-		public bool HasToMove 
+		public bool HasToChase 
 		{
 			get
 			{
-				return detection.TargetTransform != null || destination != Vector2.zero || patrolPath.Length > 0; 
+				return detection.TargetTransform != null || destination != Vector2.zero; 
 			}
 		}
-
+		 public bool HasToMove { get { return HasToChase || patrolPath.Length > 0;  } }
 		public bool IsInAnimation { get; set; }
 		#endregion
 

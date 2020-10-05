@@ -42,7 +42,7 @@ namespace LudumDare47
 				stateMachine.GoToState(this, StateType.Process);
 				return;
 			}
-			if (controller.HasToMove || controller.Detection.CastDetection())
+			if (controller.HasToChase || controller.Detection.CastDetection())
 			{
 				stateMachine.GoToState(this, StateType.Process);
 			}
