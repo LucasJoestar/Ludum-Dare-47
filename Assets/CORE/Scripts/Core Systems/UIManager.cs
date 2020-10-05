@@ -23,9 +23,14 @@ namespace LudumDare47
 
         [HorizontalLine(1, order = 0), Section("UI MANAGER", order = 1)]
 
+        [SerializeField, Required] private Canvas canvas = null;
+
+        [HorizontalLine(1)]
+
         [SerializeField, Required] private GameObject loopAnchor = null;
         [SerializeField, Required] private RectTransform loopGaugeParent = null;
         [SerializeField, Required] private RectTransform loopGauge = null;
+        [SerializeField, Required] private GameObject forwardImage = null;
         [SerializeField, Required] private Image loopGaugeImage = null;
         [SerializeField, Required] private TextMeshProUGUI loopTime = null;
         [SerializeField, Required] private GameObject ghostAnchor = null;
@@ -58,7 +63,17 @@ namespace LudumDare47
 
         #region Methods
 
+        #region Camera
+        public void SetCamera(Camera _camera) => canvas.worldCamera = _camera;
+        #endregion
+
         #region Loop
+        public void UpdateForwardIcon(bool _isForward)
+        {
+            if (forwardImage.activeInHierarchy != _isForward)
+                forwardImage.SetActive(_isForward);
+        }
+
         public void UpdateLoopUI(float _loopTime, float _percent)
         {
             loopTime.text = _loopTime.ToString("0.00");

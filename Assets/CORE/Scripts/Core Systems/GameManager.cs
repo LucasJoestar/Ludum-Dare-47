@@ -52,7 +52,12 @@ namespace LudumDare47
         #region Methods
 
         #region Time
-        public void SetTimeCoef(float _value) => timeCoef = _value;
+        public void SetTimeCoef(float _value)
+        {
+            timeCoef = _value;
+            UIManager.Instance.UpdateForwardIcon(_value > 1);
+            LevelManager.Instance.UpdateTimeCoef(_value);
+        }
         #endregion
 
         #region Levels

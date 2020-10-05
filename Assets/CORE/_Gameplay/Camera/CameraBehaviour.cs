@@ -14,6 +14,7 @@ namespace LudumDare47
         #region Fields / Properties
         [HorizontalLine(1, order = 0), Section("CAMERA BEHAVIOUR", order = 1)]
 
+        [SerializeField, Required] private new Camera camera = null;
         [SerializeField, Required] private PlayerController player = null;
         [SerializeField, Required] private Animator animator = null;
 
@@ -67,6 +68,7 @@ namespace LudumDare47
         private void Awake()
         {
             bounds = player.GetCameraBounds;
+            UIManager.Instance.SetCamera(camera);
         }
 
         private void OnEnable()
