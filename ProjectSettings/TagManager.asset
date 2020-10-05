@@ -47,6 +47,9 @@ TagManager:
   - name: Dynamic
     uniqueID: 217002755
     locked: 0
+  - name: ParticleFX
+    uniqueID: 1593699475
+    locked: 0
   - name: Foreground
     uniqueID: 1903360385
     locked: 0
