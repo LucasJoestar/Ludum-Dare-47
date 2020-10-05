@@ -6,7 +6,7 @@
 
 using EnhancedEditor;
 using UnityEngine;
-using LudumDare47.Navigation; 
+using LudumDare47.Navigation;
 
 namespace LudumDare47
 {

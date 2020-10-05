@@ -4,34 +4,30 @@
 //
 // ========================================================================== //
 
-using EnhancedEditor;
 using UnityEngine;
 
 namespace LudumDare47
 {
 	public class Plant : Hackable
     {
-        #region Fields / Properties
-        [HorizontalLine(1, order = 0), Section("PLANT", order = 1)]
-
-        [SerializeField] private GameObject sprite = null;
-        #endregion
-
         #region Methods
-
-        #region Behaviour
         public override void ResetBehaviour()
         {
             base.ResetBehaviour();
-            sprite.SetActive(true);
+            gameObject.SetActive(true);
         }
 
         public override void OnEnter(GameObject _gameObject)
         {
-            collider.enabled = false;
-        }
-        #endregion
+            if (_gameObject.TryGetComponent(out EnemyController _enemy))
+            {
+                gameObject.SetActive(false);
+                //_enemy.Die();
 
+                Instantiate(ProgramSettings.I.PlantExplosion, transform.position, Quaternion.identity);
+                LevelManager.Instance.PlayDialog(ProgramSettings.I.plantDialogID);
+            }
+        }
         #endregion
     }
 }

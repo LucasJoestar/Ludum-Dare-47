@@ -2,7 +2,7 @@
     "name": "NavigationEditor",
     "references": [
         "NavMeshComponents",
-        "Navigation"
+        "LudumDare47"
     ],
     "includePlatforms": [
         "Editor"
