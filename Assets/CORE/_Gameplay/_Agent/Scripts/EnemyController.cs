@@ -72,7 +72,10 @@ namespace LudumDare47
 			StartBehaviour(); 
 		}
 
-
+		private void OnDestroy()
+		{
+			stateMachine.StopFSM();
+		}
 		private void OnDrawGizmos()
 		{
 			if(destination != Vector2.zero)

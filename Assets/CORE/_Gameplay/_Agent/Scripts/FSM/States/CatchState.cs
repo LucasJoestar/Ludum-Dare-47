@@ -43,7 +43,12 @@ namespace LudumDare47
 		float timer = 0; 
 		void ILateUpdate.Update()
 		{
-			if(controller.IsInAnimation)
+			if (!stateMachine.IsActive)
+			{
+				stateMachine.GoToState(this, StateType.Process);
+				return;
+			}
+			if (controller.IsInAnimation)
 			{
 				return; 
 			}

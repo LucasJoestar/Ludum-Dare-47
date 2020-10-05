@@ -49,7 +49,12 @@ namespace LudumDare47
 
 		public void Update()
 		{
-			if(controller.NavAgent.IsMoving)
+			if (!stateMachine.IsActive)
+			{
+				stateMachine.GoToState(this, StateType.Process);
+				return;
+			}
+			if (controller.NavAgent.IsMoving)
 			{
 				if(controller.Detection.CastDetection())
 				{

@@ -20,6 +20,7 @@ namespace LudumDare47
         [SerializeField] private int startStateIndex = 0;
 
         private bool isActive = true;
+        public bool IsActive => isActive; 
         private bool hasToReset = false;
 
         public EnemyController Controller { get; private set; }

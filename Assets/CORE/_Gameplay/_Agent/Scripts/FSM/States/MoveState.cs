@@ -75,12 +75,15 @@ namespace LudumDare47
 
 		void ILateUpdate.Update()
 		{
-			
+			if(!stateMachine.IsActive)
+			{
+				stateMachine.GoToState(this, StateType.Process);
+				return;
+			}
 			if (controller.NavAgent.IsMoving)
 			{
                 if (controller.Detection.CastDetection())
 				{
-
                     // stop the agent here
                     stateMachine.GoToState(this, StateType.Process);
 					return; 
