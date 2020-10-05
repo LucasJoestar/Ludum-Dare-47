@@ -143,10 +143,10 @@ namespace LudumDare47
             int _overlapAmount = collider.OverlapCollider(contactFilter, overlapColliders);
 
             // For each overlapping colliders, detect triggers and extract from collision ones.
+            int _triggerAmount = 0;
             if (_overlapAmount > 0)
             {
                 ColliderDistance2D _distance;
-                int _triggerAmount = 0;
 
                 for (int _i = 0; _i < _overlapAmount; _i++)
                 {
@@ -174,16 +174,16 @@ namespace LudumDare47
                             rigidbody.position += _distance.normal * _distance.distance;
                     }
                 }
+            }
 
-                // Remove no more overlapping triggers.
-                for (int _i = 0; _i < remainingTriggers.Count; _i++)
+            // Remove no more overlapping triggers.
+            for (int _i = 0; _i < remainingTriggers.Count; _i++)
+            {
+                if (HasExitedTrigger(remainingTriggers[_i], _triggerAmount))
                 {
-                    if (HasExitedTrigger(remainingTriggers[_i], _triggerAmount))
-                    {
-                        remainingTriggers[_i].OnExit(gameObject);
-                        remainingTriggers.RemoveAt(_i);
-                        _i--;
-                    }
+                    remainingTriggers[_i].OnExit(gameObject);
+                    remainingTriggers.RemoveAt(_i);
+                    _i--;
                 }
             }
 

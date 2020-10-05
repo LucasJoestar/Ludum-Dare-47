@@ -26,6 +26,7 @@ namespace LudumDare47
         [SerializeField, Required] private GameObject loopAnchor = null;
         [SerializeField, Required] private RectTransform loopGaugeParent = null;
         [SerializeField, Required] private RectTransform loopGauge = null;
+        [SerializeField, Required] private Image loopGaugeImage = null;
         [SerializeField, Required] private TextMeshProUGUI loopTime = null;
         [SerializeField, Required] private GameObject ghostAnchor = null;
         [SerializeField, Required] private TextMeshProUGUI ghostAmount = null;
@@ -61,6 +62,7 @@ namespace LudumDare47
         public void UpdateLoopUI(float _loopTime, float _percent)
         {
             loopTime.text = _loopTime.ToString("0.00");
+            loopGaugeImage.fillAmount = _percent;
             loopGauge.anchoredPosition = new Vector2(loopGaugeParent.sizeDelta.x * _percent, loopGauge.anchoredPosition.y);
         }
 

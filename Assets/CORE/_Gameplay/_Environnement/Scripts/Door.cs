@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace LudumDare47
 {
-	public class Door : MonoBehaviour, IResetable
+	public class Door : MonoBehaviour, IResetable, IUpdate
     {
 		#region Fields / Properties
 		public static readonly int Switch_Anim = Animator.StringToHash("Switch");
@@ -20,34 +20,74 @@ namespace LudumDare47
 		public bool IsOpen => IsOpen;
 
 		[SerializeField] private DoorOpener[] doorOpeners = new DoorOpener[] { };
-		[SerializeField, Required] private Animator animator = null;
-		[SerializeField, Required] private Collider2D doorCollider = null; 
+
+        [HorizontalLine(1)]
+
+		[SerializeField, Required] private new Rigidbody2D rigidbody = null;
+        [SerializeField, Required] private Vector2 openPosition = new Vector2();
+        [SerializeField] private float swichDuration = 1;
         #endregion
-		
-		#region Methods
+
+        #region Methods
+        private bool isSwitching = false;
+        private float swichVar = 0;
+
+        private Vector2 closePosition = new Vector2();
+
+        void IUpdate.Update()
+        {
+            if (isSwitching)
+            {
+                swichVar += Time.deltaTime;
+                if (swichVar >= swichDuration)
+                {
+                    isSwitching = false;
+                    swichVar = swichDuration;
+                }
+
+                Vector2 _from, _to;
+                if (isOpen)
+                {
+                    _from = closePosition;
+                    _to = openPosition;
+                }
+                else
+                {
+                    _to = closePosition;
+                    _from = openPosition;
+                }
+
+                Vector2 _position = Vector2.Lerp(_from, _to, swichVar / swichDuration);
+                rigidbody.position = _position;
+                transform.position = _position;
+            }
+        }
+
 		public void ForceOpenning()
 		{
-			if (isOpen) return;
-			isOpen = true; 
-			animator.SetTrigger(Switch_Anim); 
-		}
+			if (!isOpen)
+            {
+                isOpen = true;
+                Open();
+            }
+        }
 		private void Open()
 		{
-			if (isOpen)
-			{
-				animator.SetTrigger(Switch_Anim);
-				doorCollider.enabled = false;
-			}
-		}
+            if (rigidbody.position != openPosition)
+            {
+                isSwitching = true;
+                swichVar = 0;
+            }
+        }
 
 		private void Close()
 		{
-			if (!isOpen)
-			{
-				animator.SetTrigger(Switch_Anim);
-				doorCollider.enabled = false; 
-			}
-		}
+            if (rigidbody.position != closePosition)
+            {
+                isSwitching = true;
+                swichVar = 0;
+            }
+        }
 
 		public void UpdateOpenningStatus()
 		{
@@ -60,19 +100,25 @@ namespace LudumDare47
 					break;
 				}
 			}
-			isOpen = _tempOpen;
-			if (isOpen)
-				Open();
-			else Close();
+            if (isOpen != _tempOpen)
+            {
+                isOpen = _tempOpen;
+                if (isOpen)
+                    Open();
+                else
+                    Close();
+            }
 		}
 
 		public void ResetBehaviour()
 		{
-			if(isOpen != isOpenAtStart)
+			if (isOpen != isOpenAtStart)
 			{
 				isOpen = isOpenAtStart;
-				if (isOpen) Open();
-				else Close(); 
+
+                Vector2 _position = isOpen ? openPosition : closePosition;
+                rigidbody.position = _position;
+                transform.position = _position;
 			}
 		}
 
@@ -84,7 +130,13 @@ namespace LudumDare47
 			{
 				doorOpeners[i].LinkToDoor(this);
 			}
-		}
+
+            closePosition = transform.position;
+
+            Vector2 _position = isOpen ? openPosition : closePosition;
+            rigidbody.position = _position;
+            transform.position = _position;
+        }
 
 		private void OnDrawGizmos()
 		{
@@ -94,7 +146,15 @@ namespace LudumDare47
 			}
 		}
 
+        private void OnEnable()
+        {
+            UpdateManager.Instance.Register(this);
+        }
 
-		#endregion
-	}
+        private void OnDisable()
+        {
+            UpdateManager.Instance.Unregister(this);
+        }
+        #endregion
+    }
 }
