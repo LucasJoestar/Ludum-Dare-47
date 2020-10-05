@@ -20,7 +20,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 89dcb199dcfb4a4e9cf9ff2f1ecac141
     GuidInternal: 
-    m_lastTime: -8585997878041421130
+    m_lastTime: -8585996940339695255
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 5630881b56e9d34f93562fdc99b2243d
     GuidInternal: 
-    m_lastTime: -8585997878042069405
+    m_lastTime: -8585996940344312905
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -49,17 +49,17 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 8fc39af544d01943828f3bd7823be8ea
     GuidInternal: 
-    m_lastTime: -8585997816677050574
+    m_lastTime: -8585996940339725173
     List:
-    - name: New_SoundBank
+    - name: the_one_true_bank
       guid: 25d99a93b886b54d98cb726c18688f57
-      id: 4072029455
+      id: 3736580527
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: New_SoundBank
+      - ElementName: the_one_true_bank
         ObjectType: 7
-      Path: Default Work Unit\New_SoundBank
+      Path: Default Work Unit\the_one_true_bank
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -68,17 +68,359 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: bbf7381479b6154ba294c3217bd19744
     GuidInternal: 
-    m_lastTime: -8585997868059192747
+    m_lastTime: -8585996940346437223
     List:
-    - name: Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox
-      guid: 54c54ca20fcc6644abb2d613150bd273
-      id: 951140580
+    - name: amb
+      guid: 6f11dc2c4934a041a766a3308533dcfe
+      id: 1117531639
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox
+      - ElementName: amb
+        ObjectType: 4
+      Path: Default Work Unit\amb
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: fast_forward
+      guid: 9ceb8f7bc37af04cbe90f32864f09777
+      id: 3461000837
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: fast_forward
+        ObjectType: 4
+      Path: Default Work Unit\fast_forward
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: hacking loop
+      guid: c71e24fa4f72184ca764cadfd76b89dd
+      id: 3566698056
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: hacking loop
+        ObjectType: 4
+      Path: Default Work Unit\hacking loop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: oneshot
+      guid: a3c957f02d3b464a8320a12f0fd355b8
+      id: 1360693519
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      Path: Default Work Unit\oneshot
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_alarme_camera
+      guid: 705938c079b10048a2157f1b888a634e
+      id: 628021648
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_alarme_camera
         ObjectType: 3
-      Path: Default Work Unit\Play_Monster_Within___Bearer___RTalon_Attack_ParryAndGrab_vox
+      Path: Default Work Unit\oneshot\Play_alarme_camera
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_alert_sound
+      guid: a8936bfac0447e44bb1df82e98779ded
+      id: 4197730376
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_alert_sound
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_alert_sound
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_amb_loop
+      guid: 23d6b2f475f62747a53f1a79faec7d2f
+      id: 3787131803
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: amb
+        ObjectType: 4
+      - ElementName: Play_amb_loop
+        ObjectType: 3
+      Path: Default Work Unit\amb\Play_amb_loop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_crash_distributeur
+      guid: 0b47be7c5cc7a74690b6440d575df13e
+      id: 2210203630
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_crash_distributeur
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_crash_distributeur
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_death_punch_player
+      guid: 891836cebd6da54686e465e79691df06
+      id: 813239263
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_death_punch_player
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_death_punch_player
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_door_pressure_plate
+      guid: ab03c58f7034a94b8e7b7a5bb77462a9
+      id: 1988725533
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_door_pressure_plate
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_door_pressure_plate
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_end_level
+      guid: 0f6b236179da704ebf48afafc9d7ad19
+      id: 3872132286
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_end_level
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_end_level
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_explosion_plant
+      guid: b3232c5df489f04eb4ff5585596c21ea
+      id: 2331026989
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_explosion_plant
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_explosion_plant
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_footsteps
+      guid: f73727d47a8a5b499ab2aa2d1b23188e
+      id: 3854155799
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_footsteps
+        ObjectType: 3
+      Path: Default Work Unit\Play_footsteps
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_hack_validation
+      guid: d24e0eb4a58bbd47823259e2b1dd268f
+      id: 3373805497
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_hack_validation
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_hack_validation
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_hacking_loop
+      guid: 684394bc407c3c4ca86bffaa1a6529c7
+      id: 2032329432
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: hacking loop
+        ObjectType: 4
+      - ElementName: Play_hacking_loop
+        ObjectType: 3
+      Path: Default Work Unit\hacking loop\Play_hacking_loop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_lever_pull
+      guid: e245412dfd71ef4fa57b2a138920f017
+      id: 1404912156
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_lever_pull
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_lever_pull
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_menu_click
+      guid: a7857820ea265d4c8c7b4b1c14b6981a
+      id: 1357778998
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_menu_click
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_menu_click
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_menu_hover
+      guid: ac2bad8d7c97894bbf76bd168c65938a
+      id: 3835684012
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_menu_hover
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_menu_hover
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_prison_door
+      guid: b3d2c4589067324697fd3497cd95cb1a
+      id: 4242832130
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_prison_door
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_prison_door
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_reset_fin_
+      guid: 26d7358f297d984fbbd6774eae0f4d2a
+      id: 1981148300
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_reset_fin_
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_reset_fin_
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_rewind_reset_
+      guid: 5cc4b4d9c2f9ec40a94adafe3cbe5666
+      id: 3853187510
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_rewind_reset_
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_rewind_reset_
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_sas_open
+      guid: d0262d412e920f4f9bf6ca58d2af039c
+      id: 1096483956
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: oneshot
+        ObjectType: 4
+      - ElementName: Play_sas_open
+        ObjectType: 3
+      Path: Default Work Unit\oneshot\Play_sas_open
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_start_fastforward
+      guid: 5d9030a8998a3540bbbc013d6bc48a17
+      id: 1316246830
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: fast_forward
+        ObjectType: 4
+      - ElementName: Play_start_fastforward
+        ObjectType: 3
+      Path: Default Work Unit\fast_forward\Play_start_fastforward
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_amb_loop
+      guid: 59ad6d067aef334c93dd7ec2bab369e3
+      id: 3450745217
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: amb
+        ObjectType: 4
+      - ElementName: Stop_amb_loop
+        ObjectType: 3
+      Path: Default Work Unit\amb\Stop_amb_loop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_fast_forward
+      guid: 3f5a314da8f63047b78e94f951775e8c
+      id: 2598502896
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: fast_forward
+        ObjectType: 4
+      - ElementName: Stop_fast_forward
+        ObjectType: 3
+      Path: Default Work Unit\fast_forward\Stop_fast_forward
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_hacking_loop
+      guid: 9c59bfb7c169f44bb4354b8323c0169d
+      id: 3944575498
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: hacking loop
+        ObjectType: 4
+      - ElementName: Stop_hacking_loop
+        ObjectType: 3
+      Path: Default Work Unit\hacking loop\Stop_hacking_loop
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -90,7 +432,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: c0dd30b0cfb9894c9a72981bde2342ad
     GuidInternal: 
-    m_lastTime: -8585997878041939749
+    m_lastTime: -8585996940346437223
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -100,8 +442,70 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 6bd14fbaddc22344aef9eb7f9e83f645
     GuidInternal: 
-    m_lastTime: -8585997878041620602
-    List: []
+    m_lastTime: -8585996940339715204
+    List:
+    - name: fast_forward
+      guid: d6618427f758034caf133a9d8553bd60
+      id: 3461000837
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: fast_forward
+        ObjectType: 9
+      Path: Default Work Unit\fast_forward
+      values:
+      - name: is_fast_forward
+        guid: 12425d90f40960459e82eada82d21f5e
+        id: 1279935180
+        PathAndIcons:
+        - ElementName: is_fast_forward
+          ObjectType: 8
+      - name: is_not
+        guid: f71d038b925108449e3ee2a58c3601db
+        id: 3304282407
+        PathAndIcons:
+        - ElementName: is_not
+          ObjectType: 8
+      - name: None
+        guid: 0934435b4b203946b3eda7cba570814b
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: is_a_ghost
+      guid: d373fab48360724eaa0fdad3075c5bc1
+      id: 48693701
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: is_a_ghost
+        ObjectType: 9
+      Path: Default Work Unit\is_a_ghost
+      values:
+      - name: no_its_not
+        guid: 69374223dec0e34f8f9ebd0956ab7e61
+        id: 843872697
+        PathAndIcons:
+        - ElementName: no_its_not
+          ObjectType: 8
+      - name: None
+        guid: 339f86669795a94cb23487426dcb8395
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      - name: yes_ghost
+        guid: 42e43881411a814a95c3a67e258703aa
+        id: 3554677398
+        PathAndIcons:
+        - ElementName: yes_ghost
+          ObjectType: 8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:
@@ -110,7 +514,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f1005e962bc9914884b7c270fb45afad
     GuidInternal: 
-    m_lastTime: -8585997878041859961
+    m_lastTime: -8585996940339705227
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -120,11 +524,19 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 97da1151b248264c9625f4add72b370e
     GuidInternal: 
-    m_lastTime: -8585997878041191749
+    m_lastTime: -8585996940339705227
     List: []
   ExpandedItems:
   - /ludum_47_lucas
   - /ludum_47_lucas/Events
   - /ludum_47_lucas/Events/Default Work Unit
+  - /ludum_47_lucas/Events/Default Work Unit/amb
+  - /ludum_47_lucas/Events/Default Work Unit/fast_forward
+  - /ludum_47_lucas/Events/Default Work Unit/hacking loop
+  - /ludum_47_lucas/Events/Default Work Unit/oneshot
+  - /ludum_47_lucas/States
+  - /ludum_47_lucas/States/Default Work Unit
+  - /ludum_47_lucas/States/Default Work Unit/fast_forward
+  - /ludum_47_lucas/States/Default Work Unit/is_a_ghost
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

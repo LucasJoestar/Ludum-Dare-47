@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{1438F7BB-B679-4B15-A294-C3217BD19744}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{1438F7BB-B679-4B15-A294-C3217BD19744}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="oneshot" ID="{F057C9A3-3B2D-4A46-8320-A12F0FD355B8}" ShortID="653592396">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="24"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Event Name="Play_alarme_camera" ID="{C0385970-B179-4800-A215-7F1B888A634E}">
+							<ChildrenList>
+								<Action Name="" ID="{34A6E05B-E2B2-454D-82B8-F8F568E9B57D}" ShortID="692288381">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="alarme caméra" ID="{35C3F67A-4515-4D5C-AC04-37D148BFBD21}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_alert_sound" ID="{FA6B93A8-44C0-447E-BB1D-F82E98779DED}">
+							<ChildrenList>
+								<Action Name="" ID="{7B4C9FAA-AA45-426B-A50F-58F01CD45AD5}" ShortID="489645063">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="alert_sound" ID="{ECEEC269-76EF-4318-80CD-FCBFCAE3FD9D}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_crash_distributeur" ID="{7CBE470B-C75C-46A7-90B6-440D575DF13E}">
+							<ChildrenList>
+								<Action Name="" ID="{AAA64F4E-3A29-42D3-A9DB-6D2EF0FD5084}" ShortID="322237823">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="crash_distributeur" ID="{16E14307-B181-403E-AE22-E341B22509D6}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_death_punch_player" ID="{CE361889-6DBD-46A5-86E4-65E79691DF06}">
+							<ChildrenList>
+								<Action Name="" ID="{66950A76-3B73-4FB9-8AC9-F5391C311635}" ShortID="674154832">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="death_punch_player" ID="{BF315A33-EE4E-4F99-9F1E-0316D2788394}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_door_pressure_plate" ID="{8FC503AB-3470-4BA9-8E7B-7A5BB77462A9}">
+							<ChildrenList>
+								<Action Name="" ID="{8E765684-8AB4-4B9B-B286-F164CA800AD8}" ShortID="707114040">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="door_pressure_plate" ID="{43AF7E64-B41E-455B-9E50-AD126BBCDC0D}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_end_level" ID="{61236B0F-DA79-4E70-BF48-AFAFC9D7AD19}">
+							<ChildrenList>
+								<Action Name="" ID="{86D2135A-3D93-4E9B-BC4A-FF5BE2DE321D}" ShortID="872013237">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="end_level" ID="{1558A349-872A-4DB9-B9E2-595B43CACDC7}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_explosion_plant" ID="{5D2C23B3-89F4-4EF0-B4FF-5585596C21EA}">
+							<ChildrenList>
+								<Action Name="" ID="{D5160ECE-EBAF-4D5C-BF4F-0B556DE67C2E}" ShortID="1063524686">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="explosion plant" ID="{66FECF1F-2871-411F-8651-A171F54E60FD}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_hack_validation" ID="{B40E4ED2-8BA5-47BD-8232-59E2B1DD268F}">
+							<ChildrenList>
+								<Action Name="" ID="{2676F1B2-7CE6-4019-98CB-C3E381BBD3DA}" ShortID="846748092">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="hack_validation" ID="{B7AEFFD5-19D4-4764-98C7-21E0B6915D4D}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_lever_pull" ID="{2D4145E2-71FD-4FEF-A57B-2A138920F017}">
+							<ChildrenList>
+								<Action Name="" ID="{AAAED043-A646-4897-BE84-51B850159AF0}" ShortID="306299283">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="lever_pull" ID="{E8B6E792-C99F-4A9F-B07F-3001ED8D9A94}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_menu_click" ID="{207885A7-26EA-4C5D-8C7B-4B1C14B6981A}">
+							<ChildrenList>
+								<Action Name="" ID="{6778241A-3B58-4EFD-BF38-84801B15A458}" ShortID="173548701">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="menu_click" ID="{C1F74636-F9CD-46A1-ABBD-17C93D708312}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_menu_hover" ID="{8DAD2BAC-977C-4B89-BF76-BD168C65938A}">
+							<ChildrenList>
+								<Action Name="" ID="{C4DDCC2A-8786-4EFC-98C2-C443C934D482}" ShortID="103935445">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="menu_hover" ID="{6BA28E95-DED3-453A-98B1-27521077FC14}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_prison_door" ID="{58C4D2B3-6790-4632-97FD-3497CD95CB1A}">
+							<ChildrenList>
+								<Action Name="" ID="{1C0701AE-83A1-4E7D-9FE4-838F06519902}" ShortID="300892249">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="prison_door" ID="{E23ECA8B-E2DE-4132-8D1F-EF1D368817A6}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_reset_fin_" ID="{8F35D726-7D29-4F98-BBD6-774EAE0F4D2A}">
+							<ChildrenList>
+								<Action Name="" ID="{FEEC987B-A62A-402B-8FA5-4E3D64C241E1}" ShortID="673479375">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="reset_fin_" ID="{3DA18C56-E31E-440A-9F55-321CF5E544C0}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_rewind_reset_" ID="{D9B4C45C-F9C2-40EC-A94A-DAFE3CBE5666}">
+							<ChildrenList>
+								<Action Name="" ID="{AD7B61F1-F3F9-4502-BBCC-489BAD95B155}" ShortID="949162339">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="rewind_reset_" ID="{7FEC53DD-9A78-407B-873F-8C36204066CB}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_sas_open" ID="{412D26D0-922E-4F0F-9BF6-CA58D2AF039C}">
+							<ChildrenList>
+								<Action Name="" ID="{9AA63577-2B7C-48F9-8DF7-071040322719}" ShortID="101592603">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="sas_open" ID="{A6901F1C-B4DD-48FB-91D6-E767656ED256}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="hacking loop" ID="{FA241EC7-724F-4C18-A764-CADFD76B89DD}" ShortID="355148101">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Event Name="Play_hacking_loop" ID="{BC944368-7C40-4C3C-A86B-FFAA1A6529C7}">
+							<ChildrenList>
+								<Action Name="" ID="{EC904F36-BEF0-4512-8D50-D7930AF64223}" ShortID="40750673">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="hacking_loop" ID="{9BD336A1-CF48-45C3-9339-6D224737AF1E}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_hacking_loop" ID="{B7BF599C-69C1-4BF4-B435-4B8323C0169D}">
+							<ChildrenList>
+								<Action Name="" ID="{3CFF432A-DAF2-423A-A82E-70896B4114E7}" ShortID="839920613">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="hacking_loop" ID="{9BD336A1-CF48-45C3-9339-6D224737AF1E}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="fast_forward" ID="{7B8FEB9C-7AC3-4CF0-BE90-F32864F09777}" ShortID="201025828">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="16"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Event Name="Play_start_fastforward" ID="{A830905D-8A99-4035-BBBC-013D6BC48A17}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="16"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{3A3E2007-4934-43D6-AE9A-97717E1046D6}" ShortID="672620330">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="start fastforward" ID="{62A4DF6D-DF7D-4773-849C-5B079B9D113A}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{75F15CA0-1FCE-47EB-85D0-AF1FD9BF1161}" ShortID="961136276">
+									<PropertyList>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="fast_forward" ID="{73882779-94AE-40C4-A861-0E608E5BAF7B}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_fast_forward" ID="{4D315A3F-F6A8-4730-B78E-94F951775E8C}">
+							<ChildrenList>
+								<Action Name="" ID="{E7A36905-BF13-4304-B2FE-A8C33C2809A5}" ShortID="492862229">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="fast_forward" ID="{73882779-94AE-40C4-A861-0E608E5BAF7B}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Event Name="Play_footsteps" ID="{D42737F7-8A7A-495B-9AB2-AA2D1B23188E}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="2"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Action Name="" ID="{E7EAEC55-1C63-4F77-BA5C-17831CEF5BAB}" ShortID="247034755">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="footsteps" ID="{0DD06522-A14C-47B3-976B-E23A8B6E77B1}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="amb" ID="{2CDC116F-3449-41A0-A766-A3308533DCFE}" ShortID="304169589">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="18"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Event Name="Play_amb_loop" ID="{F4B2D623-F675-4727-A53F-1A79FAEC7D2F}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="18"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{51510B44-70BB-4607-8C91-3C1D38B28F25}" ShortID="653836633">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="amb_loop" ID="{89F5AFF8-6E7A-46E3-9320-9CE719C15276}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_amb_loop" ID="{066DAD59-EF7A-4C33-93DD-7EC2BAB369E3}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="18"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{7E5CA904-C76F-4E2B-925F-5E23E493B6E5}" ShortID="1032907230">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="amb_loop" ID="{89F5AFF8-6E7A-46E3-9320-9CE719C15276}" WorkUnitID="{F9C5BF86-B3F2-4120-862A-F8C218949DBD}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

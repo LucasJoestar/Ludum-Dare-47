@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427f441718046f544a4d50e30686f038, type: 3}
   m_Name: DAT_ProgramSettings
   m_EditorClassIdentifier: 
-  RotationSpeed: 300
+  RotationSpeed: 750
   DialogDisplay: 25

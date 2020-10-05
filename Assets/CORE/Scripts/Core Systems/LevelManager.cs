@@ -22,15 +22,24 @@ namespace LudumDare47
 
         [HorizontalLine(1, order = 0), Section("LEVEL MANAGER", order = 1)]
 
-        [SerializeField, Required] private new CameraBehaviour camera = null;
+        [SerializeField, Required] protected new CameraBehaviour camera = null;
         [SerializeField, Required] protected PlayerController player = null;
+
+        public CameraBehaviour Camera => camera;
 
         // -----------------------
 
         [HorizontalLine(1)]
 
         [SerializeField] protected int startDialogID = 0;
-        [SerializeField] private float loopDuration = 30;
+        [SerializeField] protected float loopDuration = 30;
+
+        [Space]
+
+        [SerializeField] private Vector2 endLevelMovement = Vector2.up;
+
+        [SerializeField] private List<Animator> animators = new List<Animator>();
+        private List<IResetable> resetables = new List<IResetable>();
 
         // -----------------------
 
@@ -45,7 +54,7 @@ namespace LudumDare47
 
         [HorizontalLine(1)]
 
-        [SerializeField, ReadOnly] private bool isInDialog = false;
+        [SerializeField, ReadOnly] protected bool isInDialog = false;
         [SerializeField, ReadOnly] private bool isDisplayingDialog = false;
         [SerializeField, ReadOnly] private bool isDialogAutomatic = false;
 
@@ -69,11 +78,60 @@ namespace LudumDare47
 
         #region Methods
 
+        #region Management
+        private readonly int speed_Anim = Animator.StringToHash("Speed");
+
+        public void UpdateTimeCoef(float _timeCoef)
+        {
+            camera.Forward(_timeCoef > 1);
+            for (int _i = 0; _i < animators.Count; _i++)
+                animators[_i].SetFloat(speed_Anim, _timeCoef);
+        }
+
+        public void RegisterAnimator(Animator _animator) => animators.Add(_animator);
+
+        /// <summary>
+        /// Register a resetable on this level.
+        /// </summary>
+        public void RegisterResetable(IResetable _resetable) => resetables.Add(_resetable);
+        #endregion
+
         #region Loop State
+        private bool isLevelEnded = false;
+        private float endLevelTimer = 5;
+
+        public void EndLevel()
+        {
+            isLevelEnded = true;
+            player.IsPaused = true;
+
+            camera.enabled = false;
+            UIManager.Instance.FadeToBlack(true);
+            UIManager.Instance.SwitchBlackBars();
+        }
+
+        // -----------------------
+
         void ILateUpdate.Update() => LevelUpdate();
 
         protected virtual void LevelUpdate()
         {
+            // End level.
+            if (isLevelEnded)
+            {
+                player.Move(endLevelMovement);
+                endLevelTimer -= Time.deltaTime;
+
+                if (endLevelTimer <= 0)
+                {
+                    // Load things.
+                    gameObject.SetActive(false);
+                    UIManager.Instance.SwitchBlackBars();
+                    GameManager.Instance.LoadNextLevel();
+                }
+                return;
+            }
+
             // Dialog update.
             if (isInDialog)
             {
@@ -121,15 +179,22 @@ namespace LudumDare47
 
         // -----------------------
 
+        private bool isHardReset = false;
+
         public void StopLoop()
         {
             isLooping = false;
             player.OnEndLoop();
+            GameManager.Instance.SetTimeCoef(0);
             
             // Do stop enemies ?
         }
 
-        public void StartLoop() => camera.Loop();
+        public void StartLoop()
+        {
+            camera.BigGlitch(false);
+            camera.Loop();
+        }
 
         /// <summary>
         /// Restart this level loop.
@@ -141,9 +206,31 @@ namespace LudumDare47
             isLooping = true;
             loopTime = 0;
 
-            ghosts.Add(player.OnStartLoop(playerStartPosition));
-            for (int _i = 0; _i < ghosts.Count; _i++)
-                ghosts[_i].ResetBehaviour(playerStartPosition);
+            if (isHardReset)
+            {
+                isHardReset = false;
+                UIManager.Instance.ResetUI(loopDuration);
+
+                for (int _i = 0; _i < ghosts.Count; _i++)
+                    Destroy(ghosts[_i].gameObject);
+
+                ghosts.Clear();
+                player.OnStartLoop(playerStartPosition, false);
+            }
+            else
+            {
+                ghosts.Add(player.OnStartLoop(playerStartPosition, true));
+                for (int _i = 0; _i < ghosts.Count; _i++)
+                    ghosts[_i].ResetBehaviour(playerStartPosition);
+            }
+
+            GameManager.Instance.SetTimeCoef(1);
+            UIManager.Instance.UpdateGhostAmount(ghosts.Count);
+            UIManager.Instance.FadeOver(false);
+
+            // Reset all behaviours.
+            for (int _i = 0; _i < resetables.Count; _i++)
+                resetables[_i].ResetBehaviour();
         }
 
         /// <summary>
@@ -151,10 +238,7 @@ namespace LudumDare47
         /// </summary>
         public void ResetLoop()
         {
-            for (int _i = 0; _i < ghosts.Count; _i++)
-                Destroy(ghosts[_i].gameObject);
-
-            ghosts.Clear();
+            isHardReset = true;
             StartLoop();
         }
         #endregion
@@ -179,7 +263,7 @@ namespace LudumDare47
             {
                 isDialogAutomatic = false;
                 player.IsPaused = true;
-                GameManager.Instance.TimeCoef = 0;
+                GameManager.Instance.SetTimeCoef(0);
             }
 
             // Display dialog.
@@ -211,7 +295,8 @@ namespace LudumDare47
                 if (!isDialogAutomatic)
                 {
                     player.SetInDialog(false);
-                    GameManager.Instance.TimeCoef = 1;
+                    GameManager.Instance.SetTimeCoef(1);
+                    UIManager.Instance.DisplayLoopUI(true);
                 }
                 else
                     isDialogAutomatic = false;
@@ -222,14 +307,27 @@ namespace LudumDare47
         #endregion
 
         #region Monobehaviour
-        protected virtual void Start()
+        private void Awake()
         {
             GameManager.Instance.LevelManager = this;
             UpdateManager.Instance.Register(this);
+        }
+
+        protected virtual void Start()
+        {
+            GameManager.Instance.UpdateLoadedScene();
+
+            UIManager.Instance.FadeToBlack(false);
+            UIManager.Instance.ResetUI(loopDuration);
 
             playerStartPosition = player.transform.position;
             if (startDialogID != 0)
+            {
                 PlayDialog(startDialogID);
+                UIManager.Instance.DisplayLoopUI(false);
+            }
+            else
+                UIManager.Instance.DisplayLoopUI(true);
         }
 
         protected virtual void OnDisable()

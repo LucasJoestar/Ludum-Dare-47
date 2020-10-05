@@ -22,7 +22,7 @@ namespace LudumDare47.Navigation
         [SerializeField, Range(.05f, 1)] private float steerForce = .1f;
         [Space(order = 1)]
         [SerializeField, Range(1.0f, 10.0f)] private float patrolSpeed = 1.5f;
-        [SerializeField, Range(1.0f, 10.0f)] private float alertSpeed = 2.5f;
+        [SerializeField, Range(1.0f, 20.0f)] private float alertSpeed = 2.5f;
 
         #region Vector2
         public Vector2 LastPosition
@@ -35,7 +35,8 @@ namespace LudumDare47.Navigation
         }
         #endregion
         public Collider2D Collider => collider;
-
+        public Vector2 InitialPosition => initialPosition; 
+        public Quaternion InitialRotation { get; private set; }
         #endregion
 
         #region Methods
@@ -48,7 +49,12 @@ namespace LudumDare47.Navigation
         /// </summary>
         protected override void MovableUpdate()
         {
-            if (isMoving)
+            if (currentPath == null || currentPath.Length == 0)
+            {
+                StopAgent();
+                return; 
+            }
+            if (isMoving && (currentIndex > 0))
             {
                 Vector2 _previousPosition = currentPath[currentIndex - 1];
                 Vector2 _nextPosition = currentPath[currentIndex];
@@ -104,8 +110,14 @@ namespace LudumDare47.Navigation
                     Move(velocity);
                 }
             }
-
             base.MovableUpdate();
+        }
+
+        public void ResetAgent()
+        {
+            SetPosition(initialPosition);
+            transform.rotation = InitialRotation;
+            RefreshPosition(); 
         }
         #endregion
 
@@ -197,6 +209,7 @@ namespace LudumDare47.Navigation
         protected override void Start()
         {
             base.Start();
+            InitialRotation = transform.rotation;
         }
 
 #if UNITY_EDITOR

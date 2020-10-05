@@ -39,6 +39,6 @@ namespace LudumDare47
 		Process,
 		Idle,
 		Move,
-		Catch
+		Catch, 
 	}
 }
