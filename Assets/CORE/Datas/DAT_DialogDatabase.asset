@@ -13,22 +13,62 @@ MonoBehaviour:
   m_Name: DAT_DialogDatabase
   m_EditorClassIdentifier: 
   dialogs:
-  - ID: 537
-    NextID: 538
-    Duration: 0
-    Sentence: Bla bla bla Mr. Freeman... Bla bla bla Mr. Freeman... Bla bla bla Mr.
-      Freeman... Bla bla bla Mr. Freeman... Bla bla bla Mr. Freeman... Bla bla bla
-      Mr. Freeman...
-    Sprite: {fileID: 0}
-  - ID: 538
+  - ID: 999
     NextID: 0
-    Duration: 0
-    Sentence: Bla bla bla Mr. Freeman... Bla bla bla Mr. Freeman... Bla bla bla Mr.
-      Freeman... Bla bla bla Mr. Freeman... Bla bla bla Mr. Freeman... Bla bla bla
-      Mr. Freeman...
-    Sprite: {fileID: 0}
+    Duration: 2
+    Sentence: I have to be faster... Maybe if I press the Gamepad Bumper or Q, time
+      would be quicker. This power seems kinda useful...
+    Sprite: {fileID: 5553523197137858346, guid: 09b67ea702b83bf4d9e988da2b330068,
+      type: 3}
   - ID: 5037
     NextID: 0
     Duration: 2
-    Sentence: Oh no !
-    Sprite: {fileID: 0}
+    Sentence: Oh no!!
+    Sprite: {fileID: -2812282427242866665, guid: 0f268afcdae3dd444bad02060a86782b,
+      type: 3}
+  - ID: 537
+    NextID: 538
+    Duration: 0
+    Sentence: 'Jean Michel?! Jean Michel! Ah! I can finally contact you! What happened?!
+      They said Janine was dead! '
+    Sprite: {fileID: -8013059592467917318, guid: 0f268afcdae3dd444bad02060a86782b,
+      type: 3}
+  - ID: 538
+    NextID: 539
+    Duration: 0
+    Sentence: Yeah, the Scorpio Cobra Team did it... They trapped me. I've finally
+      found evidences against them, so they decided to do something. They killed
+      Janine and made me take the blame for it! I'll make them pay!
+    Sprite: {fileID: 5553523197137858346, guid: 09b67ea702b83bf4d9e988da2b330068,
+      type: 3}
+  - ID: 539
+    NextID: 540
+    Duration: 0
+    Sentence: This is awful! They kidnapped you to do experiments on you because
+      you're the best cop in town!
+    Sprite: {fileID: -8013059592467917318, guid: 0f268afcdae3dd444bad02060a86782b,
+      type: 3}
+  - ID: 540
+    NextID: 541
+    Duration: 0
+    Sentence: Remember, you can hack almost everything by pressing E or a Gamepad
+      Button! It could be useful to trap or distract the guards! You have to get
+      out of here as fast as you can!
+    Sprite: {fileID: -8013059592467917318, guid: 0f268afcdae3dd444bad02060a86782b,
+      type: 3}
+  - ID: 541
+    NextID: 542
+    Duration: 0
+    Sentence: Ugh... And I'm feeling so weird... I'm having one of the worst headache
+      of my life, even worse than a huge hangover... And this is so strange, It's
+      like I could fastforward the time if I press Q or a Gamepad Bumper...
+    Sprite: {fileID: 5553523197137858346, guid: 09b67ea702b83bf4d9e988da2b330068,
+      type: 3}
+  - ID: 542
+    NextID: 0
+    Duration: 0
+    Sentence: And if I press that R or North Gamepad button, I feel like I could
+      go back in time for a few seconds... Damn Scorpio Cobras! I got to go, I'll
+      contact you when I'm out of this mess...
+    Sprite: {fileID: 5553523197137858346, guid: 09b67ea702b83bf4d9e988da2b330068,
+      type: 3}

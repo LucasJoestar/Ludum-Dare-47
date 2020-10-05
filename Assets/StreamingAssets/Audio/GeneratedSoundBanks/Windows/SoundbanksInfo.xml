@@ -11,12 +11,12 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2655769336">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2001398399">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3736580527" Language="SFX" Hash="921139362">
+		<SoundBank Id="3736580527" Language="SFX" Hash="3953056913">
 			<ObjectPath>\SoundBanks\Default Work Unit\the_one_true_bank</ObjectPath>
 			<ShortName>the_one_true_bank</ShortName>
 			<Path>the_one_true_bank.bnk</Path>
@@ -34,6 +34,14 @@
 						<File Id="122449427" Language="SFX">
 							<ShortName>alert_sound.wav</ShortName>
 							<Path>SFX\alert_sound_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3787131803" Name="Play_amb_loop" ObjectPath="\Events\Default Work Unit\amb\Play_amb_loop">
+					<IncludedMemoryFiles>
+						<File Id="576781576" Language="SFX">
+							<ShortName>amb_loop.wav</ShortName>
+							<Path>SFX\amb_loop_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -197,6 +205,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3450745217" Name="Stop_amb_loop" ObjectPath="\Events\Default Work Unit\amb\Stop_amb_loop" MaxAttenuation="0.000000"/>
 				<Event Id="2598502896" Name="Stop_fast_forward" ObjectPath="\Events\Default Work Unit\fast_forward\Stop_fast_forward" MaxAttenuation="0.000000"/>
 				<Event Id="3944575498" Name="Stop_hacking_loop" ObjectPath="\Events\Default Work Unit\hacking loop\Stop_hacking_loop" MaxAttenuation="0.000000"/>
 			</IncludedEvents>
@@ -260,6 +269,10 @@
 				<File Id="554626955" Language="SFX">
 					<ShortName>footsteps4.wav</ShortName>
 					<Path>SFX\footsteps4_10C4C929.wem</Path>
+				</File>
+				<File Id="576781576" Language="SFX">
+					<ShortName>amb_loop.wav</ShortName>
+					<Path>SFX\amb_loop_D79FB2B7.wem</Path>
 				</File>
 				<File Id="582349214" Language="SFX">
 					<ShortName>death_punch_player.wav</ShortName>

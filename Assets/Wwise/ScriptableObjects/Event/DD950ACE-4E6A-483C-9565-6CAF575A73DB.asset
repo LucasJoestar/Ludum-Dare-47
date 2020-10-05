@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f3622db9ccd514f941dc4afbe65771, type: 3}
+  m_Name: DD950ACE-4E6A-483C-9565-6CAF575A73DB
+  m_EditorClassIdentifier: 
+  objectName: Play_talk
+  id: 2835868768
+  guid: DD950ACE-4E6A-483C-9565-6CAF575A73DB

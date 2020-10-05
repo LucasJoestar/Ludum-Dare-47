@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\</ProjectRoot>
-		<SourceFilesRoot>D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>D:\SOUND DESIGN\GAME JAM\ludum dare 2020\ludum74_lucas\Ludum-Dare-47\ludum_47_lucas\</ProjectRoot>
+		<SourceFilesRoot>D:\SOUND DESIGN\GAME JAM\ludum dare 2020\ludum74_lucas\Ludum-Dare-47\ludum_47_lucas\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\SOUND DESIGN\GAME JAM\ludum dare 2020\ludum74_lucas\Ludum-Dare-47\ludum_47_lucas\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>D:\SOUND DESIGN\GAME JAM\ludum dare 2020\ludum74_lucas\Ludum-Dare-47\ludum_47_lucas\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2655769336">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2977086447">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<GameParameters>
+				<GameParameter Id="1385505913" Name="sound_level" ObjectPath="\Game Parameters\Default Work Unit\sound_level"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3736580527" Language="SFX" Hash="921139362">
+		<SoundBank Id="3736580527" Language="SFX" Hash="3749434804">
 			<ObjectPath>\SoundBanks\Default Work Unit\the_one_true_bank</ObjectPath>
 			<ShortName>the_one_true_bank</ShortName>
 			<Path>the_one_true_bank.bnk</Path>
 			<IncludedEvents>
-				<Event Id="628021648" Name="Play_alarme_camera" ObjectPath="\Events\Default Work Unit\oneshot\Play_alarme_camera" DurationType="OneShot" DurationMin="8.115666" DurationMax="8.115666">
+				<Event Id="628021648" Name="Play_alarme_camera" ObjectPath="\Events\Default Work Unit\oneshot\Play_alarme_camera" DurationType="OneShot" DurationMin="7.884629" DurationMax="8.353474">
 					<IncludedMemoryFiles>
 						<File Id="173941664" Language="SFX">
 							<ShortName>alarme caméra.wav</ShortName>
@@ -29,7 +32,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4197730376" Name="Play_alert_sound" ObjectPath="\Events\Default Work Unit\oneshot\Play_alert_sound" DurationType="OneShot" DurationMin="1.015958" DurationMax="1.015958">
+				<Event Id="4197730376" Name="Play_alert_sound" ObjectPath="\Events\Default Work Unit\oneshot\Play_alert_sound" DurationType="OneShot" DurationMin="0.987036" DurationMax="1.045728">
 					<IncludedMemoryFiles>
 						<File Id="122449427" Language="SFX">
 							<ShortName>alert_sound.wav</ShortName>
@@ -37,7 +40,15 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2210203630" Name="Play_crash_distributeur" ObjectPath="\Events\Default Work Unit\oneshot\Play_crash_distributeur" DurationType="OneShot" DurationMin="1.703333" DurationMax="1.703333">
+				<Event Id="3787131803" Name="Play_amb_loop" ObjectPath="\Events\Default Work Unit\amb\Play_amb_loop" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="576781576" Language="SFX">
+							<ShortName>amb_loop.wav</ShortName>
+							<Path>SFX\amb_loop_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2210203630" Name="Play_crash_distributeur" ObjectPath="\Events\Default Work Unit\oneshot\Play_crash_distributeur" DurationType="OneShot" DurationMin="1.654843" DurationMax="1.753245">
 					<IncludedMemoryFiles>
 						<File Id="210838302" Language="SFX">
 							<ShortName>crash_distributeur.wav</ShortName>
@@ -45,7 +56,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="813239263" Name="Play_death_punch_player" ObjectPath="\Events\Default Work Unit\oneshot\Play_death_punch_player" DurationType="OneShot" DurationMin="1.065000" DurationMax="1.065000">
+				<Event Id="813239263" Name="Play_death_punch_player" ObjectPath="\Events\Default Work Unit\oneshot\Play_death_punch_player" DurationType="OneShot" DurationMin="1.034682" DurationMax="1.096207">
 					<IncludedMemoryFiles>
 						<File Id="582349214" Language="SFX">
 							<ShortName>death_punch_player.wav</ShortName>
@@ -53,7 +64,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1988725533" Name="Play_door_pressure_plate" ObjectPath="\Events\Default Work Unit\oneshot\Play_door_pressure_plate" DurationType="OneShot" DurationMin="0.475563" DurationMax="0.475563">
+				<Event Id="1988725533" Name="Play_door_pressure_plate" ObjectPath="\Events\Default Work Unit\oneshot\Play_door_pressure_plate" DurationType="OneShot" DurationMin="0.462024" DurationMax="0.489498">
 					<IncludedMemoryFiles>
 						<File Id="789292896" Language="SFX">
 							<ShortName>door_pressure_plate.wav</ShortName>
@@ -61,7 +72,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3872132286" Name="Play_end_level" ObjectPath="\Events\Default Work Unit\oneshot\Play_end_level" DurationType="OneShot" DurationMin="5.033000" DurationMax="5.033000">
+				<Event Id="3872132286" Name="Play_end_level" ObjectPath="\Events\Default Work Unit\oneshot\Play_end_level" DurationType="OneShot" DurationMin="4.889720" DurationMax="5.180478">
 					<IncludedMemoryFiles>
 						<File Id="807960711" Language="SFX">
 							<ShortName>end_level.wav</ShortName>
@@ -69,7 +80,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2331026989" Name="Play_explosion_plant" ObjectPath="\Events\Default Work Unit\oneshot\Play_explosion_plant" DurationType="OneShot" DurationMin="1.527479" DurationMax="1.527479">
+				<Event Id="2331026989" Name="Play_explosion_plant" ObjectPath="\Events\Default Work Unit\oneshot\Play_explosion_plant" DurationType="OneShot" DurationMin="1.483995" DurationMax="1.572238">
 					<IncludedMemoryFiles>
 						<File Id="353267354" Language="SFX">
 							<ShortName>explosion plant.wav</ShortName>
@@ -105,7 +116,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3373805497" Name="Play_hack_validation" ObjectPath="\Events\Default Work Unit\oneshot\Play_hack_validation" DurationType="OneShot" DurationMin="0.369500" DurationMax="0.369500">
+				<Event Id="3373805497" Name="Play_hack_validation" ObjectPath="\Events\Default Work Unit\oneshot\Play_hack_validation" DurationType="OneShot" DurationMin="0.358981" DurationMax="0.380327">
 					<IncludedMemoryFiles>
 						<File Id="81733431" Language="SFX">
 							<ShortName>hack_validation.wav</ShortName>
@@ -121,7 +132,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1404912156" Name="Play_lever_pull" ObjectPath="\Events\Default Work Unit\oneshot\Play_lever_pull" DurationType="OneShot" DurationMin="1.342333" DurationMax="1.342333">
+				<Event Id="1404912156" Name="Play_lever_pull" ObjectPath="\Events\Default Work Unit\oneshot\Play_lever_pull" DurationType="OneShot" DurationMin="1.304120" DurationMax="1.381667">
 					<IncludedMemoryFiles>
 						<File Id="7595284" Language="SFX">
 							<ShortName>lever_pull.wav</ShortName>
@@ -145,7 +156,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4242832130" Name="Play_prison_door" ObjectPath="\Events\Default Work Unit\oneshot\Play_prison_door" DurationType="OneShot" DurationMin="1.628708" DurationMax="1.628708">
+				<Event Id="4242832130" Name="Play_prison_door" ObjectPath="\Events\Default Work Unit\oneshot\Play_prison_door" DurationType="OneShot" DurationMin="1.582342" DurationMax="1.676433">
 					<IncludedMemoryFiles>
 						<File Id="631455452" Language="SFX">
 							<ShortName>prison_door.wav</ShortName>
@@ -169,7 +180,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1096483956" Name="Play_sas_open" ObjectPath="\Events\Default Work Unit\oneshot\Play_sas_open" DurationType="OneShot" DurationMin="2.145375" DurationMax="2.145375">
+				<Event Id="1096483956" Name="Play_sas_open" ObjectPath="\Events\Default Work Unit\oneshot\Play_sas_open" DurationType="OneShot" DurationMin="2.084300" DurationMax="2.208239">
 					<IncludedMemoryFiles>
 						<File Id="673012717" Language="SFX">
 							<ShortName>sas_open.wav</ShortName>
@@ -197,13 +208,47 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2835868768" Name="Play_talk" ObjectPath="\Events\Default Work Unit\talking\Play_talk" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="14973834" Language="SFX">
+							<ShortName>talk-005.wav</ShortName>
+							<Path>SFX\talk-005_10C4C929.wem</Path>
+						</File>
+						<File Id="422063368" Language="SFX">
+							<ShortName>talk-001.wav</ShortName>
+							<Path>SFX\talk-001_10C4C929.wem</Path>
+						</File>
+						<File Id="468038980" Language="SFX">
+							<ShortName>talk-006.wav</ShortName>
+							<Path>SFX\talk-006_10C4C929.wem</Path>
+						</File>
+						<File Id="502327890" Language="SFX">
+							<ShortName>talk-004.wav</ShortName>
+							<Path>SFX\talk-004_10C4C929.wem</Path>
+						</File>
+						<File Id="584462877" Language="SFX">
+							<ShortName>talk-003.wav</ShortName>
+							<Path>SFX\talk-003_10C4C929.wem</Path>
+						</File>
+						<File Id="787306397" Language="SFX">
+							<ShortName>talk-002.wav</ShortName>
+							<Path>SFX\talk-002_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3450745217" Name="Stop_amb_loop" ObjectPath="\Events\Default Work Unit\amb\Stop_amb_loop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2598502896" Name="Stop_fast_forward" ObjectPath="\Events\Default Work Unit\fast_forward\Stop_fast_forward" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3944575498" Name="Stop_hacking_loop" ObjectPath="\Events\Default Work Unit\hacking loop\Stop_hacking_loop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2034872402" Name="Stop_talk" ObjectPath="\Events\Default Work Unit\talking\Stop_talk" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="7595284" Language="SFX">
 					<ShortName>lever_pull.wav</ShortName>
 					<Path>SFX\lever_pull_10C4C929.wem</Path>
+				</File>
+				<File Id="14973834" Language="SFX">
+					<ShortName>talk-005.wav</ShortName>
+					<Path>SFX\talk-005_10C4C929.wem</Path>
 				</File>
 				<File Id="26106006" Language="SFX">
 					<ShortName>footsteps3.wav</ShortName>
@@ -245,9 +290,17 @@
 					<ShortName>explosion plant.wav</ShortName>
 					<Path>SFX\explosion plant_10C4C929.wem</Path>
 				</File>
+				<File Id="422063368" Language="SFX">
+					<ShortName>talk-001.wav</ShortName>
+					<Path>SFX\talk-001_10C4C929.wem</Path>
+				</File>
 				<File Id="447593895" Language="SFX">
 					<ShortName>footsteps2.wav</ShortName>
 					<Path>SFX\footsteps2_10C4C929.wem</Path>
+				</File>
+				<File Id="468038980" Language="SFX">
+					<ShortName>talk-006.wav</ShortName>
+					<Path>SFX\talk-006_10C4C929.wem</Path>
 				</File>
 				<File Id="494316310" Language="SFX">
 					<ShortName>footsteps1.wav</ShortName>
@@ -257,13 +310,25 @@
 					<ShortName>loop_fast1.wav</ShortName>
 					<Path>SFX\loop_fast1_D79FB2B7.wem</Path>
 				</File>
+				<File Id="502327890" Language="SFX">
+					<ShortName>talk-004.wav</ShortName>
+					<Path>SFX\talk-004_10C4C929.wem</Path>
+				</File>
 				<File Id="554626955" Language="SFX">
 					<ShortName>footsteps4.wav</ShortName>
 					<Path>SFX\footsteps4_10C4C929.wem</Path>
 				</File>
+				<File Id="576781576" Language="SFX">
+					<ShortName>amb_loop.wav</ShortName>
+					<Path>SFX\amb_loop_D79FB2B7.wem</Path>
+				</File>
 				<File Id="582349214" Language="SFX">
 					<ShortName>death_punch_player.wav</ShortName>
 					<Path>SFX\death_punch_player_10C4C929.wem</Path>
+				</File>
+				<File Id="584462877" Language="SFX">
+					<ShortName>talk-003.wav</ShortName>
+					<Path>SFX\talk-003_10C4C929.wem</Path>
 				</File>
 				<File Id="587738582" Language="SFX">
 					<ShortName>loop_fast2.wav</ShortName>
@@ -280,6 +345,10 @@
 				<File Id="709288768" Language="SFX">
 					<ShortName>footsteps5.wav</ShortName>
 					<Path>SFX\footsteps5_10C4C929.wem</Path>
+				</File>
+				<File Id="787306397" Language="SFX">
+					<ShortName>talk-002.wav</ShortName>
+					<Path>SFX\talk-002_10C4C929.wem</Path>
 				</File>
 				<File Id="789292896" Language="SFX">
 					<ShortName>door_pressure_plate.wav</ShortName>
@@ -306,6 +375,9 @@
 					<Path>SFX\loop_fast3_D79FB2B7.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
+			<GameParameters>
+				<GameParameter Id="1385505913" Name="sound_level" ObjectPath="\Game Parameters\Default Work Unit\sound_level"/>
+			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

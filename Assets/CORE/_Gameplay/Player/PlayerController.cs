@@ -435,6 +435,8 @@ namespace LudumDare47
             interactFilter.layerMask = attributes.InteractMask;
             interactFilter.useLayerMask = true;
             interactFilter.useTriggers = true;
+
+            SetPosition(rigidbody.position + new Vector2(0, .1f));
         }
         #endregion
 
