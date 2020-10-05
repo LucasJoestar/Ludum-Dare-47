@@ -80,8 +80,6 @@ namespace LudumDare47
 			{
                 if (controller.Detection.CastDetection())
 				{
-                    // Ne détecte pas le même Player que je suis
-                    // Si je suis une cible, unparent la cible
 
                     // stop the agent here
                     stateMachine.GoToState(this, StateType.Process);

@@ -65,7 +65,7 @@ namespace LudumDare47
                 }
             }
 
-            if (_ghost)
+            if (_ghost && target == null)
             {
                 target = _ghost;
                 TargetTransform = _ghost.transform;
