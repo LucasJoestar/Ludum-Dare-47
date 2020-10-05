@@ -12,6 +12,8 @@ Event	ID	Name			Wwise Object Path	Notes
 	2331026989	Play_explosion_plant			\Default Work Unit\oneshot\Play_explosion_plant	
 	2598502896	Stop_fast_forward			\Default Work Unit\fast_forward\Stop_fast_forward	
 	3373805497	Play_hack_validation			\Default Work Unit\oneshot\Play_hack_validation	
+	3450745217	Stop_amb_loop			\Default Work Unit\amb\Stop_amb_loop	
+	3787131803	Play_amb_loop			\Default Work Unit\amb\Play_amb_loop	
 	3835684012	Play_menu_hover			\Default Work Unit\oneshot\Play_menu_hover	
 	3853187510	Play_rewind_reset_			\Default Work Unit\oneshot\Play_rewind_reset_	
 	3854155799	Play_footsteps			\Default Work Unit\Play_footsteps	
@@ -36,6 +38,7 @@ Custom State	ID	Name	State Group	Owner		Notes
 	84393475	yes_ghost	is_a_ghost	\Actor-Mixer Hierarchy\Default Work Unit\footsteps		
 	322136095	is_fast_forward	fast_forward	\Actor-Mixer Hierarchy\Default Work Unit\footsteps		
 	545354693	is_fast_forward	fast_forward	\Actor-Mixer Hierarchy\Default Work Unit\single eventshot\singleshotevent		
+	625672904	is_fast_forward	fast_forward	\Actor-Mixer Hierarchy\Default Work Unit\amb_loop		
 	786963938	is_fast_forward	fast_forward	\Actor-Mixer Hierarchy\Default Work Unit\hacking_loop		
 	970777062	yes_ghost	is_a_ghost	\Actor-Mixer Hierarchy\Default Work Unit\hacking_loop		
 
@@ -58,6 +61,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	494316310	footsteps1	D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\SFX\footsteps1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footsteps1		62088
 	496010834	loop_fast1	D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\SFX\loop_fast1_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\fast_forward\loop_fast1		2980788
 	554626955	footsteps4	D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\SFX\footsteps4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\footsteps\footsteps4		54456
+	576781576	amb_loop	D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\SFX\amb_loop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\amb_loop		19451060
 	582349214	death_punch_player	D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\SFX\death_punch_player_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\single eventshot\singleshotevent\death_punch_player		204544
 	587738582	loop_fast2	D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\SFX\loop_fast2_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\fast_forward\loop_fast2		3236356
 	631455452	prison_door	D:\documents stock\Documents\WwiseProjects\ludum_47_lucas\.cache\Windows\SFX\prison_door_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\single eventshot\singleshotevent\prison_door		312776
