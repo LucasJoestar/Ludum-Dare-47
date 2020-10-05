@@ -173,9 +173,8 @@ namespace LudumDare47
         /// </summary>
         public bool Interact()
         {
-            Debug.LogError("Try Interact");
             if (collider.OverlapCollider(interactFilter, overlapColliders) > 0)
-                return overlapColliders[0].GetComponent<IInteractable>().Interact(this);
+                return overlapColliders[0].GetComponentInParent<IInteractable>().Interact(this);
 
             return false;
         }
@@ -203,6 +202,8 @@ namespace LudumDare47
             if (isHacking)
             {
                 isHacking = false;
+                animator.SetBool(PlayerController.Hack_Anim, false);
+
                 hacking.CancelHack();
             }
         }
@@ -226,6 +227,8 @@ namespace LudumDare47
             if (isHacking)
             {
                 isHacking = false;
+                animator.SetBool(PlayerController.Hack_Anim, false);
+
                 hacking.CancelHack();
             }
 
@@ -307,7 +310,10 @@ namespace LudumDare47
             if (isHacking)
             {
                 if (hacking.UpdateHack())
+                {
                     isHacking = false;
+                    animator.SetBool(PlayerController.Hack_Anim, false);
+                }
             }
 
             // Update state while not reached loop end.

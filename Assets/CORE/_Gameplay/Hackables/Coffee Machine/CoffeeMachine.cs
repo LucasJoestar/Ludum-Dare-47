@@ -32,10 +32,14 @@ namespace LudumDare47
             if (_gameObject.TryGetComponent(out EnemyController _enemy))
             {
                 collider.enabled = false;
+                trigger.enabled = false;
+
                 originalSprite.SetActive(false);
                 hackSprite.SetActive(true);
-                
-                //_enemy.Die();
+
+                hackLight.SetActive(false);
+
+                _enemy.Die();
 
                 //Instantiate(ProgramSettings.I.PlantExplosion, transform.position, Quaternion.identity);
                 LevelManager.Instance.PlayDialog(ProgramSettings.I.plantDialogID);

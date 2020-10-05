@@ -21,6 +21,12 @@ namespace LudumDare47
         [Space()]
 
         [SerializeField, Required] protected new Collider2D collider = null;
+        [SerializeField, Required] protected Collider2D interactable = null;
+        [SerializeField, Required] protected Collider2D trigger = null;
+
+        [Space()]
+
+        [SerializeField, Required] protected GameObject hackLight = null;
 
         // -----------------------
 
@@ -43,7 +49,12 @@ namespace LudumDare47
         public virtual void ResetBehaviour()
         {
             isHacked = false;
-            collider.enabled = false;
+
+            collider.enabled = true;
+            interactable.enabled = true;
+            trigger.enabled = false;
+
+            hackLight.SetActive(false);
         }
         #endregion
 
@@ -77,7 +88,10 @@ namespace LudumDare47
                 canvas.SetActive(false);
 
                 isHacked = true;
-                collider.enabled = true;
+                trigger.enabled = true;
+                interactable.enabled = false;
+
+                hackLight.SetActive(true);
                 return true;
             }
 

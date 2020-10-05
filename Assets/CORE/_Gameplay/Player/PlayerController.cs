@@ -77,7 +77,10 @@ namespace LudumDare47
                 if (isHacking)
                 {
                     if (hacking.UpdateHack())
+                    {
                         isHacking = false;
+                        animator.SetBool(Hack_Anim, false);
+                    }
                 }
                 else
                 {
@@ -94,7 +97,7 @@ namespace LudumDare47
                     // Register current state.
                     if (inputs.Action.triggered &&
                        (collider.OverlapCollider(interactFilter, overlapColliders) > 0) &&
-                        overlapColliders[0].GetComponent<IInteractable>().Interact(this))
+                        overlapColliders[0].GetComponentInParent<IInteractable>().Interact(this))
                     {
                         ghostStates.Add(new PlayerGhostSetPositionState(LevelManager.Instance.LoopTime, rigidbody.position));
                         ghostStates.Add(new PlayerGhostInteractState(LevelManager.Instance.LoopTime));
@@ -224,6 +227,8 @@ namespace LudumDare47
                 if (isHacking)
                 {
                     isHacking = false;
+                    animator.SetBool(Hack_Anim, false);
+
                     hacking.CancelHack();
                 }
             }
