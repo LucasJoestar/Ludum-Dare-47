@@ -178,11 +178,17 @@ namespace LudumDare47
         /// <summary>
         /// Completely reset behaviour and restart the loop.
         /// </summary>
-        public PlayerGhost OnStartLoop(Vector2 _position)
+        public PlayerGhost OnStartLoop(Vector2 _position, bool _doGetGhost)
         {
-            ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
-            PlayerGhost _ghost = Instantiate(attributes.ghostPrefab, transform.position, transform.rotation);
-            _ghost.Init(ghostStates);
+            PlayerGhost _ghost;
+            if (_doGetGhost)
+            {
+                ghostStates.Add(new PlayerGhostStopState(LevelManager.Instance.LoopTime, rigidbody.position));
+                _ghost = Instantiate(attributes.ghostPrefab, transform.position, transform.rotation);
+                _ghost.Init(ghostStates);
+            }
+            else
+                _ghost = null;
 
             Unparent();
             collider.enabled = true;
