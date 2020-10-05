@@ -10,9 +10,6 @@ namespace LudumDare47
 {
 	public class ANI_OutActivateDialog : StateMachineBehaviour
     {
-        private bool isInitialized = false;
-        private LevelManager levelManager = null;
-
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         //{
@@ -28,13 +25,7 @@ namespace LudumDare47
         //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
         override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (!isInitialized)
-            {
-                isInitialized = true;
-                levelManager = FindObjectOfType<LevelManager>();
-            }
-
-            levelManager.ActivateDialog();
+            LevelManager.Instance.ActivateDialog();
         }
 
         // OnStateMove is called right after Animator.OnAnimatorMove()

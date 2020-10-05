@@ -15,10 +15,10 @@ TagManager:
   - 
   - Player
   - Agent
-  - DoorDetector
+  - AgentDetector
   - Door
-  - 
-  - 
+  - Player Trigger
+  - Player Interaction
   - 
   - 
   - 
