@@ -70,7 +70,7 @@ namespace LudumDare47
 
 		protected virtual void Start()
 		{
-			LevelManager.Instance.RegisterResetable(this); 
+			LevelManager.Instance.RegisterResetable(this);
 			GenerateFOV();
 		}
 

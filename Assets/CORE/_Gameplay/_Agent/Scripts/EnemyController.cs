@@ -92,8 +92,7 @@ namespace LudumDare47
 		{
 			navAgent.StopAgent();
 			destination = initialDestination;
-			transform.position = NavAgent.InitialPosition;
-			transform.rotation = NavAgent.InitialRotation;
+			NavAgent.ResetAgent(); 
 			animator.SetBool(Moving_Anim, false); 
 			stateMachine.ResetFSM(); 
 		}

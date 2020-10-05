@@ -112,6 +112,13 @@ namespace LudumDare47.Navigation
             }
             base.MovableUpdate();
         }
+
+        public void ResetAgent()
+        {
+            SetPosition(initialPosition);
+            transform.rotation = InitialRotation;
+            RefreshPosition(); 
+        }
         #endregion
 
         #region Setting Destination

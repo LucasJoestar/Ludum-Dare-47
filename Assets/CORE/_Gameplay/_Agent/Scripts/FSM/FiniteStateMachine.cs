@@ -15,7 +15,7 @@ namespace LudumDare47
         #region Fields / Properties
         [HorizontalLine(1, order = 0), Section("FiniteStateMachine", order = 1)]
         [SerializeField] private BaseState[] behaviourStates = new BaseState[] { };
-        public BaseState[] BehaviourStates => behaviourStates; 
+        public BaseState[] BehaviourStates => behaviourStates;
 
         [SerializeField] private int startStateIndex = 0;
 
@@ -32,8 +32,8 @@ namespace LudumDare47
             if (!isActive) return;
             if(hasToReset)
             {
-                behaviourStates[startStateIndex].OnEnterState(this);
                 hasToReset = false;
+                behaviourStates[startStateIndex].OnEnterState(this);
                 return; 
             }
             for (int i = 0; i < behaviourStates.Length; i++)
