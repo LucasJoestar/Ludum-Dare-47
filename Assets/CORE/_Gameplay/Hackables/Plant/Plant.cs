@@ -45,7 +45,7 @@ namespace LudumDare47
 
                 _enemy.Die();
 
-                //Instantiate(ProgramSettings.I.PlantExplosion, transform.position, Quaternion.identity);
+                Instantiate(ProgramSettings.I.PlantExplosion, transform.position, Quaternion.identity);
                 AkSoundEngine.PostEvent(explosion_ID, gameObject);
                 LevelManager.Instance.PlayDialog(ProgramSettings.I.plantDialogID);
             }

@@ -34,7 +34,9 @@ namespace LudumDare47
 
         [HorizontalLine(1)]
 
+        public GameObject DeathFX = null;
         public GameObject WalkSmoke = null;
+        public GameObject Explosion = null;
         #endregion
     }
 }

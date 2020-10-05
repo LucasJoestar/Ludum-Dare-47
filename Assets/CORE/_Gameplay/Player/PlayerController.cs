@@ -180,6 +180,7 @@ namespace LudumDare47
 
             animator.SetTrigger(Die_Anim);
             AkSoundEngine.PostEvent(death_ID, gameObject);
+            Instantiate(ProgramSettings.I.DeathFX, transform.position, Quaternion.identity);
         }
         #endregion
 
@@ -332,7 +333,11 @@ namespace LudumDare47
 
         // -----------------------
 
-        public void PlayFootsteps() => AkSoundEngine.PostEvent(Movable.Foosteps_ID, gameObject);
+        public void PlayFootsteps()
+        {
+            Instantiate(ProgramSettings.I.WalkSmoke, transform.position, Quaternion.identity);
+            AkSoundEngine.PostEvent(Foosteps_ID, gameObject);
+        }
 
         protected override void MovableUpdate()
         {
