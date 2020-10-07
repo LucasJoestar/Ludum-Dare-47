@@ -154,6 +154,7 @@ namespace LudumDare47.Navigation
             _absoluteTrianglePath.Reverse();
             #endregion
 
+
             //Create the simplifiedPath
             List<Vector2> _simplifiedPath = new List<Vector2>() { _origin };
 
@@ -347,6 +348,10 @@ namespace LudumDare47.Navigation
 
             _simplifiedPath.Add(_destination);
 
+            if (_simplifiedPath.Contains(Vector2.zero))
+            {
+                _simplifiedPath.Remove(Vector2.zero);
+            }
             //Set the simplifiedPath
             return _simplifiedPath.ToArray();
         }
