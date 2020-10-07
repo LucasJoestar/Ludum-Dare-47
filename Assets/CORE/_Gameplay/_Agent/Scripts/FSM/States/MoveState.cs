@@ -67,7 +67,7 @@ namespace LudumDare47
 
 		public override void OnExitState()
 		{
-			if(stateMachine.IsActive) controller.SetMovementAnimation(false);
+			controller.SetMovementAnimation(false);
 			UpdateManager.Instance.Unregister(this);
 		}
 

@@ -119,7 +119,9 @@ namespace LudumDare47
 
 		public void ResetBehaviour()
 		{
-			gameObject.SetActive(true); 
+			gameObject.SetActive(true);
+			animator.SetBool(Moving_Anim, false);
+			animator.ResetTrigger(Catch_Anim);
 			navAgent.StopAgent();
 			destination = initialDestination;
 			NavAgent.ResetAgent(); 

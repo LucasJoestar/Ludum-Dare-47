@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationSpeed: 750
   DialogDisplay: 25
-  PlantExplosion: {fileID: 3087635867968463338, guid: c2fdaddede261cc4780b2f96700e65a7,
+  PlantExplosion: {fileID: 5172067138202018160, guid: c2fdaddede261cc4780b2f96700e65a7,
     type: 3}
   plantDialogID: 5037
+  CoffeeDialogID: 998
   DeathFX: {fileID: 5110742119450541768, guid: e66a85d05218edc48b22a4621e4664f8, type: 3}
-  WalkSmoke: {fileID: 5055254667096341197, guid: 8f599713a0fbdb448b7dff01f794cc30,
+  WalkSmoke: {fileID: 1241234321835405587, guid: 8f599713a0fbdb448b7dff01f794cc30,
     type: 3}
-  Explosion: {fileID: 4960531628017465292, guid: 7ffdf71a4b2ebb6448e73a6034b9d040,
+  Explosion: {fileID: 2802561546762579464, guid: 7ffdf71a4b2ebb6448e73a6034b9d040,
     type: 3}
